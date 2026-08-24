@@ -7,9 +7,9 @@
   <meta name="description" content="DelayGSE: A Generative Speech Enhancement Framework with Delayed Text-Aware Conditioning">
   <meta property="og:title" content="DelayGSE"/>
   <meta property="og:description" content="DelayGSE: A Generative Speech Enhancement Framework with Delayed Text-Aware Conditioning"/>
-  <meta property="og:url" content="http://delaygse.github.io/"/>
+  <meta property="og:url" content="https://delaygse.github.io/edge-gse/"/>
   <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
-  <meta property="og:image" content="static/image/delaygse_overview.png" />
+  <meta property="og:image" content="https://delaygse.github.io/edge-gse/static/images/delaygse_overview.png" />
   <meta property="og:image:width" content="1200"/>
   <meta property="og:image:height" content="630"/>
 
@@ -17,7 +17,7 @@
   <meta name="twitter:title" content="DelayGSE">
   <meta name="twitter:description" content="DelayGSE: A Generative Speech Enhancement Framework with Delayed Text-Aware Conditioning">
   <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
-  <meta name="twitter:image" content="static/images/delaygse_overview.png">
+  <meta name="twitter:image" content="https://delaygse.github.io/edge-gse/static/images/delaygse_overview.png">
   <meta name="twitter:card" content="summary_large_image">
   <!-- Keywords for your paper to be indexed by-->
   <meta name="keywords" content="Generative Speech Enhancement, Delay-ASR Multi-Task Learning, Artifact Suppression, Multi-Codebook Weighting">
@@ -172,7 +172,7 @@
         <div class="content has-text-justified">
           <p>
             <!-- Generative speech enhancement methods often yield superior perceptual quality but are more prone than discriminative approaches to producing speech-like hallucinations under low signal-to-noise ratios (SNRs). We present DelayGSE, a multi-task generative framework that delays an automatic speech recognition (ASR) objective to suppress such artifacts, yielding a 15.8% relative WER reduction in ablations. To balance perceptual quality and semantic fidelity, we introduce an importance-aware codebook weighting for discrete-token multi-codebook modeling, where weights are computed from a joint metric of perceptual quality, intelligibility, and timbre similarity. This reduces inter-codebook training conflicts, speeds convergence, and improves both perceptual quality and intelligibility, achieving state-of-the-art results on public test sets. Optional conditioning on ground-truth text further restores speech at extremely low SNRs. Audio examples are available at <a style="color: blue;" href="https://delaygse.github.io/" target="_blank">https://delaygse.github.io/</a>. -->
-            Recent generative speech enhancement methods based on language and diffusion models achieve strong perceptual quality but are more susceptible than discriminative approaches to speech-like hallucinations under low SNRs and transient noise. We propose DelayGSE, a text-aware generative speech enhancement framework built on a multi-codebook language model for denoising, dereverberation, and audio super-resolution. DelayGSE conditions on noisy-speech STFT features and Whisper encoder representations, and models multiple discrete codebooks in a delayed manner to stabilize generation. A text-aware mechanism suppresses hallucinations, while an importance-aware codebook weighting strategy balances perceptual fidelity and semantic consistency. Experiments demonstrate state-of-the-art performance, with ablations showing effective hallucination suppression and a 15.8% relative word error rate reduction. Audio samples are available at: <a style="color: blue;" href="https://delaygse.github.io/" target="_blank">https://delaygse.github.io/</a>.
+            Recent generative speech enhancement methods based on language and diffusion models achieve strong perceptual quality but are more susceptible than discriminative approaches to speech-like hallucinations under low SNRs and transient noise. We propose DelayGSE, a text-aware generative speech enhancement framework built on a multi-codebook language model for denoising, dereverberation, and audio super-resolution. DelayGSE conditions on noisy-speech STFT features and Whisper encoder representations, and models multiple discrete codebooks in a delayed manner to stabilize generation. A text-aware mechanism suppresses hallucinations, while an importance-aware codebook weighting strategy balances perceptual fidelity and semantic consistency. Experiments demonstrate state-of-the-art performance, with ablations showing effective hallucination suppression and a 15.8% relative word error rate reduction. Audio samples are available at: <a style="color: blue;" href="https://delaygse.github.io/edge-gse/" target="_blank">https://delaygse.github.io/edge-gse/</a>.
           </p>
         </div>
       </div>

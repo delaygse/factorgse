@@ -1,0 +1,236 @@
+body {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+
+.footer .icon-link {
+    font-size: 25px;
+    color: #000;
+}
+
+.link-block a {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.dnerf {
+  font-variant: small-caps;
+}
+
+
+.teaser .hero-body {
+  padding-top: 0;
+  padding-bottom: 3rem;
+}
+
+.teaser {
+  font-family: 'Google Sans', sans-serif;
+}
+
+
+.publication-title {
+}
+
+.publication-banner {
+  max-height: parent;
+
+}
+
+.publication-banner video {
+  position: relative;
+  left: auto;
+  top: auto;
+  transform: none;
+  object-fit: fit;
+}
+
+.publication-header .hero-body {
+}
+
+.publication-title {
+    font-family: 'Google Sans', sans-serif;
+}
+
+.publication-authors {
+    font-family: 'Google Sans', sans-serif;
+}
+
+.publication-venue {
+    color: #555;
+    width: fit-content;
+    font-weight: bold;
+}
+
+.publication-awards {
+    color: #ff3860;
+    width: fit-content;
+    font-weight: bolder;
+}
+
+.publication-authors {
+}
+
+.publication-authors a {
+   color: hsl(204, 86%, 53%) !important;
+}
+
+.publication-authors a:hover {
+    text-decoration: underline;
+}
+
+.author-block {
+  display: inline-block;
+}
+
+.publication-banner img {
+}
+
+.publication-authors {
+  /*color: #4286f4;*/
+}
+
+.publication-video {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+
+    overflow: hidden;
+    border-radius: 10px !important;
+}
+
+.publication-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.publication-body img {
+}
+
+.results-carousel {
+  overflow: hidden;
+}
+
+.results-carousel .item {
+  margin: 5px;
+  overflow: hidden;
+  padding: 20px;
+  font-size: 0;
+}
+
+.results-carousel video {
+  margin: 0;
+}
+
+.slider-pagination .slider-page {
+  background: #000000;
+}
+
+.eql-cntrb { 
+  font-size: smaller;
+}
+
+/* ===============================
+   Audio + Spectrogram Styles
+   (from index_miipher)
+   =============================== */
+
+/* 表格容器 */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 1.5em;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  table-layout: fixed;
+  min-width: 600px;
+  margin-bottom: 2em;
+}
+th, td {
+  border: 1px solid #dee2e6;
+  padding: 8px 5px;
+  text-align: center;
+  vertical-align: top;
+  word-wrap: break-word;
+  font-size: 0.85em;
+}
+th {
+  background-color: #e9ecef;
+  font-weight: 600;
+  color: #495057;
+  vertical-align: middle;
+}
+
+/* 单元格内容对齐 */
+.cell-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  width: 100%;
+  padding: 4px 0;
+}
+td.audio-cell {
+  padding: 4px;
+  vertical-align: top;
+}
+
+/* 音频播放器 */
+audio {
+  display: block;
+  margin-top: 5px;
+  width: 100%;
+  max-width: 300px;
+}
+
+/* Mel 谱图 */
+.spectrogram-img {
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: #f0f0f0;
+  cursor: zoom-in;
+  object-fit: cover;
+  max-width: 90%;
+  height: 300px;
+  margin: 0 auto 5px auto;
+}
+.spectrogram-img::before {
+  content: attr(alt);
+  display: block;
+  text-align: center;
+  font-size: 0.7em;
+  color: #777;
+  padding: 2px;
+  width: 100%;
+  box-sizing: border-box;
+  line-height: 96px;
+}
+.spectrogram-img[src]:not([src=""]) {
+  background-color: transparent;
+}
+.spectrogram-img[src]:not([src=""])::before {
+  display: none;
+}
+
+/* 响应式调整 */
+@media (max-width: 1200px) {
+  .spectrogram-img { height: 200px; }
+}
+@media (max-width: 900px) {
+  .spectrogram-img { height: 150px; }
+  .cell-content-wrapper { gap: 4px; }
+}
+@media (max-width: 600px) {
+  .spectrogram-img { height: 120px; }
+}
+@media (max-width: 480px) {
+  .spectrogram-img { height: 100px; }
+}
