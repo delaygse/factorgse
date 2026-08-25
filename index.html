@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="EDGE-GSE: Low-Latency Streaming Generative Speech Enhancement via Time-NAR Semantics and Intra-Frame Depth-AR Acoustic Modeling">
+  <meta name="description" content="Edge-GSE: Selective Autoregression for Low-Latency Streaming Generative Speech Enhancement">
   <meta name="keywords" content="streaming generative speech enhancement, neural audio codecs, selective autoregression, low-latency on-device inference">
-  <meta property="og:title" content="EDGE-GSE">
-  <meta property="og:description" content="Low-latency streaming generative speech enhancement with time-NAR semantics and intra-frame depth-AR acoustic modeling.">
+  <meta property="og:title" content="Edge-GSE: Selective Autoregression for Low-Latency Streaming Generative Speech Enhancement">
+  <meta property="og:description" content="Selective autoregression for low-latency streaming generative speech enhancement.">
   <meta property="og:url" content="https://delaygse.github.io/edge-gse/">
   <meta property="og:image" content="https://delaygse.github.io/edge-gse/static/images/edge_gse_framework.png">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="EDGE-GSE">
-  <meta name="twitter:description" content="Low-latency streaming generative speech enhancement for edge deployment.">
+  <meta name="twitter:title" content="Edge-GSE: Selective Autoregression for Low-Latency Streaming Generative Speech Enhancement">
+  <meta name="twitter:description" content="Selective autoregression for low-latency streaming generative speech enhancement.">
   <meta name="twitter:image" content="https://delaygse.github.io/edge-gse/static/images/edge_gse_framework.png">
   <link rel="canonical" href="https://delaygse.github.io/edge-gse/">
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
@@ -20,8 +20,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/index.css?v=20260825-academic-2">
-  <title>EDGE-GSE: Low-Latency Streaming Generative Speech Enhancement</title>
+  <link rel="stylesheet" href="static/css/index.css?v=20260825-academic-3">
+  <title>Edge-GSE: Selective Autoregression for Low-Latency Streaming Generative Speech Enhancement</title>
 </head>
 <body>
   <nav class="page-nav" aria-label="Page navigation">
@@ -37,7 +37,7 @@
   <main id="top">
     <header class="hero-section">
       <div class="content-shell hero-content">
-        <h1>EDGE-GSE: Low-Latency Streaming Generative Speech Enhancement via Time-NAR Semantics and Intra-Frame Depth-AR Acoustic Modeling</h1>
+        <h1>Edge-GSE: Selective Autoregression for Low-Latency Streaming Generative Speech Enhancement</h1>
         <div class="authors" aria-label="Authors">
           <a href="mailto:yuanxin14959@cvte.com">Xin Yuan<sup>*</sup></a>
           <a href="mailto:lvjunling@cvte.com">Junling Lv<sup>*</sup></a>
@@ -53,8 +53,8 @@
       <div class="content-shell narrow-shell">
         <div class="section-heading"><h2>Abstract</h2></div>
         <div class="abstract-copy">
-          <p>Low-latency generative speech enhancement must balance content reliability, acoustic quality, and latency. Temporal autoregression conditions on generated history, but under limited look-ahead a semantic-token error can affect later predictions more strongly than in offline models with full-utterance context. Fully factorized NAR prediction avoids this feedback but ignores ordered residual dependencies across RVQ codebooks. We ask whether selective autoregression can solve two coupled problems: semantic prediction without generated history and residual reconstruction that preserves RVQ order.</p>
-          <p>Accordingly, EDGE-GSE uses a sliding-window Qwen2-0.5B Transformer to predict a w2v-BERT 2.0-distilled CB<sub>1</sub> without feedback from generated tokens; depth-AR reconstructs CB<sub>2</sub>–CB<sub>10</sub> within each frame, while a residual-only GRU carries acoustic history. EDGE-GSE supports a minimum 26.67-ms configured input-context delay. On URGENT 2025, it better balances naturalness and ASR errors than several offline baselines and achieves state-of-the-art quality among compared low-latency streaming systems at their reported operating points. An on-device demo of EDGE-GSE running in real time on an MTK edge chipset, together with audio samples, is available on this page.</p>
+          <p>Low-latency generative speech enhancement must balance content reliability, acoustic quality, and latency. Temporal autoregression conditions on generated history, but under limited look-ahead a semantic-token error can affect later predictions more strongly than in offline models with full-utterance context. Fully factorized NAR prediction avoids this feedback but ignores ordered residual dependencies across RVQ codebooks. We ask whether selective autoregression can solve two coupled problems: semantic prediction without generated history and residual reconstruction that preserves RVQ order. We call the proposed system <strong>Edge-GSE</strong>, where <em>Edge</em> highlights its edge-chipset deployment target and GSE denotes generative speech enhancement.</p>
+          <p>Accordingly, EDGE-GSE uses a sliding-window Qwen2-0.5B Transformer to predict a w2v-BERT 2.0-distilled CB<sub>1</sub> without feedback from generated tokens; depth-AR reconstructs CB<sub>2</sub>–CB<sub>10</sub> within each frame, while a residual-only GRU carries acoustic history. EDGE-GSE supports a minimum 26.67-ms configured input-context delay. On URGENT 2025, it better balances naturalness and ASR errors than several offline baselines and achieves state-of-the-art quality among compared low-latency streaming systems at their reported operating points. An on-device demo of EDGE-GSE running in real time on an MTK edge chipset, together with audio samples, is available at <a href="https://delaygse.github.io/edge-gse/">https://delaygse.github.io/edge-gse/</a>.</p>
         </div>
       </div>
     </section>
