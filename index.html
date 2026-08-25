@@ -36,15 +36,8 @@
 
   <main id="top">
     <header class="hero-section">
-      <div class="hero-glow hero-glow-one" aria-hidden="true"></div>
-      <div class="hero-glow hero-glow-two" aria-hidden="true"></div>
       <div class="content-shell hero-content">
-        <div class="eyebrow-row">
-          <span class="eyebrow">Research project page</span>
-          <span class="status-chip">ICASSP 2027 submission</span>
-        </div>
         <h1>EDGE-GSE: Low-Latency Streaming Generative Speech Enhancement via Time-NAR Semantics and Intra-Frame Depth-AR Acoustic Modeling</h1>
-        <p class="hero-lede">Selective autoregression for reliable semantic prediction, ordered acoustic refinement, and practical on-device streaming.</p>
         <div class="authors" aria-label="Authors">
           <a href="mailto:yuanxin14959@cvte.com">Xin Yuan<sup>*</sup></a>
           <a href="mailto:lvjunling@cvte.com">Junling Lv<sup>*</sup></a>
@@ -57,13 +50,6 @@
           <a class="primary-button" href="#audio">Listen to samples</a>
           <a class="secondary-button" href="#demo">MTK demo placeholder</a>
         </div>
-        <div class="metric-strip" aria-label="Project highlights">
-          <div class="metric-card"><span class="metric-value">26.67 ms</span><span class="metric-label">Minimum configured input-context delay</span></div>
-          <div class="metric-card"><span class="metric-value">10 RVQ</span><span class="metric-label">Semantic-to-acoustic codebooks</span></div>
-          <div class="metric-card"><span class="metric-value">186.7 ms</span><span class="metric-label">Default configured input-context delay</span></div>
-          <div class="metric-card"><span class="metric-value">0.8 RTF</span><span class="metric-label">Preliminary aggregate result on MTK 8678</span></div>
-        </div>
-        <p class="measurement-note">RTF is preliminary. Instrumented end-to-end latency, percentile timing, and full device measurements remain in progress.</p>
       </div>
     </header>
 
@@ -91,8 +77,8 @@
           <p>Semantic prediction avoids generated-token feedback; acoustic reconstruction preserves the native coarse-to-fine RVQ order.</p>
         </div>
         <figure class="framework-figure">
-          <img src="static/images/edge_gse_framework.svg" alt="EDGE-GSE framework with semantic codec pretraining, streaming time-NAR CB1 prediction, intra-frame depth-AR residual generation, and residual-only GRU history">
-          <figcaption>EDGE-GSE predicts semantically distilled CB<sub>1</sub> from bounded degraded-speech context, reconstructs CB<sub>2</sub>–CB<sub>10</sub> sequentially within each physical codec frame, and confines cross-frame generated history to the residual branch.</figcaption>
+          <img src="static/images/edge_gse_framework.png" alt="EDGE-GSE framework with semantic codec pretraining, streaming time-NAR CB1 prediction, intra-frame depth-AR residual generation, and residual-only GRU history">
+          <figcaption>EDGE-GSE predicts semantically distilled CB<sub>1</sub> from bounded degraded-speech context, reconstructs CB<sub>2</sub>–CB<sub>10</sub> sequentially within each physical codec frame, and confines cross-frame generated history to the residual branch. <a class="figure-source-link" href="static/pdfs/edge_gse_framework_vector.pdf" target="_blank" rel="noopener">Open the original PDF figure.</a></figcaption>
         </figure>
         <div class="feature-grid">
           <article class="feature-card"><span class="feature-index">01</span><h3>Time-NAR semantics</h3><p>Qwen2-0.5B predicts CB<sub>1</sub> without feeding earlier generated semantic tokens back into the semantic path.</p></article>
