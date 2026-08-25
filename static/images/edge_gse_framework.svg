@@ -1,0 +1,1194 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="1619"
+   height="972"
+   viewBox="0 0 1619 972"
+   role="img"
+   aria-labelledby="title desc"
+   version="1.1"
+   id="svg108"
+   sodipodi:docname="edge_gse_framework_vector.svg"
+   inkscape:version="1.4.4 (dcaf3e7, 2026-05-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview108"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.91494779"
+     inkscape:cx="628.45116"
+     inkscape:cy="699.49347"
+     inkscape:window-width="1512"
+     inkscape:window-height="835"
+     inkscape:window-x="194"
+     inkscape:window-y="1118"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg108" />
+  <title
+     id="title">EDGE-GSE streaming factorized generator</title>
+  <desc
+     id="desc">Editable vector reconstruction of the EDGE-GSE codec pretraining, streaming inference, and configured look-ahead timeline figure.</desc>
+  <defs
+     id="defs11">
+    <linearGradient
+       id="panelBlue"
+       x1="0"
+       y1="0"
+       x2="1"
+       y2="1">
+      <stop
+         offset="0"
+         stop-color="#ffffff"
+         id="stop1" />
+      <stop
+         offset="1"
+         stop-color="#f2f7ff"
+         id="stop2" />
+    </linearGradient>
+    <linearGradient
+       id="moduleBlue"
+       x1="0"
+       y1="0"
+       x2="0"
+       y2="1">
+      <stop
+         offset="0"
+         stop-color="#f9fcff"
+         id="stop3" />
+      <stop
+         offset="1"
+         stop-color="#dceaf8"
+         id="stop4" />
+    </linearGradient>
+    <linearGradient
+       id="moduleGray"
+       x1="0"
+       y1="0"
+       x2="0"
+       y2="1">
+      <stop
+         offset="0"
+         stop-color="#ffffff"
+         id="stop5" />
+      <stop
+         offset="1"
+         stop-color="#f1f1f1"
+         id="stop6" />
+    </linearGradient>
+    <linearGradient
+       id="moduleGreen"
+       x1="0"
+       y1="0"
+       x2="0"
+       y2="1">
+      <stop
+         offset="0"
+         stop-color="#f7fff6"
+         id="stop7" />
+      <stop
+         offset="1"
+         stop-color="#dcefd9"
+         id="stop8" />
+    </linearGradient>
+    <marker
+       id="arrowBlack"
+       markerWidth="11"
+       markerHeight="11"
+       refX="10"
+       refY="5.5"
+       orient="auto"
+       markerUnits="userSpaceOnUse">
+      <path
+         d="M0,0 L11,5.5 L0,11 Z"
+         fill="#101010"
+         id="path8" />
+    </marker>
+    <marker
+       id="arrowOrange"
+       markerWidth="11"
+       markerHeight="11"
+       refX="10"
+       refY="5.5"
+       orient="auto"
+       markerUnits="userSpaceOnUse">
+      <path
+         d="M0,0 L11,5.5 L0,11 Z"
+         fill="#f56b00"
+         id="path9" />
+    </marker>
+    <marker
+       id="arrowGreen"
+       markerWidth="11"
+       markerHeight="11"
+       refX="10"
+       refY="5.5"
+       orient="auto"
+       markerUnits="userSpaceOnUse">
+      <path
+         d="M0,0 L11,5.5 L0,11 Z"
+         fill="#08720f"
+         id="path10" />
+    </marker>
+    <marker
+       id="arrowGray"
+       markerWidth="11"
+       markerHeight="11"
+       refX="10"
+       refY="5.5"
+       orient="auto"
+       markerUnits="userSpaceOnUse">
+      <path
+         d="M0,0 L11,5.5 L0,11 Z"
+         fill="#6b6b6b"
+         id="path11" />
+    </marker>
+    <style
+       id="style11">
+      .sans { font-family: Arial, Helvetica, sans-serif; fill: #101010; }
+      .math { font-family: &quot;Times New Roman&quot;, Times, serif; fill: #101010; font-style: italic; }
+      .normal { font-size: 19px; font-weight: 400; }
+      .small { font-size: 16px; font-weight: 400; }
+      .micro { font-size: 14px; font-weight: 400; }
+      .bold { font-weight: 700; }
+      .italic { font-style: italic; }
+      .center { text-anchor: middle; }
+      .left { text-anchor: start; }
+      .black-flow { fill: none; stroke: #101010; stroke-width: 2.2; marker-end: url(#arrowBlack); }
+      .orange-flow { fill: none; stroke: #f56b00; stroke-width: 2.2; marker-end: url(#arrowOrange); }
+      .green-flow { fill: none; stroke: #08720f; stroke-width: 2.1; marker-end: url(#arrowGreen); }
+      .gray-train { fill: none; stroke: #6b6b6b; stroke-width: 2; stroke-dasharray: 8 7; marker-end: url(#arrowGray); }
+    </style>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#moduleGray"
+       id="linearGradient108"
+       x1="200.36749"
+       y1="90.873888"
+       x2="200.36749"
+       y2="262.86339"
+       gradientTransform="matrix(1.7425482,0,0,0.57387222,-26,0)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#moduleBlue"
+       id="linearGradient109"
+       x1="698.85527"
+       y1="56.847249"
+       x2="698.85527"
+       y2="146.49099"
+       gradientTransform="matrix(1.0932163,0,0,0.91473203,-26,0)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#moduleGray"
+       id="linearGradient110"
+       x1="531.19834"
+       y1="98.778023"
+       x2="531.19834"
+       y2="255.42122"
+       gradientTransform="matrix(1.8941136,0,0,0.52795144,-26,0)"
+       gradientUnits="userSpaceOnUse" />
+    <marker
+       id="arrowGreen-1"
+       markerWidth="11"
+       markerHeight="11"
+       refX="10"
+       refY="5.5"
+       orient="auto"
+       markerUnits="userSpaceOnUse">
+      <path
+         d="M 0,0 11,5.5 0,11 Z"
+         fill="#08720f"
+         id="path10-5" />
+    </marker>
+    <marker
+       id="arrowGreen-1-6"
+       markerWidth="11"
+       markerHeight="11"
+       refX="10"
+       refY="5.5"
+       orient="auto"
+       markerUnits="userSpaceOnUse">
+      <path
+         d="M 0,0 11,5.5 0,11 Z"
+         fill="#08720f"
+         id="path10-5-5" />
+    </marker>
+  </defs>
+  <rect
+     x="0"
+     y="0"
+     width="1619"
+     height="972"
+     fill="#ffffff"
+     id="rect11" />
+  <!-- ================================================================ -->
+  <!-- Codec pretraining only                                           -->
+  <!-- ================================================================ -->
+  <rect
+     x="275"
+     y="22"
+     width="1068"
+     height="183"
+     rx="17"
+     fill="#ffffff"
+     stroke="#666666"
+     stroke-width="1.8"
+     stroke-dasharray="8, 7"
+     id="rect12" />
+  <rect
+     x="650"
+     y="8"
+     width="303"
+     height="39"
+     fill="#ffffff"
+     id="rect13" />
+  <text
+     x="801"
+     y="35"
+     class="sans center bold"
+     font-size="27px"
+     id="text13">Codec pretraining only</text>
+  <rect
+     x="324"
+     y="53"
+     width="298"
+     height="97"
+     rx="11"
+     fill="url(#moduleGray)"
+     stroke="#101010"
+     stroke-width="1.7"
+     id="rect14"
+     style="fill:url(#linearGradient108)" />
+  <text
+     x="473"
+     y="81"
+     class="sans center normal"
+     id="text14">Fish-Speech-style codec</text>
+  <text
+     x="473"
+     y="111"
+     class="sans center normal"
+     id="text15">24 kHz · 10×1024 RVQ</text>
+  <text
+     x="473"
+     y="140"
+     class="sans center normal"
+     id="text16">75 Hz → ↓2 → 37.5 Hz</text>
+  <rect
+     x="739"
+     y="53"
+     width="96"
+     height="80"
+     fill="url(#moduleBlue)"
+     stroke="#0039d6"
+     stroke-width="2"
+     id="rect16"
+     style="fill:url(#linearGradient109)" />
+  <text
+     x="787"
+     y="84"
+     class="sans center normal"
+     id="text17">Codec</text>
+  <text
+     x="787"
+     y="114"
+     class="sans center normal"
+     id="text18">CB1</text>
+  <rect
+     x="981"
+     y="53"
+     width="295"
+     height="81"
+     rx="10"
+     fill="url(#moduleGray)"
+     stroke="#101010"
+     stroke-width="1.7"
+     id="rect18"
+     style="fill:url(#linearGradient110)" />
+  <text
+     x="1129"
+     y="85"
+     class="sans center normal"
+     id="text19">Frozen w2v-BERT 2.0</text>
+  <text
+     x="1129"
+     y="115"
+     class="sans center normal"
+     id="text20">teacher removed at inference</text>
+  <rect
+     x="869"
+     y="150"
+     width="83"
+     height="47"
+     rx="9"
+     fill="#f0f0f0"
+     stroke="#6b6b6b"
+     stroke-width="1.5"
+     id="rect20" />
+  <text
+     x="910"
+     y="180"
+     class="math center"
+     font-size="22px"
+     id="text21">L<tspan
+   font-size="15px"
+   baseline-shift="sub"
+   id="tspan20">sem</tspan></text>
+  <path
+     d="m 781,133 c 23,13 51,26 87,44"
+     class="gray-train"
+     id="path21" />
+  <path
+     d="m 1064,134 c -36,16 -76,29 -111,43"
+     class="gray-train"
+     id="path22" />
+  <!-- ================================================================ -->
+  <!-- Streaming factorized generator                                   -->
+  <!-- ================================================================ -->
+  <rect
+     x="181"
+     y="220"
+     width="1242"
+     height="489"
+     rx="21"
+     fill="url(#panelBlue)"
+     stroke="#0033e8"
+     stroke-width="2"
+     id="rect22" />
+  <path
+     d="m 865.45568,582.10206 c 36.60158,-7.61961 65.21961,-0.57851 90.60999,-8.29843"
+     class="green-flow"
+     id="path65-5-5"
+     style="fill:none;stroke:#08720f;stroke-width:1.168;marker-end:url(#arrowGreen-1-6)"
+     inkscape:transform-center-x="-3.7403711"
+     inkscape:transform-center-y="14.919855" />
+  <path
+     d="m 864.47206,582.89632 c 43.73084,-17.62562 73.85653,-48.0146 104.95401,-57.13129"
+     class="green-flow"
+     id="path65-5"
+     style="fill:none;stroke:#08720f;stroke-width:1.51263;marker-end:url(#arrowGreen-1)" />
+  <text
+     x="788"
+     y="271"
+     class="sans center bold"
+     font-size="27px"
+     id="text22">Streaming factorized generator</text>
+  <!-- Noisy speech waveform -->
+  <g
+     stroke="#001b9d"
+     stroke-width="4"
+     id="g32">
+    <line
+       x1="25"
+       y1="430"
+       x2="25"
+       y2="446"
+       id="line23" />
+    <line
+       x1="36"
+       y1="418"
+       x2="36"
+       y2="455"
+       id="line24" />
+    <line
+       x1="46"
+       y1="424"
+       x2="46"
+       y2="451"
+       id="line25" />
+    <line
+       x1="55"
+       y1="407"
+       x2="55"
+       y2="466"
+       id="line26" />
+    <line
+       x1="64"
+       y1="418"
+       x2="64"
+       y2="457"
+       id="line27" />
+    <line
+       x1="73"
+       y1="391"
+       x2="73"
+       y2="481"
+       id="line28" />
+    <line
+       x1="82"
+       y1="416"
+       x2="82"
+       y2="456"
+       id="line29" />
+    <line
+       x1="92"
+       y1="411"
+       x2="92"
+       y2="463"
+       id="line30" />
+    <line
+       x1="103"
+       y1="424"
+       x2="103"
+       y2="451"
+       id="line31" />
+    <line
+       x1="114"
+       y1="430"
+       x2="114"
+       y2="445"
+       id="line32" />
+  </g>
+  <text
+     x="72"
+     y="507"
+     class="sans center normal"
+     id="text32">Noisy speech</text>
+  <text
+     x="72"
+     y="535"
+     class="sans center normal"
+     id="text33">(24 kHz)</text>
+  <path
+     d="M 130 438 L 181 438"
+     class="black-flow"
+     id="path33" />
+  <!-- STFT front end -->
+  <rect
+     x="190"
+     y="388"
+     width="123"
+     height="105"
+     rx="11"
+     fill="url(#moduleBlue)"
+     stroke="#164ec5"
+     stroke-width="1.8"
+     id="rect33" />
+  <text
+     x="252"
+     y="420"
+     class="sans center normal"
+     id="text34">STFT/noisy-</text>
+  <text
+     x="252"
+     y="449"
+     class="sans center normal"
+     id="text35">feature</text>
+  <text
+     x="252"
+     y="478"
+     class="sans center normal"
+     id="text36">front end</text>
+  <path
+     d="M 313 438 L 356 438"
+     class="black-flow"
+     id="path36" />
+  <!-- Qwen bounded-context block -->
+  <rect
+     x="356"
+     y="357"
+     width="364"
+     height="208"
+     rx="10"
+     fill="url(#moduleGray)"
+     stroke="#787878"
+     stroke-width="1.7"
+     id="rect36" />
+  <line
+     x1="356"
+     y1="438"
+     x2="720"
+     y2="438"
+     stroke="#777777"
+     stroke-width="1.5"
+     id="line36" />
+  <text
+     x="538"
+     y="391"
+     class="sans center bold"
+     font-size="21"
+     id="text37">Qwen2-0.5B backbone</text>
+  <text
+     x="538"
+     y="419"
+     class="sans center small"
+     id="text38">pretrained · ALiBi · sliding-window attention</text>
+  <text
+     x="538"
+     y="470"
+     class="sans center bold"
+     font-size="19"
+     id="text39">Bounded noisy input window</text>
+  <path
+     d="M 388 491 L 388 485 Q 388 480 395 480 L 680 480 Q 688 480 688 488 L 688 491"
+     fill="none"
+     stroke="#101010"
+     stroke-width="1.6"
+     id="path39" />
+  <rect
+     x="365"
+     y="500"
+     width="347"
+     height="51"
+     rx="7"
+     fill="#f8f8f8"
+     stroke="#8a8a8a"
+     stroke-width="1.5"
+     id="rect39" />
+  <rect
+     x="482"
+     y="500"
+     width="96"
+     height="51"
+     fill="#dceafb"
+     stroke="#2d72d6"
+     stroke-width="1.3"
+     id="rect40" />
+  <line
+     x1="482"
+     y1="500"
+     x2="482"
+     y2="551"
+     stroke="#777777"
+     stroke-width="1.2"
+     id="line40" />
+  <line
+     x1="578"
+     y1="500"
+     x2="578"
+     y2="551"
+     stroke="#777777"
+     stroke-width="1.2"
+     id="line41" />
+  <text
+     x="423"
+     y="532"
+     class="sans center small"
+     id="text41">cached past</text>
+  <text
+     x="530"
+     y="532"
+     class="sans center small"
+     id="text42">frame n</text>
+  <text
+     x="645"
+     y="532"
+     class="sans center small"
+     id="text43">look-ahead N<tspan
+   font-size="11"
+   baseline-shift="sub"
+   id="tspan42">LA</tspan></text>
+  <path
+     d="M 720 438 L 753 438"
+     class="black-flow"
+     id="path43" />
+  <!-- CB1 semantic predictor -->
+  <rect
+     x="753"
+     y="389"
+     width="135"
+     height="118"
+     rx="10"
+     fill="url(#moduleBlue)"
+     stroke="#1049c9"
+     stroke-width="1.9"
+     id="rect43" />
+  <text
+     x="821"
+     y="422"
+     class="sans center normal"
+     id="text44">CB1 predictor</text>
+  <text
+     x="821"
+     y="454"
+     class="sans center"
+     font-size="21"
+     id="text45">Time-NAR</text>
+  <text
+     x="821"
+     y="481"
+     class="sans center micro"
+     id="text46">no clean-token</text>
+  <text
+     x="821"
+     y="500"
+     class="sans center micro"
+     id="text47">feedback</text>
+  <!-- Intra-frame depth autoregression -->
+  <text
+     x="990"
+     y="318"
+     class="sans center bold"
+     font-size="20"
+     id="text48">Intra-frame depth-AR</text>
+  <path
+     d="M 888 438 L 912 438 L 912 354 L 956 354"
+     class="black-flow"
+     id="path48" />
+  <g
+     fill="#fff4e4"
+     stroke="#f56b00"
+     stroke-width="2"
+     id="g51">
+    <circle
+       cx="980"
+       cy="354"
+       r="22"
+       id="circle48" />
+    <circle
+       cx="980"
+       cy="412"
+       r="22"
+       id="circle49" />
+    <circle
+       cx="980"
+       cy="470"
+       r="22"
+       id="circle50" />
+    <circle
+       cx="980"
+       cy="580"
+       r="22"
+       id="circle51" />
+  </g>
+  <text
+     x="980"
+     y="361"
+     class="sans center normal"
+     id="text51">1</text>
+  <text
+     x="980"
+     y="419"
+     class="sans center normal"
+     id="text52">2</text>
+  <text
+     x="980"
+     y="477"
+     class="sans center normal"
+     id="text53">3</text>
+  <text
+     x="980"
+     y="587"
+     class="sans center normal"
+     id="text54">10</text>
+  <path
+     d="M 980 376 L 980 389"
+     class="orange-flow"
+     id="path54" />
+  <path
+     d="M 980 434 L 980 447"
+     class="orange-flow"
+     id="path55" />
+  <path
+     d="M 980 492 L 980 556"
+     class="orange-flow"
+     stroke-dasharray="5 7"
+     id="path56" />
+  <circle
+     cx="980"
+     cy="515"
+     r="2.8"
+     fill="#101010"
+     id="circle56" />
+  <circle
+     cx="980"
+     cy="526"
+     r="2.8"
+     fill="#101010"
+     id="circle57" />
+  <circle
+     cx="980"
+     cy="537"
+     r="2.8"
+     fill="#101010"
+     id="circle58" />
+  <!-- Same physical frame bracket -->
+  <path
+     d="M 1021 334 L 1027 334 Q 1036 334 1036 344 L 1036 590 Q 1036 600 1027 600 L 1021 600"
+     fill="none"
+     stroke="#101010"
+     stroke-width="2"
+     id="path58" />
+  <text
+     x="1081"
+     y="432"
+     class="sans center small"
+     id="text58">Same</text>
+  <text
+     x="1081"
+     y="455"
+     class="sans center small"
+     id="text59">physical</text>
+  <text
+     x="1081"
+     y="478"
+     class="sans center small"
+     id="text60">codec</text>
+  <text
+     x="1081"
+     y="501"
+     class="sans center small"
+     id="text61">frame <tspan
+   font-family="Times New Roman, Times, serif"
+   font-style="italic"
+   id="tspan60">n</tspan></text>
+  <!-- Previous-frame acoustic state -->
+  <rect
+     x="758"
+     y="562"
+     width="106"
+     height="45"
+     rx="10"
+     fill="url(#moduleGreen)"
+     stroke="#08720f"
+     stroke-width="1.8"
+     id="rect61" />
+  <text
+     x="811"
+     y="591"
+     class="math center"
+     font-size="23px"
+     id="text62">h(n-1)</text>
+  <text
+     x="811"
+     y="635"
+     class="sans center small"
+     id="text63">previous-frame</text>
+  <text
+     x="811"
+     y="657"
+     class="sans center small"
+     id="text64">acoustic state</text>
+  <path
+     d="m 864.50879,583.82184 c 22.95653,-47.67511 63.51306,-141.94181 92.59132,-160.36173"
+     class="green-flow"
+     id="path64" />
+  <path
+     d="m 864.93079,582.82179 c 38.36988,-34.18457 64.80247,-93.1235 92.0877,-110.80518"
+     class="green-flow"
+     id="path65" />
+  <!-- Complete tuple -->
+  <rect
+     x="1119"
+     y="405"
+     width="138"
+     height="73"
+     rx="10"
+     fill="#ffffff"
+     stroke="#101010"
+     stroke-width="1.7"
+     id="rect66" />
+  <text
+     x="1188"
+     y="434"
+     class="sans center bold"
+     font-size="18"
+     id="text66">Complete tuple</text>
+  <text
+     x="1188"
+     y="461"
+     class="sans center normal"
+     id="text67">CB1-CB10</text>
+  <!-- GRU state update -->
+  <path
+     d="M 1188 478 L 1188 549"
+     class="black-flow"
+     id="path67" />
+  <text
+     x="1247"
+     y="525"
+     class="sans center small"
+     id="text68">CB2-CB10 only</text>
+  <rect
+     x="1118"
+     y="556"
+     width="116"
+     height="42"
+     rx="9"
+     fill="url(#moduleGreen)"
+     stroke="#08720f"
+     stroke-width="1.8"
+     id="rect68" />
+  <text
+     x="1176"
+     y="583"
+     class="sans center normal"
+     id="text69">GRU update</text>
+  <path
+     d="M 1176 598 L 1176 620"
+     class="green-flow"
+     id="path69" />
+  <rect
+     x="1141"
+     y="624"
+     width="72"
+     height="42"
+     rx="9"
+     fill="url(#moduleGreen)"
+     stroke="#08720f"
+     stroke-width="1.8"
+     id="rect69" />
+  <text
+     x="1177"
+     y="652"
+     class="math center"
+     font-size="23"
+     id="text70">h(n)</text>
+  <text
+     x="1177"
+     y="690"
+     class="sans center small"
+     id="text71">next call only</text>
+  <!-- Neural codec decoder and output -->
+  <path
+     d="M 1257 441 L 1288 441"
+     class="black-flow"
+     id="path71" />
+  <rect
+     x="1288"
+     y="404"
+     width="120"
+     height="77"
+     rx="10"
+     fill="url(#moduleBlue)"
+     stroke="#164ec5"
+     stroke-width="1.8"
+     id="rect71" />
+  <text
+     x="1348"
+     y="435"
+     class="sans center normal"
+     id="text72">Neural codec</text>
+  <text
+     x="1348"
+     y="463"
+     class="sans center normal"
+     id="text73">decoder</text>
+  <path
+     d="M 1408 441 L 1456 441"
+     class="black-flow"
+     id="path73" />
+  <g
+     stroke="#08720f"
+     stroke-width="4"
+     id="g82">
+    <line
+       x1="1468"
+       y1="434"
+       x2="1468"
+       y2="448"
+       id="line73" />
+    <line
+       x1="1479"
+       y1="424"
+       x2="1479"
+       y2="458"
+       id="line74" />
+    <line
+       x1="1490"
+       y1="417"
+       x2="1490"
+       y2="465"
+       id="line75" />
+    <line
+       x1="1501"
+       y1="405"
+       x2="1501"
+       y2="477"
+       id="line76" />
+    <line
+       x1="1512"
+       y1="419"
+       x2="1512"
+       y2="463"
+       id="line77" />
+    <line
+       x1="1523"
+       y1="412"
+       x2="1523"
+       y2="470"
+       id="line78" />
+    <line
+       x1="1534"
+       y1="422"
+       x2="1534"
+       y2="460"
+       id="line79" />
+    <line
+       x1="1545"
+       y1="414"
+       x2="1545"
+       y2="468"
+       id="line80" />
+    <line
+       x1="1556"
+       y1="428"
+       x2="1556"
+       y2="454"
+       id="line81" />
+    <line
+       x1="1567"
+       y1="434"
+       x2="1567"
+       y2="448"
+       id="line82" />
+  </g>
+  <text
+     x="1518"
+     y="507"
+     class="sans center normal"
+     id="text82">Enhanced speech</text>
+  <text
+     x="1518"
+     y="535"
+     class="sans center normal"
+     id="text83">(24 kHz)</text>
+  <!-- Legend -->
+  <rect
+     x="193"
+     y="607"
+     width="452"
+     height="91"
+     rx="10"
+     fill="#ffffff"
+     stroke="#a0a0a0"
+     stroke-width="1.2"
+     id="rect83" />
+  <path
+     d="M 208 627 L 254 627"
+     class="orange-flow"
+     id="path83" />
+  <text
+     x="269"
+     y="633"
+     class="sans left micro"
+     id="text84">solid orange arrow = intra-frame codebook generation</text>
+  <path
+     d="M 208 653 L 254 653"
+     class="green-flow"
+     id="path84" />
+  <text
+     x="269"
+     y="659"
+     class="sans left micro"
+     id="text85">solid green arrow = state transition</text>
+  <path
+     d="M 208 679 L 254 679"
+     class="gray-train"
+     id="path85" />
+  <text
+     x="269"
+     y="685"
+     class="sans left micro"
+     id="text86">dashed gray arrow = training only</text>
+  <!-- ================================================================ -->
+  <!-- Configured look-ahead availability                               -->
+  <!-- ================================================================ -->
+  <rect
+     x="156.96651"
+     y="730.96729"
+     width="1291.067"
+     height="207.81355"
+     rx="17.000881"
+     fill="#ffffff"
+     stroke="#666666"
+     stroke-width="1.73379"
+     stroke-dasharray="8, 7"
+     id="rect86" />
+  <rect
+     x="505"
+     y="714"
+     width="646"
+     height="40"
+     fill="#ffffff"
+     id="rect87" />
+  <text
+     x="828"
+     y="744"
+     class="sans center bold"
+     font-size="22"
+     id="text87">Configured look-ahead availability (not measured E2E latency)</text>
+  <!-- Timeline -->
+  <circle
+     cx="228"
+     cy="810"
+     r="7"
+     fill="#101010"
+     id="circle87" />
+  <path
+     d="M 228 810 L 1418 810"
+     class="black-flow"
+     id="path87" />
+  <g
+     stroke="#101010"
+     stroke-width="2"
+     id="g90">
+    <line
+       x1="510"
+       y1="798"
+       x2="510"
+       y2="823"
+       id="line87" />
+    <line
+       x1="795"
+       y1="798"
+       x2="795"
+       y2="823"
+       id="line88" />
+    <line
+       x1="1063"
+       y1="798"
+       x2="1063"
+       y2="823"
+       id="line89" />
+    <line
+       x1="1321"
+       y1="798"
+       x2="1321"
+       y2="823"
+       id="line90" />
+  </g>
+  <text
+     x="228"
+     y="775"
+     class="sans center small"
+     id="text90">input frame <tspan
+   font-family="Times New Roman, Times, serif"
+   font-style="italic"
+   id="tspan90">n</tspan></text>
+  <text
+     x="510"
+     y="770"
+     class="sans center small"
+     id="text91">look-ahead:</text>
+  <text
+     x="510"
+     y="793"
+     class="sans center small"
+     id="text92"><tspan
+   font-family="Times New Roman, Times, serif"
+   font-style="italic"
+   id="tspan91">N</tspan><tspan
+   font-family="Times New Roman, Times, serif"
+   font-size="11"
+   font-style="normal"
+   dy="3"
+   id="tspan92">LA</tspan><tspan
+   font-family="Arial, Helvetica, sans-serif"
+   font-size="16"
+   font-style="normal"
+   dy="-3"> frames</tspan></text>
+  <text
+     x="795"
+     y="770"
+     class="sans center small"
+     id="text93">bounded context</text>
+  <text
+     x="795"
+     y="793"
+     class="sans center small"
+     id="text94">ready</text>
+  <text
+     x="1063"
+     y="770"
+     class="sans center small"
+     id="text95">within-call</text>
+  <text
+     x="1063"
+     y="793"
+     class="sans center small"
+     id="text96">CB1 → CB2 → ⋯ → CB10</text>
+  <text
+     x="1321"
+     y="770"
+     class="sans center small"
+     id="text97">physical</text>
+  <text
+     x="1321"
+     y="793"
+     class="sans center small"
+     id="text98">frame <tspan
+   font-family="Times New Roman, Times, serif"
+   font-style="italic"
+   id="tspan97">n</tspan> tuple ready</text>
+  <!-- Timeline equations -->
+  <text
+     x="350"
+     y="860"
+     text-anchor="middle"
+     font-family="Times New Roman, Times, serif"
+     font-size="20"
+     font-style="normal"
+     fill="#101010"
+     id="text99"><tspan>Δ = 26.67&#x202F;ms;</tspan><tspan
+   font-style="italic"
+   dx="10">C</tspan><tspan
+   font-style="normal"> = 1</tspan></text>
+  <text
+     x="795"
+     y="860"
+     text-anchor="middle"
+     font-family="Times New Roman, Times, serif"
+     font-size="20"
+     font-style="normal"
+     fill="#101010"
+     id="text101"><tspan
+   font-style="italic">L</tspan><tspan
+   font-size="13"
+   font-style="normal"
+   dy="5">cfg</tspan><tspan
+   font-size="20"
+   font-style="normal"
+   dy="-5"> = </tspan><tspan
+   font-style="italic">N</tspan><tspan
+   font-size="13"
+   font-style="normal"
+   dy="5">LA</tspan><tspan
+   font-size="20"
+   font-style="normal"
+   dy="-5"> Δ = 7 × 26.67&#x202F;ms = 186.7&#x202F;ms</tspan></text>
+  <!-- Timeline notes -->
+  <circle
+     cx="353"
+     cy="918"
+     r="5"
+     fill="#101010"
+     id="circle103" />
+  <text
+     x="370"
+     y="924"
+     class="sans left micro"
+     id="text105"><tspan
+   font-family="'Times New Roman', Times, serif"
+   font-style="italic"
+   id="tspan104">N</tspan><tspan
+   font-family="'Times New Roman', Times, serif"
+   font-size="10px"
+   font-style="normal"
+   dy="3"
+   id="tspan105">LA</tspan><tspan
+   font-family="Arial, Helvetica, sans-serif"
+   font-size="14"
+   font-style="normal"
+   dy="-3"> includes the current target-aligned frame period.</tspan></text>
+  <circle
+     cx="776"
+     cy="918"
+     r="5"
+     fill="#101010"
+     id="circle105" />
+  <text
+     x="793"
+     y="924"
+     class="sans left micro"
+     id="text106">Depth-AR adds within-call compute, not token-frame look-ahead.</text>
+</svg>
