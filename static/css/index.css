@@ -113,14 +113,14 @@ sup {
 }
 
 .hero-content h1 {
-  max-width: 1000px;
+  max-width: 960px;
   margin: 0 auto;
   color: var(--navy);
   font-family: "Manrope", sans-serif;
-  font-size: clamp(2rem, 3.4vw, 3.15rem);
+  font-size: clamp(1.7rem, 2.25vw, 2.25rem);
   font-weight: 700;
-  line-height: 1.12;
-  letter-spacing: -0.035em;
+  line-height: 1.18;
+  letter-spacing: -0.025em;
 }
 
 .authors {
@@ -153,45 +153,6 @@ sup {
 
 .author-note {
   font-size: 0.84rem;
-}
-
-.hero-actions {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin: 28px 0 0;
-  flex-wrap: wrap;
-}
-
-.primary-button,
-.secondary-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 46px;
-  padding: 0 20px;
-  border-radius: 7px;
-  font-size: 0.9rem;
-  font-weight: 700;
-  text-decoration: none;
-  transition: transform 150ms ease, box-shadow 150ms ease, border-color 150ms ease;
-}
-
-.primary-button {
-  color: white;
-  background: var(--navy);
-  box-shadow: none;
-}
-
-.secondary-button {
-  color: var(--navy);
-  border: 1px solid #cbd5e1;
-  background: rgba(255, 255, 255, 0.84);
-}
-
-.primary-button:hover,
-.secondary-button:hover {
-  transform: translateY(-2px);
 }
 
 .section-block {
@@ -256,113 +217,24 @@ sup {
   margin-top: 17px;
 }
 
-.evaluation-band {
-  display: grid;
-  margin-top: 24px;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: #eef4ff;
-  grid-template-columns: repeat(4, 1fr);
-}
-
-.evaluation-band > div {
-  display: flex;
-  min-height: 92px;
-  padding: 18px;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-}
-
-.evaluation-band > div + div {
-  border-left: 1px solid #d4deef;
-}
-
-.evaluation-band strong {
-  color: #1e3a8a;
-  font-family: "Manrope", sans-serif;
-  font-size: 0.92rem;
-}
-
-.evaluation-band span {
-  margin-top: 2px;
-  color: #64748b;
-  font-size: 0.72rem;
-}
-
 .framework-figure {
-  margin: 42px 0 36px;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 18px;
+  margin: 42px 0 0;
   background: white;
-  box-shadow: var(--shadow);
 }
 
 .framework-figure img {
   display: block;
   width: 100%;
   height: auto;
-  padding: 18px;
   background: white;
 }
 
 .framework-figure figcaption {
-  padding: 18px 24px 22px;
-  color: var(--muted);
-  border-top: 1px solid var(--line);
-  background: #fbfdff;
-  font-size: 0.84rem;
-  line-height: 1.55;
-}
-
-.figure-source-link {
-  color: #1d4ed8;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.figure-source-link:hover,
-.figure-source-link:focus-visible {
-  text-decoration: underline;
-}
-
-.feature-grid {
-  display: grid;
-  gap: 16px;
-  grid-template-columns: repeat(4, 1fr);
-}
-
-.feature-card {
-  min-height: 218px;
-  padding: 24px;
-  border: 1px solid var(--line);
-  border-radius: 15px;
-  background: white;
-}
-
-.feature-index {
-  color: var(--cyan);
-  font-family: "Manrope", sans-serif;
-  font-size: 0.78rem;
-  font-weight: 800;
-}
-
-.feature-card h3 {
-  margin: 27px 0 10px;
-  color: var(--navy);
-  font-family: "Manrope", sans-serif;
-  font-size: 1.05rem;
-  font-weight: 800;
-}
-
-.feature-card p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 0.85rem;
-  line-height: 1.62;
+  padding: 15px 2px 0;
+  color: #4b5563;
+  font-size: 0.88rem;
+  line-height: 1.65;
+  text-align: justify;
 }
 
 .section-dark {
@@ -764,20 +636,6 @@ sup {
 }
 
 @media (max-width: 1050px) {
-  .evaluation-band,
-  .feature-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .evaluation-band > div:nth-child(3) {
-    border-left: 0;
-    border-top: 1px solid var(--line);
-  }
-
-  .evaluation-band > div:nth-child(4) {
-    border-top: 1px solid var(--line);
-  }
-
   .demo-layout {
     grid-template-columns: 1fr;
   }
@@ -811,19 +669,12 @@ sup {
   }
 
   .hero-content h1 {
-    font-size: clamp(1.7rem, 7.4vw, 2.3rem);
+    font-size: clamp(1.45rem, 6vw, 1.85rem);
   }
 
-  .evaluation-band,
-  .feature-grid,
   .audio-grid,
   .audio-grid-wide {
     grid-template-columns: 1fr;
-  }
-
-  .evaluation-band > div + div {
-    border-left: 0;
-    border-top: 1px solid var(--line);
   }
 
   .section-block {
@@ -836,10 +687,6 @@ sup {
 
   .abstract-copy p {
     text-align: left;
-  }
-
-  .framework-figure img {
-    padding: 8px;
   }
 
   .video-placeholder-content {

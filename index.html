@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/index.css?v=20260825-academic">
+  <link rel="stylesheet" href="static/css/index.css?v=20260825-academic-2">
   <title>EDGE-GSE: Low-Latency Streaming Generative Speech Enhancement</title>
 </head>
 <body>
@@ -46,25 +46,15 @@
         </div>
         <p class="affiliation">Guangzhou Shiyuan Electronic Technology Company Limited, Guangzhou, China</p>
         <p class="author-note"><sup>*</sup> Equal contribution. <sup>†</sup> Corresponding author.</p>
-        <div class="hero-actions">
-          <a class="primary-button" href="#audio">Listen to samples</a>
-          <a class="secondary-button" href="#demo">MTK demo placeholder</a>
-        </div>
       </div>
     </header>
 
     <section id="overview" class="section-block section-tint">
       <div class="content-shell narrow-shell">
-        <div class="section-heading"><span class="section-kicker">Overview</span><h2>Abstract</h2></div>
+        <div class="section-heading"><h2>Abstract</h2></div>
         <div class="abstract-copy">
           <p>Low-latency generative speech enhancement must balance content reliability, acoustic quality, and latency. Temporal autoregression conditions on generated history, but under limited look-ahead a semantic-token error can affect later predictions more strongly than in offline models with full-utterance context. Fully factorized NAR prediction avoids this feedback but ignores ordered residual dependencies across RVQ codebooks. We ask whether selective autoregression can solve two coupled problems: semantic prediction without generated history and residual reconstruction that preserves RVQ order.</p>
           <p>Accordingly, EDGE-GSE uses a sliding-window Qwen2-0.5B Transformer to predict a w2v-BERT 2.0-distilled CB<sub>1</sub> without feedback from generated tokens; depth-AR reconstructs CB<sub>2</sub>–CB<sub>10</sub> within each frame, while a residual-only GRU carries acoustic history. EDGE-GSE supports a minimum 26.67-ms configured input-context delay. On URGENT 2025, it better balances naturalness and ASR errors than several offline baselines and achieves state-of-the-art quality among compared low-latency streaming systems at their reported operating points. An on-device demo of EDGE-GSE running in real time on an MTK edge chipset, together with audio samples, is available on this page.</p>
-        </div>
-        <div class="evaluation-band">
-          <div><strong>URGENT 2025</strong><span>nonblind_test</span></div>
-          <div><strong>400 utterances</strong><span>300 English · 100 Chinese</span></div>
-          <div><strong>Four metrics</strong><span>DNSMOS · WER · CER · SIM</span></div>
-          <div><strong>One-frame chunks</strong><span>24 kHz · 26.67 ms/token frame</span></div>
         </div>
       </div>
     </section>
@@ -78,14 +68,8 @@
         </div>
         <figure class="framework-figure">
           <img src="static/images/edge_gse_framework.png" alt="EDGE-GSE framework with semantic codec pretraining, streaming time-NAR CB1 prediction, intra-frame depth-AR residual generation, and residual-only GRU history">
-          <figcaption>EDGE-GSE predicts semantically distilled CB<sub>1</sub> from bounded degraded-speech context, reconstructs CB<sub>2</sub>–CB<sub>10</sub> sequentially within each physical codec frame, and confines cross-frame generated history to the residual branch. <a class="figure-source-link" href="static/pdfs/edge_gse_framework_vector.pdf" target="_blank" rel="noopener">Open the original PDF figure.</a></figcaption>
+          <figcaption><strong>Figure 1.</strong> Overview of EDGE-GSE. During codec pretraining (top), a frozen w2v-BERT 2.0 teacher semantically supervises the first RVQ codebook. During online inference (middle), an STFT/noisy-feature front end supplies bounded context to the Qwen2-0.5B backbone, which predicts CB<sub>1</sub> in a time-NAR manner. A depth-AR predictor then generates CB<sub>2</sub>–CB<sub>10</sub> sequentially within the same physical codec frame. An auxiliary GRU carries acoustic context from the preceding physical frame: h<sub>n−1</sub> is supplied to the residual-codebook predictor but not to the CB<sub>1</sub> semantic head, and CB<sub>2</sub>–CB<sub>10</sub> update the state to h<sub>n</sub> for the next call. The bottom panel defines N<sub>LA</sub> as the number of strictly future frame periods after target frame n and separates configured input-context delay from within-call token generation, compute, RTF, and measured end-to-end latency.</figcaption>
         </figure>
-        <div class="feature-grid">
-          <article class="feature-card"><span class="feature-index">01</span><h3>Time-NAR semantics</h3><p>Qwen2-0.5B predicts CB<sub>1</sub> without feeding earlier generated semantic tokens back into the semantic path.</p></article>
-          <article class="feature-card"><span class="feature-index">02</span><h3>Depth-AR acoustics</h3><p>CB<sub>2</sub>–CB<sub>10</sub> are generated in their native RVQ order within the same physical codec frame.</p></article>
-          <article class="feature-card"><span class="feature-index">03</span><h3>Residual-only history</h3><p>An auxiliary GRU carries acoustic context across frames without reopening feedback into CB<sub>1</sub>.</p></article>
-          <article class="feature-card"><span class="feature-index">04</span><h3>Bounded look-ahead</h3><p>Discrete operating points span 26.7–240 ms configured input-context delay, with 186.7 ms as the default.</p></article>
-        </div>
       </div>
     </section>
 
