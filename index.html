@@ -20,12 +20,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/index.css?v=20260825-academic-3">
+  <link rel="stylesheet" href="static/css/index.css?v=20260826-clean-labels">
   <title>Edge-GSE: Selective Autoregression for Low-Latency Streaming Generative Speech Enhancement</title>
 </head>
 <body>
   <nav class="page-nav" aria-label="Page navigation">
-    <a class="brand" href="#top" aria-label="EDGE-GSE home">EDGE<span>·</span>GSE</a>
+    <a class="brand" href="#top" aria-label="Edge-GSE home">Edge<span>-</span>GSE</a>
     <div class="nav-links">
       <a href="#overview">Overview</a>
       <a href="#method">Method</a>
@@ -53,8 +53,8 @@
       <div class="content-shell narrow-shell">
         <div class="section-heading"><h2>Abstract</h2></div>
         <div class="abstract-copy">
-          <p>Low-latency generative speech enhancement must balance content reliability, acoustic quality, and latency. Temporal autoregression conditions on generated history, but under limited look-ahead a semantic-token error can affect later predictions more strongly than in offline models with full-utterance context. Fully factorized NAR prediction avoids this feedback but ignores ordered residual dependencies across RVQ codebooks. We ask whether selective autoregression can solve two coupled problems: semantic prediction without generated history and residual reconstruction that preserves RVQ order. We call the proposed system <strong>Edge-GSE</strong>, where <em>Edge</em> highlights its edge-chipset deployment target and GSE denotes generative speech enhancement.</p>
-          <p>Accordingly, EDGE-GSE uses a sliding-window Qwen2-0.5B Transformer to predict a w2v-BERT 2.0-distilled CB<sub>1</sub> without feedback from generated tokens; depth-AR reconstructs CB<sub>2</sub>–CB<sub>10</sub> within each frame, while a residual-only GRU carries acoustic history. EDGE-GSE supports a minimum 26.67-ms configured input-context delay. On URGENT 2025, it better balances naturalness and ASR errors than several offline baselines and achieves state-of-the-art quality among compared low-latency streaming systems at their reported operating points. An on-device demo of EDGE-GSE running in real time on an MTK edge chipset, together with audio samples, is available at <a href="https://delaygse.github.io/edge-gse/">https://delaygse.github.io/edge-gse/</a>.</p>
+          <p>Low-latency generative speech enhancement must balance content reliability, acoustic quality, and latency. Temporal autoregression conditions on generated history, but under limited look-ahead a semantic-token error can affect later predictions more strongly than in offline models with full-utterance context. Fully factorized NAR prediction avoids this feedback but ignores ordered residual dependencies across RVQ codebooks. We ask whether selective autoregression can solve two coupled problems: semantic prediction without generated history and residual reconstruction that preserves RVQ order.</p>
+          <p>Accordingly, Edge-GSE uses a sliding-window Qwen2-0.5B Transformer to predict a w2v-BERT 2.0-distilled CB<sub>1</sub> without feedback from generated tokens; depth-AR reconstructs CB<sub>2</sub>–CB<sub>10</sub> within each frame, while a residual-only GRU carries acoustic history. Edge-GSE supports a minimum 26.67-ms configured input-context delay. On URGENT 2025, it better balances naturalness and ASR errors than several offline baselines and achieves state-of-the-art quality among compared low-latency streaming systems at their reported operating points. An on-device demo of Edge-GSE running in real time on an MTK edge chipset, together with audio samples, is available at <a href="https://delaygse.github.io/edge-gse/">https://delaygse.github.io/edge-gse/</a>.</p>
         </div>
       </div>
     </section>
@@ -62,13 +62,12 @@
     <section id="method" class="section-block">
       <div class="content-shell">
         <div class="section-heading centered-heading">
-          <span class="section-kicker">Architecture</span>
           <h2>Selective time/depth autoregression</h2>
           <p>Semantic prediction avoids generated-token feedback; acoustic reconstruction preserves the native coarse-to-fine RVQ order.</p>
         </div>
         <figure class="framework-figure">
-          <img src="static/images/edge_gse_framework.png" alt="EDGE-GSE framework with semantic codec pretraining, streaming time-NAR CB1 prediction, intra-frame depth-AR residual generation, and residual-only GRU history">
-          <figcaption><strong>Figure 1.</strong> Overview of EDGE-GSE. During codec pretraining (top), a frozen w2v-BERT 2.0 teacher semantically supervises the first RVQ codebook. During online inference (middle), an STFT/noisy-feature front end supplies bounded context to the Qwen2-0.5B backbone, which predicts CB<sub>1</sub> in a time-NAR manner. A depth-AR predictor then generates CB<sub>2</sub>–CB<sub>10</sub> sequentially within the same physical codec frame. An auxiliary GRU carries acoustic context from the preceding physical frame: h<sub>n−1</sub> is supplied to the residual-codebook predictor but not to the CB<sub>1</sub> semantic head, and CB<sub>2</sub>–CB<sub>10</sub> update the state to h<sub>n</sub> for the next call. The bottom panel defines N<sub>LA</sub> as the number of strictly future frame periods after target frame n and separates configured input-context delay from within-call token generation, compute, RTF, and measured end-to-end latency.</figcaption>
+          <img src="static/images/edge_gse_framework.png" alt="Edge-GSE framework with semantic codec pretraining, streaming time-NAR CB1 prediction, intra-frame depth-AR residual generation, and residual-only GRU history">
+          <figcaption><strong>Figure 1.</strong> Overview of Edge-GSE. During codec pretraining (top), a frozen w2v-BERT 2.0 teacher semantically supervises the first RVQ codebook. During online inference (middle), an STFT/noisy-feature front end supplies bounded context to the Qwen2-0.5B backbone, which predicts CB<sub>1</sub> in a time-NAR manner. A depth-AR predictor then generates CB<sub>2</sub>–CB<sub>10</sub> sequentially within the same physical codec frame. An auxiliary GRU carries acoustic context from the preceding physical frame: h<sub>n−1</sub> is supplied to the residual-codebook predictor but not to the CB<sub>1</sub> semantic head, and CB<sub>2</sub>–CB<sub>10</sub> update the state to h<sub>n</sub> for the next call. The bottom panel defines N<sub>LA</sub> as the number of strictly future frame periods after target frame n and separates configured input-context delay from within-call token generation, compute, RTF, and measured end-to-end latency.</figcaption>
         </figure>
       </div>
     </section>
@@ -76,7 +75,6 @@
     <section id="demo" class="section-block section-dark">
       <div class="content-shell demo-layout">
         <div class="demo-copy">
-          <span class="section-kicker light-kicker">On-device demonstration</span>
           <h2>Real-time demo on MTK 8678</h2>
           <p>This slot is reserved for a 1–2 minute demonstration of continuous streaming enhancement on an MTK edge chipset.</p>
           <ul class="demo-checklist">
@@ -89,7 +87,7 @@
         </div>
         <div class="video-placeholder" data-future-src="static/videos/mtk-realtime-demo.mp4" role="img" aria-label="Placeholder for a one-to-two-minute MTK 8678 real-time demonstration video">
           <div class="device-frame">
-            <div class="device-topbar"><span></span><span></span><span></span><strong>MTK 8678 · EDGE-GSE</strong></div>
+            <div class="device-topbar"><span></span><span></span><span></span><strong>MTK 8678 · Edge-GSE</strong></div>
             <div class="video-placeholder-content">
               <div class="play-mark" aria-hidden="true">▶</div>
               <h3>Real-time on-device demo</h3>
@@ -104,16 +102,15 @@
     <section id="audio" class="section-block audio-section">
       <div class="content-shell">
         <div class="section-heading centered-heading">
-          <span class="section-kicker">Listening study</span>
           <h2>Audio experiment placeholders</h2>
           <p>The layout follows the paper’s system comparison, factorization analysis, and latency sweep.</p>
         </div>
-        <aside class="placeholder-notice" aria-label="Placeholder audio notice"><strong>Temporary audio only.</strong> Every player currently reuses the same 3.95-second public placeholder. It is not an EDGE-GSE result and must be replaced before the project page is announced.</aside>
+        <aside class="placeholder-notice" aria-label="Placeholder audio notice"><strong>Temporary audio only.</strong> Every player currently reuses the same 3.95-second public placeholder. It is not an Edge-GSE result and must be replaced before the project page is announced.</aside>
 
         <section class="experiment-group" aria-labelledby="main-comparison-heading">
           <div class="experiment-heading">
-            <div><span class="experiment-number">Experiment 01</span><h3 id="main-comparison-heading">System-level comparison</h3></div>
-            <p>Official/retrained offline baselines, streaming references, prior work, and EDGE-GSE at the default operating point.</p>
+            <div><h3 id="main-comparison-heading">System-level comparison</h3></div>
+            <p>Official/retrained offline baselines, streaming references, prior work, and Edge-GSE at the default operating point.</p>
           </div>
           <article class="sample-case">
             <div class="case-header">
@@ -133,7 +130,7 @@
 
         <section class="experiment-group" aria-labelledby="factorization-heading">
           <div class="experiment-heading">
-            <div><span class="experiment-number">Experiment 02</span><h3 id="factorization-heading">Semantic reliability and factorization</h3></div>
+            <div><h3 id="factorization-heading">Semantic reliability and factorization</h3></div>
             <p>Two held-out qualitative cases reserve the complete ablation: temporal-AR control, all-NAR, depth-AR core, and the auxiliary-GRU system.</p>
           </div>
           <article class="sample-case">
@@ -154,7 +151,7 @@
 
         <section class="experiment-group" aria-labelledby="latency-heading">
           <div class="experiment-heading">
-            <div><span class="experiment-number">Experiment 03</span><h3 id="latency-heading">Configured input-context-delay sweep</h3></div>
+            <div><h3 id="latency-heading">Configured input-context-delay sweep</h3></div>
             <p>These labels denote configured noisy-input context, not measured audio-in-to-audio-out latency.</p>
           </div>
           <article class="sample-case">
@@ -172,10 +169,10 @@
 
   <footer class="footer-section">
     <div class="content-shell footer-content">
-      <div><strong>EDGE-GSE</strong><p>Low-latency streaming generative speech enhancement for edge deployment.</p></div>
+      <div><strong>Edge-GSE</strong><p>Low-latency streaming generative speech enhancement for edge deployment.</p></div>
       <p>Page structure adapted from the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noopener">Academic Project Page Template</a>.</p>
     </div>
   </footer>
-  <script src="static/js/edge-page.js" defer></script>
+  <script src="static/js/edge-page.js?v=20260826-brand" defer></script>
 </body>
 </html>

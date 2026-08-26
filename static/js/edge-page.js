@@ -13,7 +13,7 @@
     { key: "stream-fm", label: "Stream.FM", tag: "Streaming" },
     { key: "internal-gan", label: "Internal streaming GAN", tag: "Streaming" },
     { key: "delaygse", label: "DelayGSE", tag: "Prior work" },
-    { key: "edge-gse-default", label: "EDGE-GSE · 186.7 ms default", tag: "Ours", highlight: true }
+    { key: "edge-gse-default", label: "Edge-GSE · 186.7 ms default", tag: "Ours", highlight: true }
   ];
 
   const factorizationComparison = [
@@ -22,17 +22,17 @@
     { key: "time-ar-control", label: "Delayed-grid time-AR control", tag: "Control" },
     { key: "all-nar", label: "All-codebook NAR", tag: "Ablation" },
     { key: "core-depth-ar", label: "Core · time-NAR CB1 + depth-AR", tag: "No GRU" },
-    { key: "edge-gse-gru", label: "EDGE-GSE · Core + auxiliary GRU", tag: "Full", highlight: true }
+    { key: "edge-gse-gru", label: "Edge-GSE · Core + auxiliary GRU", tag: "Full", highlight: true }
   ];
 
   const latencyComparison = [
     { key: "clean", label: "Clean reference", tag: "Reference" },
     { key: "noisy", label: "Noisy input", tag: "Input" },
-    { key: "nla-0", label: "EDGE-GSE · 26.7 ms", tag: "NLA 0" },
-    { key: "nla-2", label: "EDGE-GSE · 80 ms", tag: "NLA 2" },
-    { key: "nla-5", label: "EDGE-GSE · 160 ms", tag: "NLA 5" },
-    { key: "nla-6", label: "EDGE-GSE · 186.7 ms", tag: "Default", highlight: true },
-    { key: "nla-8", label: "EDGE-GSE · 240 ms", tag: "NLA 8" }
+    { key: "nla-0", label: "Edge-GSE · 26.7 ms", tag: "NLA 0" },
+    { key: "nla-2", label: "Edge-GSE · 80 ms", tag: "NLA 2" },
+    { key: "nla-5", label: "Edge-GSE · 160 ms", tag: "NLA 5" },
+    { key: "nla-6", label: "Edge-GSE · 186.7 ms", tag: "Default", highlight: true },
+    { key: "nla-8", label: "Edge-GSE · 240 ms", tag: "NLA 8" }
   ];
 
   function createAudioCard(method, scope) {
@@ -59,7 +59,7 @@
 
     const note = document.createElement("p");
     note.className = "audio-placeholder-label";
-    note.textContent = "Placeholder — not an EDGE-GSE result";
+    note.textContent = "Placeholder — not an Edge-GSE result";
 
     header.append(title, tag);
     card.append(header, audio, note);
