@@ -110,6 +110,10 @@
     return `${audioRoot}/${scope}/${language.key}/${method.file}`;
   }
 
+  function spectrogramSource(scope, method, language) {
+    return audioSource(scope, method, language).replace(/\.wav$/i, ".png");
+  }
+
   function createComparisonHeader() {
     const header = document.createElement("div");
     header.className = "audio-comparison-header";
@@ -156,13 +160,35 @@
     label.className = "audio-language-label";
     label.textContent = language.label;
 
+    const media = document.createElement("div");
+    media.className = "audio-media";
+
+    const spectrogramLink = document.createElement("a");
+    spectrogramLink.className = "spectrogram-link";
+    spectrogramLink.href = spectrogramSource(scope, method, language);
+    spectrogramLink.target = "_blank";
+    spectrogramLink.rel = "noopener";
+    spectrogramLink.setAttribute("aria-label", `Open full-size spectrogram for the ${language.label} sample: ${method.label}`);
+
+    const spectrogram = document.createElement("img");
+    spectrogram.className = "spectrogram-image";
+    spectrogram.src = spectrogramSource(scope, method, language);
+    spectrogram.alt = "";
+    spectrogram.width = 760;
+    spectrogram.height = 220;
+    spectrogram.loading = "lazy";
+    spectrogram.decoding = "async";
+
     const audio = document.createElement("audio");
     audio.controls = true;
     audio.preload = "none";
     audio.src = audioSource(scope, method, language);
     audio.setAttribute("aria-label", `${language.label} sample: ${method.label}`);
+    audio.setAttribute("aria-describedby", `urgent-transcript-${language.key}`);
 
-    cell.append(label, audio);
+    spectrogramLink.appendChild(spectrogram);
+    media.append(spectrogramLink, audio);
+    cell.append(label, media);
     return cell;
   }
 
