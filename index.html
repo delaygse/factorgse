@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/index.css?v=20260904-audio-spectrograms">
+  <link rel="stylesheet" href="static/css/index.css?v=20260904-content-refinement">
   <title>Edge-GSE: Selective Autoregression for Low-Latency Streaming Generative Speech Enhancement</title>
 </head>
 <body>
@@ -65,13 +65,13 @@
       <div class="content-shell">
         <div class="section-heading centered-heading">
           <h2>Selective time/depth autoregression</h2>
-          <p>Semantic prediction avoids generated-token feedback; acoustic reconstruction preserves the native coarse-to-fine RVQ order.</p>
+          <p>Time-NAR predicts the semantically supervised CB<sub>1</sub> from bounded degraded-speech context without temporal target-token feedback; depth-AR generates residual codebooks CB<sub>2</sub>–CB<sub>10</sub> sequentially within each frame in coarse-to-fine RVQ order.</p>
         </div>
         <figure class="framework-figure">
-          <a class="figure-link" href="static/pdfs/edge_gse_framework.pdf" target="_blank" rel="noopener" aria-label="Open the author-provided Edge-GSE framework PDF">
+          <div class="figure-frame">
             <img src="static/images/edge_gse_framework.png?v=20260904" width="2174" height="932" decoding="async" alt="Edge-GSE framework showing codec pretraining, streaming time-NAR semantic prediction, intra-frame depth-AR residual generation, and residual-only GRU history">
-          </a>
-          <figcaption><strong>Figure 1.</strong> Overview of Edge-GSE. Codec pretraining distills w2v-BERT 2.0 semantics into CB<sub>1</sub>. At inference, time-NAR predicts CB<sub>1</sub> from bounded degraded-speech context without generated-token feedback; depth-AR then generates CB<sub>2</sub>-CB<sub>10</sub> sequentially within each codec frame, while the GRU carries cross-frame acoustic history only through the residual branch. <a href="static/pdfs/edge_gse_framework.pdf" target="_blank" rel="noopener">Open the author-provided PDF.</a></figcaption>
+          </div>
+          <figcaption><strong>Figure 1.</strong> Overview of Edge-GSE. Codec pretraining distills w2v-BERT 2.0 semantics into CB<sub>1</sub>. At inference, time-NAR predicts CB<sub>1</sub> from bounded degraded-speech context without generated-token feedback; depth-AR then generates CB<sub>2</sub>-CB<sub>10</sub> sequentially within each codec frame, while the GRU carries cross-frame acoustic history only through the residual branch.</figcaption>
         </figure>
       </div>
     </section>
@@ -86,14 +86,8 @@
           <div class="results-chart-scroll" tabindex="0" aria-label="Scrollable results chart">
             <img src="static/images/results_tradeoff_web.svg" width="1180" height="700" loading="lazy" decoding="async" alt="Two-panel Edge-GSE result figure comparing DNSMOS against macro recognition score across systems and showing DNSMOS and macro ASR error across input-context settings">
           </div>
-          <figcaption><strong>Figure 2.</strong> URGENT 2025 results redrawn for the web from the same values reported in the paper. Higher is better for DNSMOS and macro recognition score; lower is better for macro ASR error. The connected context sweep contains 26.67, 80, 160, and 240 ms. The 186.7-ms primary result is a separate application-oriented record, and DelayGSE is an inherited record. <a href="static/images/results_tradeoff_web.svg" target="_blank" rel="noopener">Open the full-size chart.</a></figcaption>
+          <figcaption><strong>Figure 2.</strong> URGENT 2025 results redrawn for the web from the same values reported in the paper. Higher is better for DNSMOS and macro recognition score; lower is better for macro ASR error. The connected context sweep contains 26.67, 80, 160, and 240 ms. The 186.7-ms primary result is a separate application-oriented record, and DelayGSE is an inherited record.</figcaption>
         </figure>
-        <dl class="result-highlights" aria-label="Primary Edge-GSE operating point">
-          <div><dt>DNSMOS</dt><dd>3.62</dd></div>
-          <div><dt>Macro ASR error</dt><dd>25.45%</dd></div>
-          <div><dt>Speaker similarity</dt><dd>0.708</dd></div>
-          <div><dt>MTK 8678 RTF</dt><dd>0.81</dd></div>
-        </dl>
       </div>
     </section>
 
@@ -128,9 +122,7 @@
       <div class="content-shell">
         <div class="section-heading centered-heading">
           <h2>Audio demos</h2>
-          <p>One English and one Chinese URGENT 2025 example for every reported comparison.</p>
         </div>
-        <aside class="audio-note"><strong>Listening note.</strong> The files retain their original sample rates and output levels; no loudness normalization has been applied. Use a consistent listening volume when comparing methods.</aside>
         <div class="urgent-transcripts" aria-label="URGENT 2025 transcripts">
           <p id="urgent-transcript-en"><strong>URGENT 2025 (English):</strong> <span lang="en">“That wall in the living room is white. There is one more piece of bread in the pantry. The store closes at 8pm tonight.”</span></p>
           <p id="urgent-transcript-zh"><strong>URGENT 2025 (Chinese):</strong> <span lang="zh-CN">“谢拉维斯塔庄园是位于美国亚利桑那州科奇斯县的一个非建制地区。”</span></p>

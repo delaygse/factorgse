@@ -207,7 +207,7 @@ sup {
   background: white;
 }
 
-.figure-link {
+.figure-frame {
   display: block;
   overflow: hidden;
   padding: 12px;
@@ -215,11 +215,6 @@ sup {
   border-radius: 18px;
   background: white;
   box-shadow: 0 14px 36px rgba(30, 47, 79, 0.07);
-}
-
-.figure-link:focus-visible {
-  outline: 3px solid rgba(37, 99, 235, 0.35);
-  outline-offset: 4px;
 }
 
 .framework-figure img {
@@ -235,12 +230,6 @@ sup {
   font-size: 0.88rem;
   line-height: 1.65;
   text-align: justify;
-}
-
-.framework-figure figcaption a,
-.results-figure figcaption a {
-  color: #1d4ed8;
-  font-weight: 600;
 }
 
 .results-figure {
@@ -274,41 +263,6 @@ sup {
   font-size: 0.88rem;
   line-height: 1.65;
   text-align: justify;
-}
-
-.result-highlights {
-  display: grid;
-  overflow: hidden;
-  margin: 20px 0 0;
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  background: white;
-  grid-template-columns: repeat(4, 1fr);
-}
-
-.result-highlights > div {
-  padding: 18px 20px;
-  text-align: center;
-}
-
-.result-highlights > div + div {
-  border-left: 1px solid var(--line);
-}
-
-.result-highlights dt {
-  color: var(--muted);
-  font-size: 0.76rem;
-  font-weight: 700;
-  letter-spacing: 0.045em;
-  text-transform: uppercase;
-}
-
-.result-highlights dd {
-  margin: 3px 0 0;
-  color: var(--navy);
-  font-family: "Manrope", sans-serif;
-  font-size: 1.32rem;
-  font-weight: 800;
 }
 
 .section-dark {
@@ -509,22 +463,6 @@ sup {
   margin: 0;
   color: var(--muted);
   font-size: 0.86rem;
-}
-
-.audio-note {
-  max-width: 920px;
-  margin: 0 auto 16px;
-  padding: 16px 19px;
-  color: #334155;
-  border: 1px solid #bfdbfe;
-  border-radius: 12px;
-  background: #eff6ff;
-  font-size: 0.88rem;
-  text-align: center;
-}
-
-.audio-note strong {
-  color: #1e40af;
 }
 
 .urgent-transcripts {
@@ -802,18 +740,6 @@ sup {
     text-align: left;
   }
 
-  .result-highlights {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .result-highlights > div:nth-child(odd) {
-    border-left: 0;
-  }
-
-  .result-highlights > div:nth-child(n + 3) {
-    border-top: 1px solid var(--line);
-  }
-
   .video-placeholder-content {
     aspect-ratio: auto;
     min-height: 220px;
@@ -872,18 +798,6 @@ sup {
     font-size: 0.78rem;
   }
 
-  .result-highlights {
-    grid-template-columns: 1fr;
-  }
-
-  .result-highlights > div + div,
-  .result-highlights > div:nth-child(odd) {
-    border-left: 0;
-  }
-
-  .result-highlights > div:nth-child(n + 2) {
-    border-top: 1px solid var(--line);
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
