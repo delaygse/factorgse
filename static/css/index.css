@@ -491,6 +491,20 @@ sup {
   color: var(--navy);
 }
 
+.transcript-source {
+  display: inline-block;
+  margin-left: 5px;
+  padding: 1px 7px;
+  color: #64748b;
+  border: 1px solid #d6e0ec;
+  border-radius: 999px;
+  background: #f8fafc;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
 .audio-comparison {
   overflow: hidden;
   border: 1px solid var(--line);

@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/index.css?v=20260904-content-refinement">
+  <link rel="stylesheet" href="static/css/index.css?v=20260904-transcript-sources">
   <title>Edge-GSE: Selective Autoregression for Low-Latency Streaming Generative Speech Enhancement</title>
 </head>
 <body>
@@ -65,7 +65,6 @@
       <div class="content-shell">
         <div class="section-heading centered-heading">
           <h2>Selective time/depth autoregression</h2>
-          <p>Time-NAR predicts the semantically supervised CB<sub>1</sub> from bounded degraded-speech context without temporal target-token feedback; depth-AR generates residual codebooks CB<sub>2</sub>–CB<sub>10</sub> sequentially within each frame in coarse-to-fine RVQ order.</p>
         </div>
         <figure class="framework-figure">
           <div class="figure-frame">
@@ -124,8 +123,8 @@
           <h2>Audio demos</h2>
         </div>
         <div class="urgent-transcripts" aria-label="URGENT 2025 transcripts">
-          <p id="urgent-transcript-en"><strong>URGENT 2025 (English):</strong> <span lang="en">“That wall in the living room is white. There is one more piece of bread in the pantry. The store closes at 8pm tonight.”</span></p>
-          <p id="urgent-transcript-zh"><strong>URGENT 2025 (Chinese):</strong> <span lang="zh-CN">“谢拉维斯塔庄园是位于美国亚利桑那州科奇斯县的一个非建制地区。”</span></p>
+          <p id="urgent-transcript-en"><strong>URGENT 2025 (English):</strong> <span lang="en">“That wall in the living room is white. There is one more piece of bread in the pantry. The store closes at 8pm tonight.”</span> <span class="transcript-source">Source: nonblind_test · fileid_5</span></p>
+          <p id="urgent-transcript-zh"><strong>URGENT 2025 (Chinese):</strong> <span lang="zh-CN">“谢拉维斯塔庄园是位于美国亚利桑那州科奇斯县的一个非建制地区。”</span> <span class="transcript-source">Source: nonblind_test · fileid_806</span></p>
         </div>
 
         <section class="experiment-group" aria-labelledby="main-comparison-heading">
