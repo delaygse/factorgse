@@ -3,24 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Edge-GSE: Selective Autoregression for Low-Latency Streaming Generative Speech Enhancement">
+  <meta name="description" content="Edge-GSE uses selective time/depth autoregression for low-latency streaming generative speech enhancement, with bilingual comparative audio demos.">
   <meta name="keywords" content="streaming generative speech enhancement, neural audio codecs, selective autoregression, low-latency on-device inference">
   <meta property="og:title" content="Edge-GSE: Selective Autoregression for Low-Latency Streaming Generative Speech Enhancement">
-  <meta property="og:description" content="Selective autoregression for low-latency streaming generative speech enhancement.">
+  <meta property="og:description" content="Selective time/depth autoregression for low-latency streaming generative speech enhancement, with bilingual comparative audio demos.">
   <meta property="og:url" content="https://delaygse.github.io/edge-gse/">
-  <meta property="og:image" content="https://delaygse.github.io/edge-gse/static/images/edge_gse_framework.png">
+  <meta property="og:image" content="https://delaygse.github.io/edge-gse/static/images/edge_gse_framework.png?v=20260904">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Edge-GSE: Selective Autoregression for Low-Latency Streaming Generative Speech Enhancement">
-  <meta name="twitter:description" content="Selective autoregression for low-latency streaming generative speech enhancement.">
-  <meta name="twitter:image" content="https://delaygse.github.io/edge-gse/static/images/edge_gse_framework.png">
+  <meta name="twitter:description" content="Selective time/depth autoregression for low-latency streaming generative speech enhancement, with bilingual comparative audio demos.">
+  <meta name="twitter:image" content="https://delaygse.github.io/edge-gse/static/images/edge_gse_framework.png?v=20260904">
   <link rel="canonical" href="https://delaygse.github.io/edge-gse/">
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/index.css?v=20260826-clean-labels">
+  <link rel="stylesheet" href="static/css/index.css?v=20260904-paper-sync">
   <title>Edge-GSE: Selective Autoregression for Low-Latency Streaming Generative Speech Enhancement</title>
 </head>
 <body>
@@ -29,6 +29,7 @@
     <div class="nav-links">
       <a href="#overview">Overview</a>
       <a href="#method">Method</a>
+      <a href="#results">Results</a>
       <a href="#demo">MTK Demo</a>
       <a href="#audio">Audio</a>
     </div>
@@ -39,13 +40,19 @@
       <div class="content-shell hero-content">
         <h1>Edge-GSE: Selective Autoregression for Low-Latency Streaming Generative Speech Enhancement</h1>
         <div class="authors" aria-label="Authors">
-          <a href="mailto:yuanxin14959@cvte.com">Xin Yuan<sup>*</sup></a>
-          <a href="mailto:lvjunling@cvte.com">Junling Lv<sup>*</sup></a>
-          <a href="mailto:tanxingjun@cvte.com">Xingjun Tan</a>
-          <a href="mailto:leiyanqiang@cvte.com">Yanqiang Lei<sup>†</sup></a>
+          <a href="mailto:yuanxin14959@cvte.com">Xin Yuan<sup>1,*</sup></a>
+          <a href="mailto:lvjunling@cvte.com">Junling Lv<sup>1,*</sup></a>
+          <a href="mailto:tanxingjun@cvte.com">Xingjun Tan<sup>1</sup></a>
+          <a href="mailto:liurong@cvte.com">Rong Liu<sup>1</sup></a>
+          <a href="mailto:xuzezhou@163.sufe.edu.cn">Zezhou Xu<sup>2</sup></a>
+          <a href="mailto:leiyanqiang@cvte.com">Yanqiang Lei<sup>1,†</sup></a>
         </div>
-        <p class="affiliation">Guangzhou Shiyuan Electronic Technology Company Limited, Guangzhou, China</p>
-        <p class="author-note"><sup>*</sup> Equal contribution. <sup>†</sup> Corresponding author.</p>
+        <p class="affiliation"><sup>1</sup> Guangzhou Shiyuan Electronic Technology Company Limited, Guangzhou, China<br><sup>2</sup> Shanghai University of Finance and Economics, Shanghai, China</p>
+        <p class="author-note"><sup>*</sup> Xin Yuan and Junling Lv contributed equally to this work. <sup>†</sup> Yanqiang Lei is the corresponding author.</p>
+        <div class="hero-actions" aria-label="Project resources">
+          <a class="resource-button resource-button-primary" href="static/pdfs/edge-gse-paper.pdf" target="_blank" rel="noopener">Paper PDF</a>
+          <a class="resource-button" href="#audio">Audio demos</a>
+        </div>
       </div>
     </header>
 
@@ -53,7 +60,7 @@
       <div class="content-shell narrow-shell">
         <div class="section-heading"><h2>Abstract</h2></div>
         <div class="abstract-copy">
-          <p>Autoregression need not be an all-or-nothing choice for low-latency generative speech enhancement. We introduce Edge-GSE, a selective factorization that uses a time-non-autoregressive (time-NAR) semantic branch to eliminate generated-token feedback, retains intra-frame depth-autoregressive (depth-AR) prediction across residual codebooks, and confines cross-frame recurrence to the residual branch. This factorization addresses the central trade-off of codec-based enhancement: temporal autoregression can propagate semantic errors when streaming provides little future acoustic context, whereas fully factorized NAR prediction does not explicitly model coarse-to-fine dependencies among residual vector quantization (RVQ) codebooks. A sliding-window Transformer predicts a w2v-BERT 2.0-distilled first codebook from bounded degraded-speech context, and a depth-AR predictor generates the remaining codebooks in RVQ order. With no future input frames, the resulting 26.67-ms operating point obtains 3.54 DNSMOS, 0.310 English WER, 0.355 Chinese CER, and 0.713 speaker similarity on URGENT 2025, outperforming the public streaming generative baseline rerun on the same manifest in all four metrics. A separate preliminary W8A16 C++ profile at 186.7-ms configured input context reports an aggregate real-time factor (RTF) of 0.8 on MTK 8678. Audio samples are available at <a href="https://delaygse.github.io/edge-gse/">https://delaygse.github.io/edge-gse/</a>.</p>
+          <p>Autoregression need not be all-or-nothing in streaming codec-based speech enhancement. Temporal target-token feedback can propagate errors across frames, whereas fully non-autoregressive decoding ignores the ordered coarse-to-fine dependencies of residual vector quantization. We introduce Edge-GSE, a bounded-context, frame-wise generator that predicts a semantically supervised first codebook without temporal target-token feedback, generates the remaining codebooks autoregressively within each frame, and carries cross-frame state only through residual tokens. On URGENT 2025, a frame-aligned matched comparison shows that removing temporal feedback reduces bilingual macro ASR error by 45.0% relative. A double-blind listening test favors depth-AR over parallel residual decoding despite nearly identical DNSMOS. At the primary operating point, the complete system reaches an RTF of 0.81 on MTK 8678, corresponding to 208.3-ms context-plus-processing latency. Together, these results support selective rather than global autoregression for streaming codec-based speech enhancement. An on-device MTK demo and comparative audio samples are available at <a href="https://delaygse.github.io/edge-gse/">https://delaygse.github.io/edge-gse/</a>.</p>
         </div>
       </div>
     </section>
@@ -65,9 +72,32 @@
           <p>Semantic prediction avoids generated-token feedback; acoustic reconstruction preserves the native coarse-to-fine RVQ order.</p>
         </div>
         <figure class="framework-figure">
-          <img src="static/images/edge_gse_framework.png" alt="Edge-GSE framework with semantic codec pretraining, streaming time-NAR CB1 prediction, intra-frame depth-AR residual generation, and residual-only GRU history">
-          <figcaption><strong>Figure 1.</strong> Overview of Edge-GSE. During codec pretraining (top), a frozen w2v-BERT 2.0 teacher semantically supervises the first RVQ codebook. During online inference (middle), an STFT/noisy-feature front end supplies bounded context to the Qwen2-0.5B backbone, which predicts CB<sub>1</sub> in a time-NAR manner. A depth-AR predictor then generates CB<sub>2</sub>–CB<sub>10</sub> sequentially within the same physical codec frame. An auxiliary GRU carries acoustic context from the preceding physical frame: h<sub>n−1</sub> is supplied to the residual-codebook predictor but not to the CB<sub>1</sub> semantic head, and CB<sub>2</sub>–CB<sub>10</sub> update the state to h<sub>n</sub> for the next call. The bottom panel defines N<sub>LA</sub> as the number of strictly future frame periods after target frame n and separates configured input-context delay from within-call token generation, compute, RTF, and measured end-to-end latency.</figcaption>
+          <a class="figure-link" href="static/pdfs/edge_gse_framework.pdf" target="_blank" rel="noopener" aria-label="Open the author-provided Edge-GSE framework PDF">
+            <img src="static/images/edge_gse_framework.png?v=20260904" width="2174" height="932" decoding="async" alt="Edge-GSE framework showing codec pretraining, streaming time-NAR semantic prediction, intra-frame depth-AR residual generation, and residual-only GRU history">
+          </a>
+          <figcaption><strong>Figure 1.</strong> Overview of Edge-GSE. Codec pretraining distills w2v-BERT 2.0 semantics into CB<sub>1</sub>. At inference, time-NAR predicts CB<sub>1</sub> from bounded degraded-speech context without generated-token feedback; depth-AR then generates CB<sub>2</sub>-CB<sub>10</sub> sequentially within each codec frame, while the GRU carries cross-frame acoustic history only through the residual branch. <a href="static/pdfs/edge_gse_framework.pdf" target="_blank" rel="noopener">Open the author-provided PDF.</a></figcaption>
         </figure>
+      </div>
+    </section>
+
+    <section id="results" class="section-block section-tint">
+      <div class="content-shell">
+        <div class="section-heading centered-heading">
+          <h2>Results</h2>
+          <p>A web-width view of the paper's system comparison and configured input-context sweep.</p>
+        </div>
+        <figure class="results-figure">
+          <div class="results-chart-scroll" tabindex="0" aria-label="Scrollable results chart">
+            <img src="static/images/results_tradeoff_web.svg" width="1180" height="700" loading="lazy" decoding="async" alt="Two-panel Edge-GSE result figure comparing DNSMOS against macro recognition score across systems and showing DNSMOS and macro ASR error across input-context settings">
+          </div>
+          <figcaption><strong>Figure 2.</strong> URGENT 2025 results redrawn for the web from the same values reported in the paper. Higher is better for DNSMOS and macro recognition score; lower is better for macro ASR error. The connected context sweep contains 26.67, 80, 160, and 240 ms. The 186.7-ms primary result is a separate application-oriented record, and DelayGSE is an inherited record. <a href="static/images/results_tradeoff_web.svg" target="_blank" rel="noopener">Open the full-size chart.</a></figcaption>
+        </figure>
+        <dl class="result-highlights" aria-label="Primary Edge-GSE operating point">
+          <div><dt>DNSMOS</dt><dd>3.62</dd></div>
+          <div><dt>Macro ASR error</dt><dd>25.45%</dd></div>
+          <div><dt>Speaker similarity</dt><dd>0.708</dd></div>
+          <div><dt>MTK 8678 RTF</dt><dd>0.81</dd></div>
+        </dl>
       </div>
     </section>
 
@@ -101,67 +131,35 @@
     <section id="audio" class="section-block audio-section">
       <div class="content-shell">
         <div class="section-heading centered-heading">
-          <h2>Audio experiment placeholders</h2>
-          <p>The layout follows the paper’s system comparison, factorization analysis, and latency sweep.</p>
+          <h2>Audio demos</h2>
+          <p>One English and one Chinese URGENT 2025 example for every reported comparison.</p>
         </div>
-        <aside class="placeholder-notice" aria-label="Placeholder audio notice"><strong>Temporary audio only.</strong> Every player currently reuses the same 3.95-second public placeholder. It is not an Edge-GSE result and must be replaced before the project page is announced.</aside>
+        <aside class="audio-note"><strong>Listening note.</strong> The files retain their original sample rates and output levels; no loudness normalization has been applied. Use a consistent listening volume when comparing methods.</aside>
 
         <section class="experiment-group" aria-labelledby="main-comparison-heading">
           <div class="experiment-heading">
             <div><h3 id="main-comparison-heading">System-level comparison</h3></div>
-            <p>Official/retrained offline baselines, streaming references, prior work, and Edge-GSE at the default operating point.</p>
+            <p>Released or retrained baselines and Edge-GSE at the 186.7-ms primary operating point. The dagger marks an inherited record.</p>
           </div>
-          <article class="sample-case">
-            <div class="case-header">
-              <div><span class="case-label">Main comparison · Case EN-01</span><h4>English evaluation example</h4></div>
-              <dl class="case-meta"><div><dt>Utterance</dt><dd>TBD</dd></div><div><dt>Language</dt><dd>English</dd></div><div><dt>SNR</dt><dd>TBD</dd></div><div><dt>Noise</dt><dd>TBD</dd></div></dl>
-            </div>
-            <div id="main-en-grid" class="audio-grid audio-grid-wide" aria-live="polite"></div>
-          </article>
-          <article class="sample-case">
-            <div class="case-header">
-              <div><span class="case-label">Main comparison · Case ZH-01</span><h4>Chinese evaluation example</h4></div>
-              <dl class="case-meta"><div><dt>Utterance</dt><dd>TBD</dd></div><div><dt>Language</dt><dd>Chinese</dd></div><div><dt>SNR</dt><dd>TBD</dd></div><div><dt>Noise</dt><dd>TBD</dd></div></dl>
-            </div>
-            <div id="main-zh-grid" class="audio-grid audio-grid-wide" aria-live="polite"></div>
-          </article>
+          <div id="main-comparison-table" class="audio-comparison" aria-live="polite"></div>
         </section>
 
         <section class="experiment-group" aria-labelledby="factorization-heading">
           <div class="experiment-heading">
             <div><h3 id="factorization-heading">Semantic reliability and factorization</h3></div>
-            <p>Two held-out qualitative cases reserve the complete ablation: temporal-AR control, all-NAR, depth-AR core, and the auxiliary-GRU system.</p>
+            <p>The five 186.7-ms variants follow the factorization table in the paper, from the delayed-grid scheduling control to the complete model.</p>
           </div>
-          <article class="sample-case">
-            <div class="case-header">
-              <div><span class="case-label">Factorization · Case A</span><h4>Held-out qualitative case</h4></div>
-              <dl class="case-meta"><div><dt>Utterance</dt><dd>TBD</dd></div><div><dt>Language</dt><dd>TBD</dd></div><div><dt>SNR</dt><dd>TBD</dd></div><div><dt>Noise</dt><dd>TBD</dd></div></dl>
-            </div>
-            <div id="factor-case-a-grid" class="audio-grid" aria-live="polite"></div>
-          </article>
-          <article class="sample-case">
-            <div class="case-header">
-              <div><span class="case-label">Factorization · Case B</span><h4>Held-out qualitative case</h4></div>
-              <dl class="case-meta"><div><dt>Utterance</dt><dd>TBD</dd></div><div><dt>Language</dt><dd>TBD</dd></div><div><dt>SNR</dt><dd>TBD</dd></div><div><dt>Noise</dt><dd>TBD</dd></div></dl>
-            </div>
-            <div id="factor-case-b-grid" class="audio-grid" aria-live="polite"></div>
-          </article>
+          <div id="factorization-table" class="audio-comparison" aria-live="polite"></div>
         </section>
 
         <section class="experiment-group" aria-labelledby="latency-heading">
           <div class="experiment-heading">
             <div><h3 id="latency-heading">Configured input-context-delay sweep</h3></div>
-            <p>These labels denote configured noisy-input context, not measured audio-in-to-audio-out latency.</p>
+            <p>The four connected sweep points are listed first. The highlighted 186.7-ms primary point is a separate record, not an interpolated sweep observation.</p>
           </div>
-          <article class="sample-case">
-            <div class="case-header">
-              <div><span class="case-label">Latency sweep · Case L-01</span><h4>One-frame streaming comparison</h4></div>
-              <dl class="case-meta"><div><dt>Utterance</dt><dd>TBD</dd></div><div><dt>Language</dt><dd>TBD</dd></div><div><dt>SNR</dt><dd>TBD</dd></div><div><dt>Noise</dt><dd>TBD</dd></div></dl>
-            </div>
-            <div id="latency-grid" class="audio-grid" aria-live="polite"></div>
-          </article>
+          <div id="context-table" class="audio-comparison" aria-live="polite"></div>
         </section>
-        <noscript><p class="noscript-message">JavaScript is required to render the audio placeholder cards.</p></noscript>
+        <noscript><p class="noscript-message">JavaScript is required to render the audio comparison players.</p></noscript>
       </div>
     </section>
   </main>
@@ -172,6 +170,6 @@
       <p>Page structure adapted from the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noopener">Academic Project Page Template</a>.</p>
     </div>
   </footer>
-  <script src="static/js/edge-page.js?v=20260826-brand" defer></script>
+  <script src="static/js/edge-page.js?v=20260904-audio-sync" defer></script>
 </body>
 </html>

@@ -1,0 +1,232 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="700" viewBox="0 0 1180 700" role="img" aria-labelledby="chart-title chart-desc" preserveAspectRatio="xMidYMid meet">
+  <title id="chart-title">Edge-GSE objective results and context trade-offs</title>
+  <desc id="chart-desc">Panel A compares DNSMOS with 100 minus bilingual Macro ASR error for offline and streaming systems. Panel B shows four connected Edge-GSE context-sweep observations for DNSMOS and Macro ASR error. The 186.7 millisecond primary result is a separate record and is marked by stars. DelayGSE is an inherited record.</desc>
+  <metadata>{"connected_context_sweep":[{"context_ms":26.67,"dnsmos":3.54,"macro_asr_error":29.85},{"context_ms":80.0,"dnsmos":3.58,"macro_asr_error":28.0},{"context_ms":160.0,"dnsmos":3.61,"macro_asr_error":26.85},{"context_ms":240.0,"dnsmos":3.62,"macro_asr_error":23.3}],"evaluation":"URGENT 2025 nonblind_test, 400 utterances (300 English, 100 Chinese)","primary_separate_record":{"context_ms":186.7,"dnsmos":3.62,"macro_asr_error":25.45},"source":["edge_gse_paper/main.tex","edge_gse_paper/figures/plot_dns_avgwer_tradeoff.py"],"systems":[{"category":"offline","dnsmos":3.85,"inherited":false,"macro_asr_error":33.25,"name":"UniSE"},{"category":"offline","dnsmos":3.77,"inherited":true,"macro_asr_error":16.95,"name":"DelayGSE"},{"category":"offline","dnsmos":3.37,"inherited":false,"macro_asr_error":33.2,"name":"Bridge"},{"category":"streaming","dnsmos":3.24,"inherited":false,"macro_asr_error":43.6,"name":"Stream.FM"},{"category":"streaming","dnsmos":3.23,"inherited":false,"macro_asr_error":33.9,"name":"FastEnhancer-L"},{"category":"streaming","dnsmos":3.32,"inherited":false,"macro_asr_error":28.4,"name":"DeepFilterNet3"}]}</metadata>
+  <style>
+      text { font-family: Inter, Arial, Helvetica, sans-serif; }
+      .canvas { fill: #FFFFFF; }
+      .card { fill: #FFFFFF; stroke: #DCE4EF; stroke-width: 1.5; }
+      .page-title { fill: #172033; font-size: 27px; font-weight: 750; letter-spacing: -0.35px; }
+      .page-subtitle { fill: #61708A; font-size: 13.5px; font-weight: 500; }
+      .panel-tag { fill: #EAF1FF; stroke: #C8D8FF; stroke-width: 1; }
+      .panel-letter { fill: #1D4ED8; font-size: 14px; font-weight: 800; }
+      .panel-title { fill: #172033; font-size: 17px; font-weight: 750; letter-spacing: -0.15px; }
+      .panel-subtitle { fill: #61708A; font-size: 11.5px; font-weight: 500; }
+      .grid-line { stroke: #E7EDF5; stroke-width: 1; }
+      .vertical-grid { stroke: #E7EDF5; stroke-width: 1; stroke-dasharray: 3 5; }
+      .axis-line { stroke: #9AA7BA; stroke-width: 1.15; }
+      .axis-title { fill: #445168; font-size: 11.5px; font-weight: 650; }
+      .tick-label { fill: #61708A; font-size: 10.5px; font-variant-numeric: tabular-nums; }
+      .method-label { font-size: 11.2px; font-weight: 750; }
+      .value-label { fill: #61708A; font-size: 9.5px; font-weight: 500; font-variant-numeric: tabular-nums; }
+      .legend-label { fill: #61708A; font-size: 10.5px; font-weight: 550; }
+      .legend-label-strong { fill: #172033; font-size: 10.5px; font-weight: 750; }
+      .metric-label { font-size: 11px; font-weight: 750; }
+      .point-value { font-size: 9.5px; font-weight: 700; font-variant-numeric: tabular-nums; paint-order: stroke; stroke: white; stroke-width: 3px; stroke-linejoin: round; }
+      .dns-line { fill: none; stroke: #2563EB; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+      .error-line { fill: none; stroke: #D97706; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 8 6; }
+      .primary-guide { stroke: #9CB4E9; stroke-width: 1.25; stroke-dasharray: 4 5; }
+      .primary-pill { fill: #1D4ED8; }
+      .primary-pill-text { fill: white; font-size: 10px; font-weight: 750; font-variant-numeric: tabular-nums; }
+      .primary-tick { stroke: #1D4ED8; stroke-width: 1.8; }
+      .primary-tick-label { fill: #1D4ED8; font-size: 10px; font-weight: 750; font-variant-numeric: tabular-nums; }
+      .footer-note { fill: #61708A; font-size: 11px; font-weight: 500; }
+      .footer-note-strong { fill: #172033; font-size: 11px; font-weight: 700; }
+    </style>
+  <rect x="0" y="0" width="1180" height="700" class="canvas" />
+  <text x="28" y="40" class="page-title" text-anchor="start">Objective results and context trade-offs</text>
+  <text x="28" y="67" class="page-subtitle" text-anchor="start">URGENT 2025 · 400 bilingual utterances (300 English / 100 Chinese) · aggregate point estimates</text>
+  <g id="panel-a" role="group" aria-label="Panel A, system comparison">
+    <rect x="28" y="94" width="544" height="528" rx="18" class="card" />
+    <rect x="50" y="111" width="30" height="30" rx="9" class="panel-tag" />
+    <text x="65" y="132" class="panel-letter" text-anchor="middle">A</text>
+    <text x="92" y="129" class="panel-title" text-anchor="start">System-level trade-off</text>
+    <text x="92" y="153" class="panel-subtitle" text-anchor="start">DNSMOS vs macro recognition score · upper right is better</text>
+    <line x1="92" y1="198" x2="92" y2="526" class="grid-line" />
+    <line x1="92" y1="526" x2="92" y2="531" class="axis-line" />
+    <text x="92" y="547" class="tick-label" text-anchor="middle">55</text>
+    <line x1="168" y1="198" x2="168" y2="526" class="grid-line" />
+    <line x1="168" y1="526" x2="168" y2="531" class="axis-line" />
+    <text x="168" y="547" class="tick-label" text-anchor="middle">60</text>
+    <line x1="244" y1="198" x2="244" y2="526" class="grid-line" />
+    <line x1="244" y1="526" x2="244" y2="531" class="axis-line" />
+    <text x="244" y="547" class="tick-label" text-anchor="middle">65</text>
+    <line x1="320" y1="198" x2="320" y2="526" class="grid-line" />
+    <line x1="320" y1="526" x2="320" y2="531" class="axis-line" />
+    <text x="320" y="547" class="tick-label" text-anchor="middle">70</text>
+    <line x1="396" y1="198" x2="396" y2="526" class="grid-line" />
+    <line x1="396" y1="526" x2="396" y2="531" class="axis-line" />
+    <text x="396" y="547" class="tick-label" text-anchor="middle">75</text>
+    <line x1="472" y1="198" x2="472" y2="526" class="grid-line" />
+    <line x1="472" y1="526" x2="472" y2="531" class="axis-line" />
+    <text x="472" y="547" class="tick-label" text-anchor="middle">80</text>
+    <line x1="548" y1="198" x2="548" y2="526" class="grid-line" />
+    <line x1="548" y1="526" x2="548" y2="531" class="axis-line" />
+    <text x="548" y="547" class="tick-label" text-anchor="middle">85</text>
+    <line x1="92" y1="485" x2="548" y2="485" class="grid-line" />
+    <line x1="87" y1="485" x2="92" y2="485" class="axis-line" />
+    <text x="82" y="489" class="tick-label" text-anchor="end">3.2</text>
+    <line x1="92" y1="403" x2="548" y2="403" class="grid-line" />
+    <line x1="87" y1="403" x2="92" y2="403" class="axis-line" />
+    <text x="82" y="407" class="tick-label" text-anchor="end">3.4</text>
+    <line x1="92" y1="321" x2="548" y2="321" class="grid-line" />
+    <line x1="87" y1="321" x2="92" y2="321" class="axis-line" />
+    <text x="82" y="325" class="tick-label" text-anchor="end">3.6</text>
+    <line x1="92" y1="239" x2="548" y2="239" class="grid-line" />
+    <line x1="87" y1="239" x2="92" y2="239" class="axis-line" />
+    <text x="82" y="243" class="tick-label" text-anchor="end">3.8</text>
+    <line x1="92" y1="198" x2="92" y2="526" class="axis-line" />
+    <line x1="92" y1="526" x2="548" y2="526" class="axis-line" />
+    <text x="320" y="572" class="axis-title" text-anchor="middle">Macro recognition score (%)  →</text>
+    <text x="49" y="362" class="axis-title" text-anchor="middle" transform="rotate(-90 49 362)">DNSMOS  →</text>
+    <g class="mark" role="img" aria-label="UniSE: DNSMOS 3.85; Macro ASR error 33.25 percent; Macro recognition score 66.75 percent">
+      <circle cx="270.6" cy="218.5" r="5.0" fill="#FFFFFF" stroke="#7A879C" stroke-width="2.4" />
+    </g>
+    <text x="282.6" y="210.5" class="method-label" text-anchor="start" fill="#172033">UniSE</text>
+    <text x="282.6" y="225.5" class="value-label" text-anchor="start">3.85 · 33.25% error</text>
+    <g class="mark" role="img" aria-label="DelayGSE, inherited record: DNSMOS 3.77; Macro ASR error 16.95 percent; Macro recognition score 83.05 percent">
+      <circle cx="518.36" cy="251.3" r="5.0" fill="#FFFFFF" stroke="#7A879C" stroke-width="2.4" />
+    </g>
+    <text x="508.36" y="232.3" class="method-label" text-anchor="end" fill="#172033">DelayGSE†</text>
+    <text x="508.36" y="247.3" class="value-label" text-anchor="end">3.77 · 16.95% error</text>
+    <g class="mark" role="img" aria-label="Bridge: DNSMOS 3.37; Macro ASR error 33.20 percent; Macro recognition score 66.80 percent">
+      <circle cx="271.36" cy="415.3" r="5.0" fill="#FFFFFF" stroke="#7A879C" stroke-width="2.4" />
+    </g>
+    <text x="260.36" y="393.3" class="method-label" text-anchor="end" fill="#172033">Bridge</text>
+    <text x="260.36" y="408.3" class="value-label" text-anchor="end">3.37 · 33.20% error</text>
+    <g class="mark" role="img" aria-label="Stream.FM: DNSMOS 3.24; Macro ASR error 43.60 percent; Macro recognition score 56.40 percent">
+      <rect x="108.28" y="463.6" width="10" height="10" rx="1.4" fill="#FFFFFF" stroke="#D97706" stroke-width="2.4" />
+    </g>
+    <text x="125.28" y="451.6" class="method-label" text-anchor="start" fill="#172033">Stream.FM</text>
+    <text x="125.28" y="466.6" class="value-label" text-anchor="start">3.24 · 43.60% error</text>
+    <g class="mark" role="img" aria-label="FastEnhancer-L: DNSMOS 3.23; Macro ASR error 33.90 percent; Macro recognition score 66.10 percent">
+      <rect x="255.72" y="467.7" width="10" height="10" rx="1.4" fill="#FFFFFF" stroke="#D97706" stroke-width="2.4" />
+    </g>
+    <text x="260.72" y="497.7" class="method-label" text-anchor="middle" fill="#172033">FastEnhancer-L</text>
+    <text x="260.72" y="512.7" class="value-label" text-anchor="middle">3.23 · 33.90% error</text>
+    <g class="mark" role="img" aria-label="DeepFilterNet3: DNSMOS 3.32; Macro ASR error 28.40 percent; Macro recognition score 71.60 percent">
+      <rect x="339.32" y="430.8" width="10" height="10" rx="1.4" fill="#FFFFFF" stroke="#D97706" stroke-width="2.4" />
+    </g>
+    <text x="356.32" y="428.8" class="method-label" text-anchor="start" fill="#172033">DeepFilterNet3</text>
+    <text x="356.32" y="443.8" class="value-label" text-anchor="start">3.32 · 28.40% error</text>
+    <circle cx="389.16" cy="312.8" r="11.9" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2" aria-hidden="true" />
+    <g class="primary-mark" role="img" aria-label="Edge-GSE primary, separate record: input context 186.7 milliseconds; DNSMOS 3.62; Macro ASR error 25.45 percent; Macro recognition score 74.55 percent">
+      <polygon points="389.16,302.54 391.8,309.17 398.92,309.63 393.42,314.19 395.19,321.1 389.16,317.28 383.13,321.1 384.9,314.19 379.4,309.63 386.52,309.17" fill="#2563EB" stroke="#2563EB" stroke-width="2.4" />
+    </g>
+    <text x="404.16" y="297.8" class="method-label" text-anchor="start" fill="#1D4ED8">Edge-GSE primary</text>
+    <text x="404.16" y="312.8" class="value-label" text-anchor="start">3.62 · 25.45% error · 186.7 ms</text>
+    <g class="mark">
+      <circle cx="92" cy="596" r="4" fill="#FFFFFF" stroke="#7A879C" stroke-width="2.4" />
+    </g>
+    <text x="103" y="600" class="legend-label" text-anchor="start">Offline</text>
+    <g class="mark">
+      <rect x="170" y="592" width="8" height="8" rx="1.4" fill="#FFFFFF" stroke="#D97706" stroke-width="2.4" />
+    </g>
+    <text x="185" y="600" class="legend-label" text-anchor="start">Streaming reference</text>
+    <g class="mark">
+      <polygon points="337,589.79 338.6,593.8 342.91,594.08 339.58,596.84 340.65,601.02 337,598.71 333.35,601.02 334.42,596.84 331.09,594.08 335.4,593.8" fill="#2563EB" stroke="#2563EB" stroke-width="2.4" />
+    </g>
+    <text x="349" y="600" class="legend-label" text-anchor="start">Edge-GSE primary</text>
+  </g>
+  <g id="panel-b" role="group" aria-label="Panel B, context sweep">
+    <rect x="588" y="94" width="564" height="528" rx="18" class="card" />
+    <rect x="610" y="111" width="30" height="30" rx="9" class="panel-tag" />
+    <text x="625" y="132" class="panel-letter" text-anchor="middle">B</text>
+    <text x="652" y="129" class="panel-title" text-anchor="start">Context sweep and primary point</text>
+    <text x="652" y="153" class="panel-subtitle" text-anchor="start">Four connected observations · star = independent primary record</text>
+    <line x1="996.32" y1="172" x2="996.32" y2="527" class="primary-guide" aria-label="186.7 millisecond primary-record guide" />
+    <rect x="952.3225531914893" y="166" width="88" height="22" rx="11" class="primary-pill" />
+    <text x="996.32" y="181" class="primary-pill-text" text-anchor="middle">186.7 ms</text>
+    <rect x="650.0" y="211" width="474.0" height="135" rx="10" fill="#EAF1FF" fill-opacity="0.38" />
+    <line x1="650" y1="323.5" x2="1124" y2="323.5" class="grid-line" />
+    <text x="640" y="327.5" class="tick-label" text-anchor="end">3.54</text>
+    <line x1="650" y1="278.5" x2="1124" y2="278.5" class="grid-line" />
+    <text x="640" y="282.5" class="tick-label" text-anchor="end">3.58</text>
+    <line x1="650" y1="233.5" x2="1124" y2="233.5" class="grid-line" />
+    <text x="640" y="237.5" class="tick-label" text-anchor="end">3.62</text>
+    <line x1="673.54" y1="211" x2="673.54" y2="346" class="vertical-grid" />
+    <line x1="781.11" y1="211" x2="781.11" y2="346" class="vertical-grid" />
+    <line x1="942.47" y1="211" x2="942.47" y2="346" class="vertical-grid" />
+    <line x1="1103.83" y1="211" x2="1103.83" y2="346" class="vertical-grid" />
+    <line x1="650" y1="211" x2="650" y2="346" class="axis-line" />
+    <line x1="650" y1="346" x2="1124" y2="346" class="axis-line" />
+    <rect x="650" y="184" width="176" height="23" rx="7" fill="#EAF1FF" />
+    <text x="661" y="201" class="metric-label" text-anchor="start" fill="#2563EB">DNSMOS ↑</text>
+    <polyline points="673.54,323.5 781.11,278.5 942.47,244.75 1103.83,233.5" class="dns-line" role="img" aria-label="Connected context sweep for DNSMOS ↑" />
+    <g class="mark" role="img" aria-label="Context sweep: 26.67 milliseconds, DNSMOS 3.54">
+      <circle cx="673.54" cy="323.5" r="5.0" fill="#2563EB" stroke="#2563EB" stroke-width="2.4" />
+    </g>
+    <g class="mark" role="img" aria-label="Context sweep: 80 milliseconds, DNSMOS 3.58">
+      <circle cx="781.11" cy="278.5" r="5.0" fill="#2563EB" stroke="#2563EB" stroke-width="2.4" />
+    </g>
+    <g class="mark" role="img" aria-label="Context sweep: 160 milliseconds, DNSMOS 3.61">
+      <circle cx="942.47" cy="244.75" r="5.0" fill="#2563EB" stroke="#2563EB" stroke-width="2.4" />
+    </g>
+    <g class="mark" role="img" aria-label="Context sweep: 240 milliseconds, DNSMOS 3.62">
+      <circle cx="1103.83" cy="233.5" r="5.0" fill="#2563EB" stroke="#2563EB" stroke-width="2.4" />
+    </g>
+    <circle cx="996.32" cy="233.5" r="10.9" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2" aria-hidden="true" />
+    <g class="primary-mark" role="img" aria-label="Primary separate record: context 186.7 milliseconds; DNSMOS 3.62">
+      <polygon points="996.32,224.59 998.61,230.35 1004.8,230.75 1000.03,234.7 1001.56,240.71 996.32,237.39 991.09,240.71 992.62,234.7 987.85,230.75 994.03,230.35" fill="#2563EB" stroke="#2563EB" stroke-width="2.4" />
+    </g>
+    <text x="673.54" y="312.5" class="point-value" text-anchor="middle" fill="#2563EB">3.54</text>
+    <text x="781.11" y="267.5" class="point-value" text-anchor="middle" fill="#2563EB">3.58</text>
+    <text x="937.47" y="263.75" class="point-value" text-anchor="end" fill="#2563EB">3.61</text>
+    <text x="1103.83" y="222.5" class="point-value" text-anchor="middle" fill="#2563EB">3.62</text>
+    <rect x="650.0" y="404" width="474.0" height="123" rx="10" fill="#FFF4E3" fill-opacity="0.38" />
+    <line x1="650" y1="499.67" x2="1124" y2="499.67" class="grid-line" />
+    <text x="640" y="503.67" class="tick-label" text-anchor="end">24.00</text>
+    <line x1="650" y1="458.67" x2="1124" y2="458.67" class="grid-line" />
+    <text x="640" y="462.67" class="tick-label" text-anchor="end">27.00</text>
+    <line x1="650" y1="417.67" x2="1124" y2="417.67" class="grid-line" />
+    <text x="640" y="421.67" class="tick-label" text-anchor="end">30.00</text>
+    <line x1="673.54" y1="404" x2="673.54" y2="527" class="vertical-grid" />
+    <line x1="781.11" y1="404" x2="781.11" y2="527" class="vertical-grid" />
+    <line x1="942.47" y1="404" x2="942.47" y2="527" class="vertical-grid" />
+    <line x1="1103.83" y1="404" x2="1103.83" y2="527" class="vertical-grid" />
+    <line x1="650" y1="404" x2="650" y2="527" class="axis-line" />
+    <line x1="650" y1="527" x2="1124" y2="527" class="axis-line" />
+    <rect x="650" y="377" width="176" height="23" rx="7" fill="#FFF4E3" />
+    <text x="661" y="394" class="metric-label" text-anchor="start" fill="#D97706">Macro ASR error (%) ↓</text>
+    <polyline points="673.54,419.72 781.11,445 942.47,460.72 1103.83,509.23" class="error-line" role="img" aria-label="Connected context sweep for Macro ASR error (%) ↓" />
+    <g class="mark" role="img" aria-label="Context sweep: 26.67 milliseconds, Macro ASR error (%) 29.85">
+      <rect x="668.54" y="414.72" width="10" height="10" rx="1.4" fill="#FFFFFF" stroke="#D97706" stroke-width="2.4" />
+    </g>
+    <g class="mark" role="img" aria-label="Context sweep: 80 milliseconds, Macro ASR error (%) 28.00">
+      <rect x="776.11" y="440" width="10" height="10" rx="1.4" fill="#FFFFFF" stroke="#D97706" stroke-width="2.4" />
+    </g>
+    <g class="mark" role="img" aria-label="Context sweep: 160 milliseconds, Macro ASR error (%) 26.85">
+      <rect x="937.47" y="455.72" width="10" height="10" rx="1.4" fill="#FFFFFF" stroke="#D97706" stroke-width="2.4" />
+    </g>
+    <g class="mark" role="img" aria-label="Context sweep: 240 milliseconds, Macro ASR error (%) 23.30">
+      <rect x="1098.83" y="504.23" width="10" height="10" rx="1.4" fill="#FFFFFF" stroke="#D97706" stroke-width="2.4" />
+    </g>
+    <circle cx="996.32" cy="479.85" r="10.9" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2" aria-hidden="true" />
+    <g class="primary-mark" role="img" aria-label="Primary separate record: context 186.7 milliseconds; Macro ASR error (%) 25.45">
+      <polygon points="996.32,470.94 998.61,476.7 1004.8,477.1 1000.03,481.05 1001.56,487.06 996.32,483.74 991.09,487.06 992.62,481.05 987.85,477.1 994.03,476.7" fill="#D97706" stroke="#D97706" stroke-width="2.4" />
+    </g>
+    <text x="673.54" y="408.72" class="point-value" text-anchor="middle" fill="#D97706">29.85</text>
+    <text x="781.11" y="434" class="point-value" text-anchor="middle" fill="#D97706">28.00</text>
+    <text x="937.47" y="479.72" class="point-value" text-anchor="end" fill="#D97706">26.85</text>
+    <text x="1103.83" y="498.23" class="point-value" text-anchor="middle" fill="#D97706">23.30</text>
+    <line x1="673.54" y1="527" x2="673.54" y2="532" class="axis-line" />
+    <text x="673.54" y="549" class="tick-label" text-anchor="middle">26.7</text>
+    <line x1="781.11" y1="527" x2="781.11" y2="532" class="axis-line" />
+    <text x="781.11" y="549" class="tick-label" text-anchor="middle">80</text>
+    <line x1="942.47" y1="527" x2="942.47" y2="532" class="axis-line" />
+    <text x="942.47" y="549" class="tick-label" text-anchor="middle">160</text>
+    <line x1="1103.83" y1="527" x2="1103.83" y2="532" class="axis-line" />
+    <text x="1103.83" y="549" class="tick-label" text-anchor="middle">240</text>
+    <line x1="996.32" y1="527" x2="996.32" y2="534" class="primary-tick" />
+    <text x="996.32" y="551" class="primary-tick-label" text-anchor="middle">186.7</text>
+    <text x="887" y="574" class="axis-title" text-anchor="middle">Configured input context (ms)</text>
+    <g class="mark">
+      <polygon points="650,589.79 651.6,593.8 655.91,594.08 652.58,596.84 653.65,601.02 650,598.71 646.35,601.02 647.42,596.84 644.09,594.08 648.4,593.8" fill="#2563EB" stroke="#2563EB" stroke-width="2.4" />
+    </g>
+    <text x="663" y="600" class="legend-label-strong" text-anchor="start">Primary (separate run):</text>
+    <text x="802" y="600" class="legend-label" text-anchor="start">3.62 DNSMOS · 25.45% error</text>
+  </g>
+  <text x="28" y="654" class="footer-note-strong" text-anchor="start">Macro recognition score = 100 − Macro ASR error; it is direction-aligned, not token accuracy.</text>
+  <text x="28" y="678" class="footer-note" text-anchor="start">Noisy input omitted. † DelayGSE is inherited; external training data and latency definitions are not harmonized.</text>
+</svg>
