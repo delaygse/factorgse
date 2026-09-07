@@ -16,11 +16,11 @@
     { key: "fastenhancer-l", label: "FastEnhancer-L", tag: "Streaming", file: "fastenhancer-l.wav" },
     { key: "deepfilternet3", label: "DeepFilterNet3", tag: "Streaming", file: "deepfilternet3.wav" },
     {
-      key: "edge-gse-primary",
-      label: "Edge-GSE · 186.7 ms",
+      key: "factorgse-primary",
+      label: "FactorGSE · 186.7 ms",
       tag: "Ours",
       meta: "Primary record · DNSMOS 3.62 · Macro ASR error 25.45% · SIM 0.708",
-      sharedFile: "edge-gse-186p7ms.wav",
+      sharedFile: "factorgse-186p7ms.wav",
       highlight: true
     }
   ];
@@ -55,11 +55,11 @@
       file: "time-nar-depth-ar.wav"
     },
     {
-      key: "edge-gse-residual-gru",
-      label: "Edge-GSE (+ residual GRU)",
+      key: "factorgse-residual-gru",
+      label: "FactorGSE (+ residual GRU)",
       tag: "Full model",
       meta: "DNSMOS 3.62 · Macro ASR error 25.45% · SIM 0.708",
-      sharedFile: "edge-gse-186p7ms.wav",
+      sharedFile: "factorgse-186p7ms.wav",
       highlight: true
     }
   ];
@@ -98,7 +98,7 @@
       label: "186.7-ms input context",
       tag: "Primary · separate record",
       meta: "DNSMOS 3.62 · Macro ASR error 25.45% · SIM 0.708",
-      sharedFile: "edge-gse-186p7ms.wav",
+      sharedFile: "factorgse-186p7ms.wav",
       highlight: true
     }
   ];

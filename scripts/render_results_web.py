@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render the wide, web-native Edge-GSE results figure as deterministic SVG.
+"""Render the wide, web-native FactorGSE results figure as deterministic SVG.
 
 The values below are transcribed from the latest ``edge_gse_paper/main.tex``
 and ``edge_gse_paper/figures/plot_dns_avgwer_tradeoff.py``.  The figure keeps
@@ -430,7 +430,7 @@ def draw_panel_a(root: ET.Element) -> None:
         primary_y,
         COLORS["blue"],
         (
-            "Edge-GSE primary, separate record: input context 186.7 milliseconds; "
+            "FactorGSE primary, separate record: input context 186.7 milliseconds; "
             "DNSMOS 3.62; Macro ASR error 25.45 percent; "
             "Macro recognition score 74.55 percent"
         ),
@@ -440,7 +440,7 @@ def draw_panel_a(root: ET.Element) -> None:
         panel,
         primary_x + 15,
         primary_y - 15,
-        "Edge-GSE primary",
+        "FactorGSE primary",
         "3.62 · 25.45% error · 186.7 ms",
         color=COLORS["blue_dark"],
     )
@@ -451,7 +451,7 @@ def draw_panel_a(root: ET.Element) -> None:
     add_marker(panel, 174, legend_y - 4, "square", COLORS["orange"], filled=False, size=4)
     add_text(panel, 185, legend_y, "Streaming reference", "legend-label")
     add_marker(panel, 337, legend_y - 4, "star", COLORS["blue"], filled=True, size=4.6)
-    add_text(panel, 349, legend_y, "Edge-GSE primary", "legend-label")
+    add_text(panel, 349, legend_y, "FactorGSE primary", "legend-label")
 
 
 def draw_metric_plot(
@@ -695,7 +695,7 @@ def build_svg() -> ET.Element:
         root,
         "title",
         {"id": "chart-title"},
-        text="Edge-GSE objective results and context trade-offs",
+        text="FactorGSE objective results and context trade-offs",
     )
     add(
         root,
@@ -703,7 +703,7 @@ def build_svg() -> ET.Element:
         {"id": "chart-desc"},
         text=(
             "Panel A compares DNSMOS with 100 minus bilingual Macro ASR error for "
-            "offline and streaming systems. Panel B shows four connected Edge-GSE "
+            "offline and streaming systems. Panel B shows four connected FactorGSE "
             "context-sweep observations for DNSMOS and Macro ASR error. The 186.7 "
             "millisecond primary result is a separate record and is marked by stars. "
             "DelayGSE is an inherited record."

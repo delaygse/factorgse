@@ -81,12 +81,12 @@ def copy_shared_primary() -> int:
         ]
         if len({digest(path) for path in candidates}) != 1:
             raise ValueError(
-                f"The {language.upper()} 186.7-ms Edge-GSE files are not identical"
+                f"The {language.upper()} 186.7-ms FactorGSE files are not identical"
             )
 
         destination_dir = TARGET_ROOT / "shared" / language
         destination_dir.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(candidates[0], destination_dir / "edge-gse-186p7ms.wav")
+        shutil.copy2(candidates[0], destination_dir / "factorgse-186p7ms.wav")
         copied += 1
     return copied
 

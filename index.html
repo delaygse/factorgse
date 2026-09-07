@@ -3,34 +3,34 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Edge-GSE uses selective time/depth autoregression for low-latency streaming generative speech enhancement, with bilingual comparative audio demos.">
-  <meta name="keywords" content="streaming generative speech enhancement, neural audio codecs, selective autoregression, low-latency on-device inference">
-  <meta property="og:title" content="Edge-GSE: Selective Autoregression for Low-Latency Streaming Generative Speech Enhancement">
+  <meta name="description" content="FactorGSE uses selective time/depth autoregression for low-latency streaming generative speech enhancement, with bilingual comparative audio demos.">
+  <meta name="keywords" content="streaming generative speech enhancement, neural audio codecs, selective autoregression, low-latency inference">
+  <meta property="og:title" content="FactorGSE: Selective Autoregression for Low-Latency Streaming Generative Speech Enhancement">
   <meta property="og:description" content="Selective time/depth autoregression for low-latency streaming generative speech enhancement, with bilingual comparative audio demos.">
-  <meta property="og:url" content="https://delaygse.github.io/edge-gse/">
-  <meta property="og:image" content="https://delaygse.github.io/edge-gse/static/images/edge_gse_framework.png?v=20260904">
+  <meta property="og:url" content="https://delaygse.github.io/factorgse/">
+  <meta property="og:image" content="https://delaygse.github.io/factorgse/static/images/factorgse_framework.png?v=20260904">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Edge-GSE: Selective Autoregression for Low-Latency Streaming Generative Speech Enhancement">
+  <meta name="twitter:title" content="FactorGSE: Selective Autoregression for Low-Latency Streaming Generative Speech Enhancement">
   <meta name="twitter:description" content="Selective time/depth autoregression for low-latency streaming generative speech enhancement, with bilingual comparative audio demos.">
-  <meta name="twitter:image" content="https://delaygse.github.io/edge-gse/static/images/edge_gse_framework.png?v=20260904">
-  <link rel="canonical" href="https://delaygse.github.io/edge-gse/">
+  <meta name="twitter:image" content="https://delaygse.github.io/factorgse/static/images/factorgse_framework.png?v=20260904">
+  <link rel="canonical" href="https://delaygse.github.io/factorgse/">
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/index.css?v=20260904-transcript-sources">
-  <title>Edge-GSE: Selective Autoregression for Low-Latency Streaming Generative Speech Enhancement</title>
+  <link rel="stylesheet" href="static/css/index.css?v=20260907-factorgse-demo">
+  <title>FactorGSE: Selective Autoregression for Low-Latency Streaming Generative Speech Enhancement</title>
 </head>
 <body>
   <nav class="page-nav" aria-label="Page navigation">
-    <a class="brand" href="#top" aria-label="Edge-GSE home">Edge<span>-</span>GSE</a>
+    <a class="brand" href="#top" aria-label="FactorGSE home">FactorGSE</a>
     <div class="nav-links">
       <a href="#overview">Overview</a>
       <a href="#method">Method</a>
       <a href="#results">Results</a>
-      <a href="#demo">MTK Demo</a>
+      <a href="#demo">Real-time demo</a>
       <a href="#audio">Audio</a>
     </div>
   </nav>
@@ -38,7 +38,7 @@
   <main id="top">
     <header class="hero-section">
       <div class="content-shell hero-content">
-        <h1>Edge-GSE: Selective Autoregression for Low-Latency Streaming Generative Speech Enhancement</h1>
+        <h1>FactorGSE: Selective Autoregression for Low-Latency Streaming Generative Speech Enhancement</h1>
         <div class="authors" aria-label="Authors">
           <a href="mailto:yuanxin14959@cvte.com">Xin Yuan<sup>1,*</sup></a>
           <a href="mailto:lvjunling@cvte.com">Junling Lv<sup>1,*</sup></a>
@@ -56,7 +56,7 @@
       <div class="content-shell narrow-shell">
         <div class="section-heading"><h2>Abstract</h2></div>
         <div class="abstract-copy">
-          <p>Autoregression need not be all-or-nothing in streaming codec-based speech enhancement. Temporal target-token feedback can propagate errors across frames, whereas fully non-autoregressive decoding ignores the ordered coarse-to-fine dependencies of residual vector quantization. We introduce Edge-GSE, a bounded-context, frame-wise generator that predicts a semantically supervised first codebook without temporal target-token feedback, generates the remaining codebooks autoregressively within each frame, and carries cross-frame state only through residual tokens. On URGENT 2025, a frame-aligned matched comparison shows that removing temporal feedback reduces bilingual macro ASR error by 45.0% relative. A double-blind listening test favors depth-AR over parallel residual decoding despite nearly identical DNSMOS. At the primary operating point, the complete system reaches an RTF of 0.81 on MTK 8678, corresponding to 208.3-ms context-plus-processing latency. Together, these results support selective rather than global autoregression for streaming codec-based speech enhancement. An on-device MTK demo and comparative audio samples are available at <a href="https://delaygse.github.io/edge-gse/">https://delaygse.github.io/edge-gse/</a>.</p>
+          <p>Autoregression need not be all-or-nothing in streaming codec-based speech enhancement. Temporal target-token feedback can propagate errors across frames, whereas fully non-autoregressive decoding ignores the ordered coarse-to-fine dependencies of residual vector quantization. We introduce FactorGSE, a bounded-context, frame-wise generator that predicts a semantically supervised first codebook without temporal target-token feedback, generates the remaining codebooks autoregressively within each frame, and carries cross-frame state only through residual tokens. On URGENT 2025, a frame-aligned matched comparison shows that removing temporal feedback reduces bilingual macro ASR error by 45.0% relative. A double-blind listening test favors depth-AR over parallel residual decoding despite nearly identical DNSMOS. At 186.7-ms input context, the complete system obtains 3.62 DNSMOS, 25.45% macro ASR error, and 0.708 speaker similarity. Together, these results support selective rather than global autoregression for streaming codec-based speech enhancement. Comparative audio samples are available at <a href="https://delaygse.github.io/factorgse/">https://delaygse.github.io/factorgse/</a>.</p>
         </div>
       </div>
     </section>
@@ -68,9 +68,9 @@
         </div>
         <figure class="framework-figure">
           <div class="figure-frame">
-            <img src="static/images/edge_gse_framework.png?v=20260904" width="2174" height="932" decoding="async" alt="Edge-GSE framework showing codec pretraining, streaming time-NAR semantic prediction, intra-frame depth-AR residual generation, and residual-only GRU history">
+            <img src="static/images/factorgse_framework.png?v=20260904" width="2174" height="932" decoding="async" alt="FactorGSE framework showing codec pretraining, streaming time-NAR semantic prediction, intra-frame depth-AR residual generation, and residual-only GRU history">
           </div>
-          <figcaption><strong>Figure 1.</strong> Overview of Edge-GSE. Codec pretraining distills w2v-BERT 2.0 semantics into CB<sub>1</sub>. At inference, time-NAR predicts CB<sub>1</sub> from bounded degraded-speech context without generated-token feedback; depth-AR then generates CB<sub>2</sub>-CB<sub>10</sub> sequentially within each codec frame, while the GRU carries cross-frame acoustic history only through the residual branch.</figcaption>
+          <figcaption><strong>Figure 1.</strong> Overview of FactorGSE. Codec pretraining distills w2v-BERT 2.0 semantics into CB<sub>1</sub>. At inference, time-NAR predicts CB<sub>1</sub> from bounded degraded-speech context without generated-token feedback; depth-AR then generates CB<sub>2</sub>-CB<sub>10</sub> sequentially within each codec frame, while the GRU carries cross-frame acoustic history only through the residual branch.</figcaption>
         </figure>
       </div>
     </section>
@@ -83,36 +83,21 @@
         </div>
         <figure class="results-figure">
           <div class="results-chart-scroll" tabindex="0" aria-label="Scrollable results chart">
-            <img src="static/images/results_tradeoff_web.svg" width="1180" height="700" loading="lazy" decoding="async" alt="Two-panel Edge-GSE result figure comparing DNSMOS against macro recognition score across systems and showing DNSMOS and macro ASR error across input-context settings">
+            <img src="static/images/results_tradeoff_web.svg?v=20260907-factorgse" width="1180" height="700" loading="lazy" decoding="async" alt="Two-panel FactorGSE result figure comparing DNSMOS against macro recognition score across systems and showing DNSMOS and macro ASR error across input-context settings">
           </div>
           <figcaption><strong>Figure 2.</strong> URGENT 2025 results redrawn for the web from the same values reported in the paper. Higher is better for DNSMOS and macro recognition score; lower is better for macro ASR error. The connected context sweep contains 26.67, 80, 160, and 240 ms. The 186.7-ms primary result is a separate application-oriented record, and DelayGSE is an inherited record.</figcaption>
         </figure>
       </div>
     </section>
 
-    <section id="demo" class="section-block section-dark">
+    <section id="demo" class="section-block section-dark" aria-labelledby="realtime-demo-heading">
       <div class="content-shell demo-layout">
         <div class="demo-copy">
-          <h2>Real-time demo on MTK 8678</h2>
-          <p>This slot is reserved for a 1–2 minute demonstration of continuous streaming enhancement on an MTK edge chipset.</p>
-          <ul class="demo-checklist">
-            <li>Show the device and inference configuration.</li>
-            <li>Capture live noisy-speech input and enhanced output.</li>
-            <li>Include an A/B listening comparison.</li>
-            <li>Overlay measured RTF and end-to-end timing once instrumented.</li>
-          </ul>
-          <p class="future-path">Reserved file path: <code>static/videos/mtk-realtime-demo.mp4</code></p>
+          <h2 id="realtime-demo-heading">Real-time streaming demo</h2>
+          <p>FactorGSE running on an NPU-equipped edge device.</p>
         </div>
-        <div class="video-placeholder" data-future-src="static/videos/mtk-realtime-demo.mp4" role="img" aria-label="Placeholder for a one-to-two-minute MTK 8678 real-time demonstration video">
-          <div class="device-frame">
-            <div class="device-topbar"><span></span><span></span><span></span><strong>MTK 8678 · Edge-GSE</strong></div>
-            <div class="video-placeholder-content">
-              <div class="play-mark" aria-hidden="true">▶</div>
-              <h3>Real-time on-device demo</h3>
-              <p>1–2 minute video · coming soon</p>
-              <span>Replace the reserved MP4 to publish</span>
-            </div>
-          </div>
+        <div class="demo-video-pending" role="status">
+          <p>Video coming soon</p>
         </div>
       </div>
     </section>
@@ -130,7 +115,7 @@
         <section class="experiment-group" aria-labelledby="main-comparison-heading">
           <div class="experiment-heading">
             <div><h3 id="main-comparison-heading">System-level comparison</h3></div>
-            <p>Released or retrained baselines and Edge-GSE at the 186.7-ms primary operating point. The dagger marks an inherited record.</p>
+            <p>Released or retrained baselines and FactorGSE at the 186.7-ms primary operating point. The dagger marks an inherited record.</p>
           </div>
           <div id="main-comparison-table" class="audio-comparison" aria-live="polite"></div>
         </section>
@@ -157,10 +142,10 @@
 
   <footer class="footer-section">
     <div class="content-shell footer-content">
-      <div><strong>Edge-GSE</strong><p>Low-latency streaming generative speech enhancement for edge deployment.</p></div>
+      <div><strong>FactorGSE</strong><p>Selective autoregression for low-latency streaming generative speech enhancement.</p></div>
       <p>Page structure adapted from the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noopener">Academic Project Page Template</a>.</p>
     </div>
   </footer>
-  <script src="static/js/edge-page.js?v=20260904-audio-spectrograms" defer></script>
+  <script src="static/js/factorgse-page.js?v=20260907-factorgse" defer></script>
 </body>
 </html>

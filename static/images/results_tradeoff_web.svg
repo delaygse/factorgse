@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <svg xmlns="http://www.w3.org/2000/svg" width="1180" height="700" viewBox="0 0 1180 700" role="img" aria-labelledby="chart-title chart-desc" preserveAspectRatio="xMidYMid meet">
-  <title id="chart-title">Edge-GSE objective results and context trade-offs</title>
-  <desc id="chart-desc">Panel A compares DNSMOS with 100 minus bilingual Macro ASR error for offline and streaming systems. Panel B shows four connected Edge-GSE context-sweep observations for DNSMOS and Macro ASR error. The 186.7 millisecond primary result is a separate record and is marked by stars. DelayGSE is an inherited record.</desc>
+  <title id="chart-title">FactorGSE objective results and context trade-offs</title>
+  <desc id="chart-desc">Panel A compares DNSMOS with 100 minus bilingual Macro ASR error for offline and streaming systems. Panel B shows four connected FactorGSE context-sweep observations for DNSMOS and Macro ASR error. The 186.7 millisecond primary result is a separate record and is marked by stars. DelayGSE is an inherited record.</desc>
   <metadata>{"connected_context_sweep":[{"context_ms":26.67,"dnsmos":3.54,"macro_asr_error":29.85},{"context_ms":80.0,"dnsmos":3.58,"macro_asr_error":28.0},{"context_ms":160.0,"dnsmos":3.61,"macro_asr_error":26.85},{"context_ms":240.0,"dnsmos":3.62,"macro_asr_error":23.3}],"evaluation":"URGENT 2025 nonblind_test, 400 utterances (300 English, 100 Chinese)","primary_separate_record":{"context_ms":186.7,"dnsmos":3.62,"macro_asr_error":25.45},"source":["edge_gse_paper/main.tex","edge_gse_paper/figures/plot_dns_avgwer_tradeoff.py"],"systems":[{"category":"offline","dnsmos":3.85,"inherited":false,"macro_asr_error":33.25,"name":"UniSE"},{"category":"offline","dnsmos":3.77,"inherited":true,"macro_asr_error":16.95,"name":"DelayGSE"},{"category":"offline","dnsmos":3.37,"inherited":false,"macro_asr_error":33.2,"name":"Bridge"},{"category":"streaming","dnsmos":3.24,"inherited":false,"macro_asr_error":43.6,"name":"Stream.FM"},{"category":"streaming","dnsmos":3.23,"inherited":false,"macro_asr_error":33.9,"name":"FastEnhancer-L"},{"category":"streaming","dnsmos":3.32,"inherited":false,"macro_asr_error":28.4,"name":"DeepFilterNet3"}]}</metadata>
   <style>
       text { font-family: Inter, Arial, Helvetica, sans-serif; }
@@ -111,10 +111,10 @@
     <text x="356.32" y="428.8" class="method-label" text-anchor="start" fill="#172033">DeepFilterNet3</text>
     <text x="356.32" y="443.8" class="value-label" text-anchor="start">3.32 · 28.40% error</text>
     <circle cx="389.16" cy="312.8" r="11.9" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2" aria-hidden="true" />
-    <g class="primary-mark" role="img" aria-label="Edge-GSE primary, separate record: input context 186.7 milliseconds; DNSMOS 3.62; Macro ASR error 25.45 percent; Macro recognition score 74.55 percent">
+    <g class="primary-mark" role="img" aria-label="FactorGSE primary, separate record: input context 186.7 milliseconds; DNSMOS 3.62; Macro ASR error 25.45 percent; Macro recognition score 74.55 percent">
       <polygon points="389.16,302.54 391.8,309.17 398.92,309.63 393.42,314.19 395.19,321.1 389.16,317.28 383.13,321.1 384.9,314.19 379.4,309.63 386.52,309.17" fill="#2563EB" stroke="#2563EB" stroke-width="2.4" />
     </g>
-    <text x="404.16" y="297.8" class="method-label" text-anchor="start" fill="#1D4ED8">Edge-GSE primary</text>
+    <text x="404.16" y="297.8" class="method-label" text-anchor="start" fill="#1D4ED8">FactorGSE primary</text>
     <text x="404.16" y="312.8" class="value-label" text-anchor="start">3.62 · 25.45% error · 186.7 ms</text>
     <g class="mark">
       <circle cx="92" cy="596" r="4" fill="#FFFFFF" stroke="#7A879C" stroke-width="2.4" />
@@ -127,7 +127,7 @@
     <g class="mark">
       <polygon points="337,589.79 338.6,593.8 342.91,594.08 339.58,596.84 340.65,601.02 337,598.71 333.35,601.02 334.42,596.84 331.09,594.08 335.4,593.8" fill="#2563EB" stroke="#2563EB" stroke-width="2.4" />
     </g>
-    <text x="349" y="600" class="legend-label" text-anchor="start">Edge-GSE primary</text>
+    <text x="349" y="600" class="legend-label" text-anchor="start">FactorGSE primary</text>
   </g>
   <g id="panel-b" role="group" aria-label="Panel B, context sweep">
     <rect x="588" y="94" width="564" height="528" rx="18" class="card" />
