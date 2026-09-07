@@ -8,12 +8,12 @@
   <meta property="og:title" content="FactorGSE: Selective Autoregression for Low-Latency Streaming Generative Speech Enhancement">
   <meta property="og:description" content="Selective time/depth autoregression for low-latency streaming generative speech enhancement, with bilingual comparative audio demos.">
   <meta property="og:url" content="https://delaygse.github.io/factorgse/">
-  <meta property="og:image" content="https://delaygse.github.io/factorgse/static/images/factorgse_framework.png?v=20260904">
+  <meta property="og:image" content="https://delaygse.github.io/factorgse/static/images/factorgse_framework.png?v=20260907-fig1">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="FactorGSE: Selective Autoregression for Low-Latency Streaming Generative Speech Enhancement">
   <meta name="twitter:description" content="Selective time/depth autoregression for low-latency streaming generative speech enhancement, with bilingual comparative audio demos.">
-  <meta name="twitter:image" content="https://delaygse.github.io/factorgse/static/images/factorgse_framework.png?v=20260904">
+  <meta name="twitter:image" content="https://delaygse.github.io/factorgse/static/images/factorgse_framework.png?v=20260907-fig1">
   <link rel="canonical" href="https://delaygse.github.io/factorgse/">
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -68,7 +68,7 @@
         </div>
         <figure class="framework-figure">
           <div class="figure-frame">
-            <img src="static/images/factorgse_framework.png?v=20260904" width="2174" height="932" decoding="async" alt="FactorGSE framework showing codec pretraining, streaming time-NAR semantic prediction, intra-frame depth-AR residual generation, and residual-only GRU history">
+            <img src="static/images/factorgse_framework.png?v=20260907-fig1" width="3000" height="1228" decoding="async" alt="FactorGSE framework showing codec pretraining, streaming time-NAR semantic prediction, intra-frame depth-AR residual generation, and residual-only GRU history">
           </div>
           <figcaption><strong>Figure 1.</strong> Overview of FactorGSE. Codec pretraining distills w2v-BERT 2.0 semantics into CB<sub>1</sub>. At inference, time-NAR predicts CB<sub>1</sub> from bounded degraded-speech context without generated-token feedback; depth-AR then generates CB<sub>2</sub>-CB<sub>10</sub> sequentially within each codec frame, while the GRU carries cross-frame acoustic history only through the residual branch.</figcaption>
         </figure>
