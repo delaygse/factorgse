@@ -294,23 +294,31 @@ sup {
   color: #cbd5e1;
 }
 
-.demo-video-pending {
-  display: grid;
+.demo-video {
   min-width: 0;
-  min-height: 240px;
-  aspect-ratio: 16 / 9;
-  padding: 24px;
-  place-items: center;
-  border: 1px solid rgba(148, 163, 184, 0.3);
-  border-radius: 16px;
-  background: #0f172a;
-  color: #cbd5e1;
-  text-align: center;
+  margin: 0;
 }
 
-.demo-video-pending p {
-  margin: 0;
-  font-size: 1rem;
+.demo-video video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 854 / 480;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 16px;
+  background: #000;
+}
+
+.demo-video figcaption {
+  margin-top: 12px;
+  color: #cbd5e1;
+  font-size: 0.85rem;
+}
+
+.demo-video a {
+  color: #7dd3fc;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .demo-checklist {

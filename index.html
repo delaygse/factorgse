@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
   <meta name="description" content="FactorGSE uses selective time/depth autoregression for low-latency streaming generative speech enhancement, with bilingual comparative audio demos.">
   <meta name="keywords" content="streaming generative speech enhancement, neural audio codecs, selective autoregression, low-latency inference">
   <meta property="og:title" content="FactorGSE: Selective Autoregression for Low-Latency Streaming Generative Speech Enhancement">
@@ -20,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/index.css?v=20260907-factorgse-demo">
+  <link rel="stylesheet" href="static/css/index.css?v=20260907-demo-video">
   <title>FactorGSE: Selective Autoregression for Low-Latency Streaming Generative Speech Enhancement</title>
 </head>
 <body>
@@ -96,9 +97,13 @@
           <h2 id="realtime-demo-heading">Real-time streaming demo</h2>
           <p>FactorGSE running on an NPU-equipped edge device.</p>
         </div>
-        <div class="demo-video-pending" role="status">
-          <p>Video coming soon</p>
-        </div>
+        <figure class="demo-video">
+          <video controls playsinline preload="metadata" poster="static/images/factorgse-demo-poster.jpg" width="854" height="480" aria-label="FactorGSE real-time speech enhancement demo in English and Chinese">
+            <source src="static/videos/finally-Demo-en-zh.mp4" type="video/mp4">
+            Your browser does not support embedded video. <a href="static/videos/finally-Demo-en-zh.mp4">Open the demo video</a>.
+          </video>
+          <figcaption>English and Chinese demonstrations. <a href="static/videos/finally-Demo-en-zh.mp4" target="_blank" rel="noopener">Open video in a new tab</a>.</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -146,6 +151,6 @@
       <p>Page structure adapted from the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noopener">Academic Project Page Template</a>.</p>
     </div>
   </footer>
-  <script src="static/js/factorgse-page.js?v=20260907-factorgse" defer></script>
+  <script src="static/js/factorgse-page.js?v=20260907-demo-video" defer></script>
 </body>
 </html>

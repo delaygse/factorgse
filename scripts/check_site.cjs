@@ -27,7 +27,7 @@ function checkReference(reference) {
   assert(fs.existsSync(target), `Missing resource: ${reference}`);
   checked.add(relative);
 }
-for (const match of html.matchAll(/\b(?:href|src)="([^"]+)"/g)) checkReference(match[1]);
+for (const match of html.matchAll(/\b(?:href|src|poster)="([^"]+)"/g)) checkReference(match[1]);
 for (const match of html.matchAll(/<meta[^>]+(?:og:image|twitter:image)[^>]+content="([^"]+)"/g)) checkReference(match[1]);
 
 const nodes = [];
@@ -38,20 +38,21 @@ class Element {
   replaceChildren(...children) { this.children = children; }
   setAttribute(name, value) { this[name] = value; }
 }
-class AudioElement extends Element {
-  constructor() { super('audio'); this.paused = false; }
+class MediaElement extends Element {
+  constructor(tag) { super(tag); this.paused = false; }
   pause() { this.paused = true; }
 }
+const video = new MediaElement('video');
 const containers = Object.fromEntries(ids.map(id => [id, new Element('div')]));
 const listeners = {};
 const document = {
-  createElement: tag => tag === 'audio' ? new AudioElement() : new Element(tag),
+  createElement: tag => tag === 'audio' ? new MediaElement(tag) : new Element(tag),
   createDocumentFragment: () => new Element('fragment'),
   getElementById: id => containers[id],
   addEventListener: (name, callback) => { listeners[name] = callback; },
-  querySelectorAll: tag => nodes.filter(node => node.tag === tag),
+  querySelectorAll: selector => nodes.filter(node => selector.split(',').map(tag => tag.trim()).includes(node.tag)),
 };
-vm.runInNewContext(script, { document, HTMLAudioElement: AudioElement });
+vm.runInNewContext(script, { document, HTMLMediaElement: MediaElement });
 const audio = nodes.filter(node => node.tag === 'audio');
 const images = nodes.filter(node => node.tag === 'img');
 assert.equal(audio.length, 36);
@@ -64,4 +65,9 @@ for (const node of audio) {
 listeners.play({ target: audio[0] });
 assert.equal(audio[0].paused, false);
 assert(audio.slice(1).every(player => player.paused));
-console.log(`Passed: ${checked.size} local resources, 36 audio players, 36 spectrograms, navigation, canonical URL, and exclusive audio playback.`);
+assert.equal(video.paused, true);
+video.paused = false;
+listeners.play({ target: video });
+assert.equal(video.paused, false);
+assert(audio.every(player => player.paused));
+console.log(`Passed: ${checked.size} local resources, 36 audio players, 36 spectrograms, navigation, canonical URL, and exclusive audio/video playback.`);
