@@ -8,6 +8,8 @@
   ];
 
   const mainComparison = [
+    { key: "clean", label: "Clean", tag: "Reference", file: "clean.wav" },
+    { key: "clean-codec", label: "Clean codec reconstruction", tag: "Reference", file: "clean-codec.wav" },
     { key: "noisy", label: "Noisy input", tag: "Input", file: "noisy.wav" },
     { key: "unise", label: "UniSE", tag: "Offline", file: "unise.wav" },
     { key: "delaygse", label: "DelayGSE†", tag: "Inherited", file: "delaygse.wav" },
@@ -17,10 +19,18 @@
     { key: "deepfilternet3", label: "DeepFilterNet3", tag: "Streaming", file: "deepfilternet3.wav" },
     {
       key: "factorgse-primary",
-      label: "FactorGSE · 186.7 ms",
+      label: "FactorGSE",
       tag: "Ours",
-      meta: "Primary record · DNSMOS 3.62 · Macro ASR error 25.45% · SIM 0.708",
+      meta: "186.7-ms input context · DNSMOS 3.62 · Macro ASR error 25.45% · SIM 0.708",
       sharedFile: "factorgse-186p7ms.wav",
+      highlight: true
+    },
+    {
+      key: "factorgse-small",
+      label: "FactorGSE (Small)",
+      tag: "Ours · compact",
+      meta: "186.7-ms input context · DNSMOS 3.63 · Macro ASR error 25.75% · SIM 0.729",
+      file: "factorgse-small-186p7ms.wav",
       highlight: true
     }
   ];
@@ -28,22 +38,22 @@
   const factorizationComparison = [
     {
       key: "time-ar-delayed-grid",
-      label: "Time-AR + delayed-grid†",
+      label: "All-codebook time-AR (delayed)†",
       tag: "Scheduling control",
       meta: "DNSMOS 3.50 · Macro ASR error 48.80% · SIM 0.588",
       file: "time-ar-delayed-grid.wav"
     },
     {
       key: "time-ar-parallel",
-      label: "Time-AR + parallel residuals",
-      tag: "Matched",
+      label: "All-codebook time-AR (aligned)",
+      tag: "Aligned control",
       meta: "DNSMOS 3.48 · Macro ASR error 48.40% · SIM 0.504",
       file: "time-ar-parallel.wav"
     },
     {
       key: "time-nar-parallel",
-      label: "Time-NAR + parallel residuals",
-      tag: "Time-NAR",
+      label: "Fully NAR",
+      tag: "Parallel codebooks",
       meta: "DNSMOS 3.58 · Macro ASR error 26.60% · SIM 0.677",
       file: "time-nar-parallel.wav"
     },
@@ -96,7 +106,7 @@
     {
       key: "nla-6-primary",
       label: "186.7-ms input context",
-      tag: "Primary · separate record",
+      tag: "Primary · separate run",
       meta: "DNSMOS 3.62 · Macro ASR error 25.45% · SIM 0.708",
       sharedFile: "factorgse-186p7ms.wav",
       highlight: true
@@ -215,6 +225,66 @@
     container.replaceChildren(fragment);
   }
 
+  function setupVideoComparison() {
+    const video = document.getElementById("realtime-video");
+    const controls = document.querySelector(".demo-switch");
+    const status = document.getElementById("demo-status");
+    if (!video || !controls || !status) return;
+
+    const buttons = Array.from(controls.querySelectorAll("button[data-demo-version]"));
+    let activeButton = buttons.find((button) => button.getAttribute("aria-pressed") === "true");
+    let pendingTime = null;
+    let playRequest = 0;
+    controls.hidden = false;
+
+    function showStatus(message) {
+      status.textContent = `${message} — ${activeButton.dataset.videoLabel}.`;
+    }
+
+    function playSelected() {
+      const request = ++playRequest;
+      // Call play directly from the click so mobile browsers retain user activation.
+      video.play().catch((error) => {
+        if (request !== playRequest || error.name === "AbortError") return;
+        showStatus(error.name === "NotAllowedError"
+          ? "Use the video play control to start"
+          : "Unable to play; try the video link below");
+      });
+    }
+
+    video.addEventListener("loadedmetadata", () => {
+      if (pendingTime === null) return;
+      const duration = Number.isFinite(video.duration) ? video.duration : pendingTime;
+      video.currentTime = Math.min(pendingTime, Math.max(0, duration - 0.1));
+      pendingTime = null;
+    });
+    video.addEventListener("playing", () => showStatus("Playing"));
+    video.addEventListener("waiting", () => showStatus("Loading"));
+    video.addEventListener("pause", () => {
+      if (!video.ended && pendingTime === null) showStatus("Paused");
+    });
+    video.addEventListener("ended", () => showStatus("Finished"));
+    video.addEventListener("error", () => showStatus("Unable to load; try the video link below"));
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        if (button !== activeButton) {
+          // Preserve the requested position even during rapid switches before metadata loads.
+          pendingTime = video.ended ? 0 : (pendingTime ?? video.currentTime);
+          activeButton = button;
+          buttons.forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
+          video.setAttribute("aria-label", `Real-time demo: ${button.dataset.videoLabel}`);
+          video.src = button.dataset.videoSrc;
+          video.load();
+        } else if (video.ended) {
+          video.currentTime = 0;
+        }
+        showStatus("Loading");
+        playSelected();
+      });
+    });
+  }
+
   document.addEventListener("play", (event) => {
     if (!(event.target instanceof HTMLMediaElement)) return;
     document.querySelectorAll("audio, video").forEach((player) => {
@@ -225,4 +295,5 @@
   renderComparison("main-comparison-table", mainComparison, "main");
   renderComparison("factorization-table", factorizationComparison, "factorization");
   renderComparison("context-table", contextComparison, "context");
+  setupVideoComparison();
 })();

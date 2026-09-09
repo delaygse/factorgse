@@ -23,6 +23,8 @@ FACTORIZATION_DIR = SOURCE_ROOT / "消融实验1对比-不同结构"
 CONTEXT_DIR = SOURCE_ROOT / "消融实验2对比-不同延迟"
 
 BASELINE_FILES = {
+    "clean.wav": "urgent_{lang}_clean.wav",
+    "clean-codec.wav": "urgent_{lang}_clean_reconstruction.wav",
     "noisy.wav": "urgent_{lang}_noisy.wav",
     "unise.wav": "urgent_{lang}_unise.wav",
     "delaygse.wav": "urgent_{lang}_delaygse.wav",
@@ -30,6 +32,7 @@ BASELINE_FILES = {
     "streamfm.wav": "urgent_{lang}_streamfm.wav",
     "fastenhancer-l.wav": "urgent_{lang}_fastenhancer_l.wav",
     "deepfilternet3.wav": "urgent_{lang}_deepfilternet3.wav",
+    "factorgse-small-186p7ms.wav": "urgent_{lang}_edge-gse-186.7ms_small.wav",
 }
 
 FACTORIZATION_FILES = {
