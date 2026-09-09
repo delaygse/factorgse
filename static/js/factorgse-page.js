@@ -226,68 +226,185 @@
   }
 
   function setupVideoComparison() {
-    const video = document.getElementById("realtime-video");
     const controls = document.querySelector(".demo-switch");
     const status = document.getElementById("demo-status");
-    if (!video || !controls || !status) return;
-
-    const buttons = Array.from(controls.querySelectorAll("button[data-demo-version]"));
-    let activeButton = buttons.find((button) => button.getAttribute("aria-pressed") === "true");
-    let pendingTime = null;
-    let playRequest = 0;
+    if (!controls || !status) return;
+    const entries = Array.from(controls.querySelectorAll("button[data-demo-version]"), (button) => ({
+      button,
+      video: document.getElementById(button.getAttribute("aria-controls")),
+      label: button.dataset.videoLabel
+    }));
+    if (entries.some((entry) => !entry.video)) return;
+    let active = entries.find((entry) => entry.button.getAttribute("aria-pressed") === "true");
+    let pending = null;
     controls.hidden = false;
 
     function showStatus(message) {
-      status.textContent = `${message} — ${activeButton.dataset.videoLabel}.`;
+      status.textContent = `${message} — ${active.label}.`;
     }
 
-    function playSelected() {
-      const request = ++playRequest;
-      // Call play directly from the click so mobile browsers retain user activation.
-      video.play().catch((error) => {
-        if (request !== playRequest || error.name === "AbortError") return;
-        showStatus(error.name === "NotAllowedError"
-          ? "Use the video play control to start"
-          : "Unable to play; try the video link below");
-      });
+    function warm(entry) {
+      entry.video.preload = "auto";
+      if (entry.video.networkState === 0) entry.video.load();
     }
 
-    video.addEventListener("loadedmetadata", () => {
-      if (pendingTime === null) return;
-      const duration = Number.isFinite(video.duration) ? video.duration : pendingTime;
-      video.currentTime = Math.min(pendingTime, Math.max(0, duration - 0.1));
-      pendingTime = null;
-    });
-    video.addEventListener("playing", () => showStatus("Playing"));
-    video.addEventListener("waiting", () => showStatus("Loading"));
-    video.addEventListener("pause", () => {
-      if (!video.ended && pendingTime === null) showStatus("Paused");
-    });
-    video.addEventListener("ended", () => showStatus("Finished"));
-    video.addEventListener("error", () => showStatus("Unable to load; try the video link below"));
+    function clearRequest(request) {
+      clearTimeout(request.timer);
+      request.entry.button.setAttribute("aria-busy", "false");
+    }
 
-    buttons.forEach((button) => {
-      button.addEventListener("click", () => {
-        if (button !== activeButton) {
-          // Preserve the requested position even during rapid switches before metadata loads.
-          pendingTime = video.ended ? 0 : (pendingTime ?? video.currentTime);
-          activeButton = button;
-          buttons.forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
-          video.setAttribute("aria-label", `Real-time demo: ${button.dataset.videoLabel}`);
-          video.src = button.dataset.videoSrc;
-          video.load();
-        } else if (video.ended) {
-          video.currentTime = 0;
+    function cancelPending() {
+      if (!pending) return;
+      const request = pending;
+      pending = null;
+      clearRequest(request);
+      request.controller.abort();
+      request.entry.video.pause();
+      request.entry.video.muted = true;
+    }
+
+    // A cancellable wait covers metadata, seeking and buffering without polling.
+    function waitForMedia(video, ready, signal) {
+      return new Promise((resolve, reject) => {
+        const events = ["loadedmetadata", "loadeddata", "canplay", "seeked", "playing", "progress"];
+        function cleanup() {
+          events.forEach((name) => video.removeEventListener(name, check));
+          video.removeEventListener("error", failed);
+          signal.removeEventListener("abort", aborted);
         }
+        function check() {
+          if (ready()) { cleanup(); resolve(); }
+        }
+        function failed() { cleanup(); reject(new Error("Media unavailable")); }
+        function aborted() { cleanup(); reject(signal.reason); }
+        events.forEach((name) => video.addEventListener(name, check));
+        video.addEventListener("error", failed);
+        signal.addEventListener("abort", aborted, { once: true });
+        if (signal.aborted) aborted();
+        else if (video.error) failed();
+        else check();
+      });
+    }
+
+    async function switchTo(entry) {
+      if (pending && pending.entry === entry) return;
+      cancelPending();
+      const request = { entry, controller: new AbortController() };
+      const signal = request.controller.signal;
+      request.timer = setTimeout(() => request.controller.abort(new Error("Switch timed out")), 12000);
+      pending = request;
+      entry.button.setAttribute("aria-busy", "true");
+      status.textContent = `Preparing ${entry.label}… Current version stays selected. Select it to cancel.`;
+      const next = entry.video;
+      // The standby keeps its source and buffer. It is always silent until handoff.
+      next.muted = true;
+      next.playbackRate = active.video.playbackRate;
+      try {
+        warm(entry);
+        if (next.error) next.load(); // Reload only to recover from an actual media error.
+        // Keep this call in the click event for mobile user activation.
+        next.play().catch((error) => request.controller.abort(error));
+        await waitForMedia(next, () => next.readyState >= 1, signal);
+        do {
+          const position = active.video.ended ? 0 : active.video.currentTime;
+          const end = Number.isFinite(next.duration) ? Math.max(0, next.duration - 0.1) : position;
+          const target = Math.min(position, end);
+          if (Math.abs(next.currentTime - target) > 0.08) next.currentTime = target;
+          await waitForMedia(next, () => !next.seeking && next.readyState >= 3 && !next.paused, signal);
+          // If loading took time, catch up to the still-playing current version.
+        } while (!active.video.paused && !active.video.ended && Math.abs(next.currentTime - active.video.currentTime) > 0.2);
+        if (pending !== request || signal.aborted) return;
+
+        const previous = active.video;
+        const muted = previous.muted;
+        next.volume = previous.volume;
+        next.playbackRate = previous.playbackRate;
+        clearRequest(request);
+        pending = null;
+        active = entry;
+        entries.forEach((item) => {
+          const selected = item === active;
+          item.button.setAttribute("aria-pressed", String(selected));
+          item.video.dataset.visible = String(selected);
+          item.video.dataset.demoStandby = String(!selected);
+          item.video.controls = selected;
+          item.video.inert = !selected;
+          item.video.setAttribute("aria-hidden", String(!selected));
+        });
+        document.querySelectorAll("audio, video").forEach((player) => {
+          if (player !== next) player.pause();
+        });
+        previous.muted = true;
+        next.muted = muted;
+        showStatus("Playing");
+      } catch (error) {
+        if (pending !== request) return;
+        cancelPending();
+        status.textContent = error && error.name === "NotAllowedError"
+          ? `Playback was blocked. Play ${active.label} first, then select ${entry.label} again.`
+          : `Could not switch. Still on ${active.label}. Select ${entry.label} to retry.`;
+      }
+    }
+
+    entries.forEach((entry) => {
+      const video = entry.video;
+      entry.button.addEventListener("pointerenter", () => warm(entry));
+      entry.button.addEventListener("focus", () => warm(entry));
+      entry.button.addEventListener("click", () => {
+        if (entry !== active) { switchTo(entry); return; }
+        cancelPending();
+        if (video.ended) video.currentTime = 0;
+        if (video.error) video.load();
         showStatus("Loading");
-        playSelected();
+        video.play().catch(() => {
+          if (entry === active && !pending) showStatus("Unable to play; select this version to retry");
+        });
+      });
+      video.addEventListener("playing", () => {
+        if (entry === active && !pending && !video.paused) showStatus("Playing");
+      });
+      video.addEventListener("waiting", () => {
+        if (entry === active && !pending) showStatus("Buffering");
+      });
+      video.addEventListener("pause", () => {
+        if (entry !== active || !video.paused || video.ended) return;
+        cancelPending();
+        showStatus("Paused");
+      });
+      video.addEventListener("ended", () => {
+        if (entry === active && !pending && video.ended) showStatus("Finished");
+      });
+      video.addEventListener("error", () => {
+        if (entry === active && !pending) showStatus("Unable to load; select this version to retry");
       });
     });
+
+    // Starting another sample must also cancel an in-flight video switch.
+    document.addEventListener("play", (event) => {
+      if (pending && !event.target.paused && !entries.some((entry) => entry.video === event.target)) {
+        cancelPending();
+        showStatus(active.video.paused ? "Paused" : "Playing");
+      }
+    }, true);
+
+    // Preload near the demo, respecting data-saving and slow-connection hints.
+    const connection = navigator.connection;
+    if ("IntersectionObserver" in window && !(connection && (connection.saveData || /2g/.test(connection.effectiveType)))) {
+      const observer = new IntersectionObserver((items) => {
+        if (!items.some((item) => item.isIntersecting)) return;
+        entries.forEach(warm);
+        observer.disconnect();
+      }, { rootMargin: "300px" });
+      observer.observe(document.getElementById("demo"));
+    }
   }
 
   document.addEventListener("play", (event) => {
     if (!(event.target instanceof HTMLMediaElement)) return;
+    if (event.target.paused || event.target.dataset.demoStandby === "true") return;
     document.querySelectorAll("audio, video").forEach((player) => {
+      // The other demo may be warming silently while the visible video plays.
+      if (event.target.dataset.demoStandby === "false" && player.dataset.demoStandby === "true") return;
       if (player !== event.target) player.pause();
     });
   }, true);

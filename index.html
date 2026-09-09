@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/index.css?v=20260909-paper-demos">
+  <link rel="stylesheet" href="static/css/index.css?v=20260909-buffered-demo">
   <title>FactorGSE: Selective Autoregression for Low-Latency Streaming Generative Speech Enhancement</title>
 </head>
 <body>
@@ -138,13 +138,16 @@
         </div>
         <figure class="demo-video">
           <div class="demo-switch" role="group" aria-label="Choose the demo audio" hidden>
-            <button type="button" data-demo-version="enhanced" data-video-src="static/videos/finally_Demo_factorgse.mp4" data-video-label="Enhanced (FactorGSE)" aria-controls="realtime-video" aria-pressed="true">Enhanced (FactorGSE)</button>
-            <button type="button" data-demo-version="original" data-video-src="static/videos/finally_Demo_noisy.mp4" data-video-label="Original (noisy)" aria-controls="realtime-video" aria-pressed="false">Original (noisy)</button>
+            <button type="button" data-demo-version="enhanced" data-video-label="Enhanced (FactorGSE)" aria-controls="realtime-video" aria-pressed="true"><span class="demo-button-label">Enhanced</span><span class="demo-button-detail">FactorGSE</span><span class="demo-button-indicator" aria-hidden="true"></span></button>
+            <button type="button" data-demo-version="original" data-video-label="Original (noisy)" aria-controls="realtime-video-original" aria-pressed="false"><span class="demo-button-label">Original</span><span class="demo-button-detail">Noisy input</span><span class="demo-button-indicator" aria-hidden="true"></span></button>
           </div>
-          <video id="realtime-video" controls playsinline preload="none" poster="static/images/factorgse-demo-poster.jpg?v=20260909" width="854" height="480" aria-label="Real-time demo: Enhanced (FactorGSE)" aria-describedby="demo-caption" src="static/videos/finally_Demo_factorgse.mp4">
-            Your browser does not support embedded video. Use the video links below.
-          </video>
-          <figcaption id="demo-caption">Select a version to play. Switching keeps your place in the same scene.<br><span id="demo-status" role="status">Ready — Enhanced (FactorGSE).</span><br>Open video: <a href="static/videos/finally_Demo_factorgse.mp4" target="_blank" rel="noopener">Enhanced</a> · <a href="static/videos/finally_Demo_noisy.mp4" target="_blank" rel="noopener">Original</a>.</figcaption>
+          <div class="demo-stage">
+            <video id="realtime-video" controls playsinline preload="none" data-demo-standby="false" data-visible="true" poster="static/images/factorgse-demo-poster.jpg?v=20260909" width="854" height="480" aria-label="Real-time demo: Enhanced (FactorGSE)" aria-describedby="demo-caption" src="static/videos/factorgse-demo-enhanced.web.mp4">
+              Your browser does not support embedded video.
+            </video>
+            <video id="realtime-video-original" playsinline preload="none" muted inert data-demo-standby="true" data-visible="false" width="854" height="480" aria-hidden="true" aria-label="Real-time demo: Original (noisy)" aria-describedby="demo-caption" src="static/videos/factorgse-demo-original.web.mp4"></video>
+          </div>
+          <figcaption id="demo-caption">Select a version to play. Switching keeps your place in the same scene.<br><span id="demo-status" role="status">Ready — Enhanced (FactorGSE).</span></figcaption>
         </figure>
       </div>
     </section>
@@ -156,6 +159,6 @@
       <p>Page structure adapted from the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noopener">Academic Project Page Template</a>.</p>
     </div>
   </footer>
-  <script src="static/js/factorgse-page.js?v=20260909-paper-demos" defer></script>
+  <script src="static/js/factorgse-page.js?v=20260909-buffered-demo" defer></script>
 </body>
 </html>
