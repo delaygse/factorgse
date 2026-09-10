@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/index.css?v=20260910-compact-fig2">
+  <link rel="stylesheet" href="static/css/index.css?v=20260910-demo-compare">
   <title>FactorGSE: Selective Autoregression for Low-Latency Streaming Generative Speech Enhancement</title>
 </head>
 <body>
@@ -99,9 +99,10 @@
           <p>English and Chinese scenarios are tested at speaker-to-microphone distances of 3, 6, and 10 m. Two participants appear on camera: one reads a fixed text from a script displayed on a phone while the other generates random noise.</p>
         </div>
         <figure class="demo-video">
-          <div class="demo-switch" role="group" aria-label="Choose the demo audio" hidden>
-            <button type="button" data-demo-version="enhanced" data-video-label="Enhanced (FactorGSE)" aria-controls="realtime-video" aria-pressed="true"><span class="demo-button-label">Enhanced</span><span class="demo-button-detail">FactorGSE</span><span class="demo-button-indicator" aria-hidden="true"></span></button>
-            <button type="button" data-demo-version="original" data-video-label="Original (noisy)" aria-controls="realtime-video-original" aria-pressed="false"><span class="demo-button-label">Original</span><span class="demo-button-detail">Noisy input</span><span class="demo-button-indicator" aria-hidden="true"></span></button>
+          <div class="demo-switch" role="group" aria-labelledby="demo-switch-hint" hidden>
+            <p class="demo-switch-hint" id="demo-switch-hint"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16m-4-4 4 4-4 4M20 17H4m4-4-4 4 4 4"/></svg><span>Click to compare the audio</span></p>
+            <button type="button" data-demo-version="enhanced" data-video-label="Enhanced (FactorGSE)" aria-controls="realtime-video" aria-pressed="true"><span class="demo-play-icon" aria-hidden="true"></span><span class="demo-button-copy"><span class="demo-button-label">Play enhanced</span><span class="demo-button-detail">FactorGSE</span></span><span class="demo-button-indicator" aria-hidden="true"></span></button>
+            <button type="button" data-demo-version="original" data-video-label="Original (noisy)" aria-controls="realtime-video-original" aria-pressed="false"><span class="demo-play-icon" aria-hidden="true"></span><span class="demo-button-copy"><span class="demo-button-label">Play original</span><span class="demo-button-detail">Noisy input</span></span><span class="demo-button-indicator" aria-hidden="true"></span></button>
           </div>
           <div class="demo-stage">
             <video id="realtime-video" controls playsinline preload="none" data-demo-standby="false" data-visible="true" poster="static/images/factorgse-demo-poster.jpg?v=20260910-thumbnail-volume" width="854" height="480" aria-label="Real-time demo: Enhanced (FactorGSE)" aria-describedby="demo-caption" src="static/videos/factorgse-demo-enhanced.web.mp4?v=20260910-thumbnail-volume">
