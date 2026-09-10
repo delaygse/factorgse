@@ -233,7 +233,8 @@ sup {
 }
 
 .results-figure {
-  margin: 42px 0 0;
+  max-width: 900px;
+  margin: 42px auto 0;
   padding: 22px 22px 17px;
   border: 1px solid var(--line);
   border-radius: 20px;
@@ -890,7 +891,7 @@ sup {
   }
 
   .results-chart-scroll img {
-    width: 960px;
+    width: 800px;
     max-width: none;
   }
 

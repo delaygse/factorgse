@@ -11,7 +11,8 @@ utterances: 300 English, 100 Chinese). All 11 points are intentionally labelled.
 The four sweep models are connected; the separate 186.7-ms primary run is not.
 Axes: x = 100 - Avg. WER/CER (%), y = DNSMOS; same limits as the paper's Fig. 2.
 Surface: static SVG in the existing academic GitHub Pages results section,
-1180 x 600, with a 960-pixel scrollable minimum on mobile to retain legibility.
+1180 x 600, displayed in a centered 900-pixel card, with an 800-pixel
+scrollable chart on mobile to retain legibility.
 Palette: the paper's blue and orange plus neutral grey. Open circles, open
 squares, filled circles and a star preserve distinctions without color.
 QA: exported SVG/PNG at the website's displayed width; verify labels, exact
