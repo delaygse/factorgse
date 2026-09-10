@@ -9,12 +9,12 @@
   <meta property="og:title" content="FactorGSE: Selective Autoregression for Low-Latency Streaming Generative Speech Enhancement">
   <meta property="og:description" content="Selective autoregression for streaming speech enhancement, with bilingual audio comparisons and an original/enhanced real-time video demo.">
   <meta property="og:url" content="https://delaygse.github.io/factorgse/">
-  <meta property="og:image" content="https://delaygse.github.io/factorgse/static/images/factorgse_framework.png?v=20260909-fig1">
+  <meta property="og:image" content="https://delaygse.github.io/factorgse/static/images/factorgse_framework.png?v=20260910-framework">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="FactorGSE: Selective Autoregression for Low-Latency Streaming Generative Speech Enhancement">
   <meta name="twitter:description" content="Selective autoregression for streaming speech enhancement, with bilingual audio comparisons and an original/enhanced real-time video demo.">
-  <meta name="twitter:image" content="https://delaygse.github.io/factorgse/static/images/factorgse_framework.png?v=20260909-fig1">
+  <meta name="twitter:image" content="https://delaygse.github.io/factorgse/static/images/factorgse_framework.png?v=20260910-framework">
   <link rel="canonical" href="https://delaygse.github.io/factorgse/">
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -69,9 +69,9 @@
         </div>
         <figure class="framework-figure">
           <div class="figure-frame">
-            <a href="static/pdfs/edge_gse_framework.pdf?v=20260909-fig1" target="_blank" rel="noopener" aria-label="Open the full-resolution FactorGSE framework PDF"><img src="static/images/factorgse_framework.png?v=20260909-fig1" width="3000" height="1062" decoding="async" alt="FactorGSE framework: top, semantic distillation during codec pretraining; bottom, time-NAR first-codebook prediction, intra-frame depth-AR residual decoding, and GRU history supplied only to the residual decoder"></a>
+            <a href="static/pdfs/edge_gse_framework.pdf?v=20260910-framework" target="_blank" rel="noopener" aria-label="Open the full-resolution FactorGSE framework PDF"><img src="static/images/factorgse_framework.png?v=20260910-framework" width="3000" height="1062" decoding="async" alt="FactorGSE framework: frozen w2v-BERT 2.0 supervises the first codebook during codec pretraining; the streaming generator predicts semantic tokens with time-NAR, residual tokens with intra-frame depth-AR, and supplies GRU history only to residual decoding. Circles denote predicted tokens."></a>
           </div>
-          <figcaption><strong>Figure 1.</strong> Overview of FactorGSE. <strong>Top (codec pretraining only):</strong> semantics from frozen w2v-BERT 2.0 are distilled into CB<sub>1</sub>. <strong>Bottom (streaming factorized generator):</strong> time-NAR predicts CB<sub>1</sub> from bounded noisy-speech context without generated-token feedback, while depth-AR generates CB<sub>2</sub>–CB<sub>10</sub> sequentially within each frame. The GRU state h<sub>n−1</sub> supplies the gated, normalized condition c<sub>n</sub> only to the residual decoder; current residual tokens update the state to h<sub>n</sub>.</figcaption>
+          <figcaption><strong>Figure 1.</strong> Overview of FactorGSE. <strong>Top (codec pretraining only):</strong> frozen w2v-BERT 2.0 supervises CB<sub>1</sub> representations. <strong>Bottom (streaming factorized generator):</strong> circles denote predicted tokens. Time-NAR predicts the CB<sub>1</sub> token from bounded noisy-speech context without generated-token feedback; depth-AR generates residual tokens sequentially within each frame. The GRU state h<sub>n−1</sub> supplies gated, normalized context c<sub>n</sub> only to residual decoding; current residual tokens update h<sub>n</sub>.</figcaption>
         </figure>
       </div>
     </section>
