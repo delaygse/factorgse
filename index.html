@@ -31,8 +31,8 @@
       <a href="#overview">Overview</a>
       <a href="#method">Method</a>
       <a href="#results">Results</a>
-      <a href="#audio">Audio</a>
       <a href="#demo">Real-time demo</a>
+      <a href="#audio">Audio</a>
     </div>
   </nav>
 
@@ -91,6 +91,29 @@
       </div>
     </section>
 
+    <section id="demo" class="section-block section-dark" aria-labelledby="realtime-demo-heading">
+      <div class="content-shell demo-layout">
+        <div class="demo-copy">
+          <h2 id="realtime-demo-heading">Real-time streaming demo</h2>
+          <p>The demo runs on an NPU-equipped edge device in a large meeting room (6 m long &times; 10 m wide) via a Zoom meeting. All Zoom audio processing, including noise suppression, is disabled; noise reduction and dereverberation come solely from FactorGSE.</p>
+          <p>English and Chinese scenarios are tested at speaker-to-microphone distances of 3, 6, and 10 m. Two participants appear on camera: one reads a fixed text while the other generates random noise.</p>
+        </div>
+        <figure class="demo-video">
+          <div class="demo-switch" role="group" aria-label="Choose the demo audio" hidden>
+            <button type="button" data-demo-version="enhanced" data-video-label="Enhanced (FactorGSE)" aria-controls="realtime-video" aria-pressed="true"><span class="demo-button-label">Enhanced</span><span class="demo-button-detail">FactorGSE</span><span class="demo-button-indicator" aria-hidden="true"></span></button>
+            <button type="button" data-demo-version="original" data-video-label="Original (noisy)" aria-controls="realtime-video-original" aria-pressed="false"><span class="demo-button-label">Original</span><span class="demo-button-detail">Noisy input</span><span class="demo-button-indicator" aria-hidden="true"></span></button>
+          </div>
+          <div class="demo-stage">
+            <video id="realtime-video" controls playsinline preload="none" data-demo-standby="false" data-visible="true" poster="static/images/factorgse-demo-poster.jpg?v=20260909" width="854" height="480" aria-label="Real-time demo: Enhanced (FactorGSE)" aria-describedby="demo-caption" src="static/videos/factorgse-demo-enhanced.web.mp4">
+              Your browser does not support embedded video.
+            </video>
+            <video id="realtime-video-original" playsinline preload="none" muted inert data-demo-standby="true" data-visible="false" width="854" height="480" aria-hidden="true" aria-label="Real-time demo: Original (noisy)" aria-describedby="demo-caption" src="static/videos/factorgse-demo-original.web.mp4"></video>
+          </div>
+          <figcaption id="demo-caption">Select a version to play. Switching keeps your place in the same scene.<br><span id="demo-status" role="status">Ready — Enhanced (FactorGSE).</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
     <section id="audio" class="section-block audio-section">
       <div class="content-shell">
         <div class="section-heading centered-heading">
@@ -126,29 +149,6 @@
           <div id="context-table" class="audio-comparison" aria-live="polite"></div>
         </section>
         <noscript><p class="noscript-message">JavaScript is required to render the audio comparison players.</p></noscript>
-      </div>
-    </section>
-
-    <section id="demo" class="section-block section-dark" aria-labelledby="realtime-demo-heading">
-      <div class="content-shell demo-layout">
-        <div class="demo-copy">
-          <h2 id="realtime-demo-heading">Real-time streaming demo</h2>
-          <p>The demo runs on an NPU-equipped edge device in a large meeting room (6 m long &times; 10 m wide) via a Zoom meeting. All Zoom audio processing, including noise suppression, is disabled; noise reduction and dereverberation come solely from FactorGSE.</p>
-          <p>English and Chinese scenarios are tested at speaker-to-microphone distances of 3, 6, and 10 m. Two participants appear on camera: one reads a fixed text while the other generates random noise.</p>
-        </div>
-        <figure class="demo-video">
-          <div class="demo-switch" role="group" aria-label="Choose the demo audio" hidden>
-            <button type="button" data-demo-version="enhanced" data-video-label="Enhanced (FactorGSE)" aria-controls="realtime-video" aria-pressed="true"><span class="demo-button-label">Enhanced</span><span class="demo-button-detail">FactorGSE</span><span class="demo-button-indicator" aria-hidden="true"></span></button>
-            <button type="button" data-demo-version="original" data-video-label="Original (noisy)" aria-controls="realtime-video-original" aria-pressed="false"><span class="demo-button-label">Original</span><span class="demo-button-detail">Noisy input</span><span class="demo-button-indicator" aria-hidden="true"></span></button>
-          </div>
-          <div class="demo-stage">
-            <video id="realtime-video" controls playsinline preload="none" data-demo-standby="false" data-visible="true" poster="static/images/factorgse-demo-poster.jpg?v=20260909" width="854" height="480" aria-label="Real-time demo: Enhanced (FactorGSE)" aria-describedby="demo-caption" src="static/videos/factorgse-demo-enhanced.web.mp4">
-              Your browser does not support embedded video.
-            </video>
-            <video id="realtime-video-original" playsinline preload="none" muted inert data-demo-standby="true" data-visible="false" width="854" height="480" aria-hidden="true" aria-label="Real-time demo: Original (noisy)" aria-describedby="demo-caption" src="static/videos/factorgse-demo-original.web.mp4"></video>
-          </div>
-          <figcaption id="demo-caption">Select a version to play. Switching keeps your place in the same scene.<br><span id="demo-status" role="status">Ready — Enhanced (FactorGSE).</span></figcaption>
-        </figure>
       </div>
     </section>
   </main>
