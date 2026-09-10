@@ -57,7 +57,7 @@
       <div class="content-shell narrow-shell">
         <div class="section-heading"><h2>Abstract</h2></div>
         <div class="abstract-copy">
-          <p>Autoregression need not be an all-or-nothing choice for codec-based streaming speech enhancement. Temporal feedback can propagate semantic errors, especially with limited look-ahead, whereas fully non-autoregressive (NAR) decoding omits explicit coarse-to-fine dependencies among residual vector quantization codebooks. We introduce FactorGSE, a selective factorization that uses time-non-autoregressive (time-NAR) prediction for a semantically distilled first codebook from bounded degraded speech without generated-token feedback, retains intra-frame depth-autoregressive (depth-AR) residual decoding, and uses residual-token recurrence to provide cross-frame acoustic context only for residual decoding. On 400 bilingual URGENT 2025 utterances, an aligned ablation shows 45.0% lower macro-averaged automatic speech recognition error without temporal feedback, while a double-blind listening test favors depth-AR over fully NAR. FactorGSE outperforms all evaluated streaming baselines in objective speech quality, recognition-based intelligibility, and speaker similarity. An edge implementation runs in real time on a 40-TOPS-class NPU at a 186.7-ms input-context budget. Audio samples and a real-time demo: <a href="https://delaygse.github.io/factorgse/">https://delaygse.github.io/factorgse/</a>.</p>
+          <p>Autoregression need not be an all-or-nothing choice for codec-based streaming speech enhancement. Temporal feedback can propagate semantic errors, especially with limited look-ahead, whereas fully non-autoregressive (NAR) decoding omits explicit coarse-to-fine dependencies among residual vector quantization codebooks. We introduce FactorGSE, a selective factorization that uses time-non-autoregressive (time-NAR) prediction for a semantically distilled first codebook from bounded degraded speech without generated-token feedback, retains intra-frame depth-autoregressive (depth-AR) residual decoding, and uses residual-token recurrence to provide cross-frame acoustic context only for residual decoding. On 400 bilingual URGENT 2025 utterances, an aligned ablation shows 45.0% lower average WER/CER without temporal feedback, while a double-blind listening test favors depth-AR over fully NAR. FactorGSE outperforms all evaluated streaming baselines in objective speech quality, recognition-based intelligibility, and speaker similarity. An edge implementation runs in real time on a 40-TOPS-class NPU at a 186.7-ms input-context budget. Audio samples and a real-time demo: <a href="https://delaygse.github.io/factorgse/">https://delaygse.github.io/factorgse/</a>.</p>
         </div>
       </div>
     </section>
@@ -79,14 +79,14 @@
     <section id="results" class="section-block section-tint">
       <div class="content-shell">
         <div class="section-heading centered-heading">
-          <h2>Speech quality and input context</h2>
-          <p>Selected enhancement systems and the paper's separately trained input-context configurations.</p>
+          <h2>DNSMOS–recognition trade-off</h2>
+          <p>URGENT 2025 · 400 utterances (300 English, 100 Chinese).</p>
         </div>
         <figure class="results-figure">
           <div class="results-chart-scroll" tabindex="0" aria-label="Scrollable results chart">
-            <img src="static/images/results_tradeoff_web.svg?v=20260907-factorgse" width="1180" height="700" loading="lazy" decoding="async" alt="Two-panel FactorGSE result figure comparing DNSMOS against macro recognition score across systems and showing DNSMOS and macro ASR error across input-context settings">
+            <img src="static/images/results_tradeoff_web.svg?v=20260910-single-fig2" width="1180" height="600" loading="lazy" decoding="async" alt="Single-panel DNSMOS–recognition trade-off from paper Figure 2: six baseline systems, four connected FactorGSE input-context configurations, and a star for the separate 186.7-ms primary run; upper right is better">
           </div>
-          <figcaption><strong>Figure 2.</strong> URGENT 2025 results redrawn for the web from the same values reported in the paper. Higher is better for DNSMOS and macro recognition score (100 − macro ASR error); lower is better for macro ASR error. The connected points are separately trained FactorGSE models with 26.67, 80, 160, and 240 ms of input context. The 186.7-ms primary configuration is a separate training run; DelayGSE uses inherited quality scores.</figcaption>
+          <figcaption><strong>Figure 2.</strong> DNSMOS–recognition trade-off on URGENT 2025 (upper right is better), adapted from the paper for the web. Recognition score is 100 − Avg. WER/CER (%), not token accuracy; Avg. WER/CER is the unweighted mean of English WER and Chinese CER. Blue labels denote input context in milliseconds. Connected points show four separately trained 300,000-step configurations; the star is the separate 186.7-ms primary run. Noisy input is omitted; † denotes inherited quality scores.</figcaption>
         </figure>
       </div>
     </section>
@@ -136,7 +136,7 @@
         <section class="experiment-group" aria-labelledby="factorization-heading">
           <div class="experiment-heading">
             <div><h3 id="factorization-heading">Ablation of selective autoregression</h3></div>
-            <p>All five variants use 186.7-ms input context. Both all-codebook time-AR controls use parallel output heads. The frame-aligned sequence removes temporal feedback, adds intra-frame depth-AR, then adds residual history. † marks delayed-grid targets.</p>
+            <p>All five variants use 186.7-ms input context. Both all-codebook time-AR controls use parallel output heads. The frame-aligned sequence removes temporal feedback, adds intra-frame depth-AR, then adds residual history.</p>
           </div>
           <div id="factorization-table" class="audio-comparison" aria-live="polite"></div>
         </section>
@@ -159,6 +159,6 @@
       <p>Page structure adapted from the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noopener">Academic Project Page Template</a>.</p>
     </div>
   </footer>
-  <script src="static/js/factorgse-page.js?v=20260909-buffered-demo" defer></script>
+  <script src="static/js/factorgse-page.js?v=20260910-metric-names" defer></script>
 </body>
 </html>

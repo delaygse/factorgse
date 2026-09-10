@@ -21,7 +21,7 @@
       key: "factorgse-primary",
       label: "FactorGSE",
       tag: "Ours",
-      meta: "186.7-ms input context · DNSMOS 3.62 · Macro ASR error 25.45% · SIM 0.708",
+      meta: "186.7-ms input context · DNSMOS 3.62 · Avg. WER/CER 25.45% · SIM 0.71",
       sharedFile: "factorgse-186p7ms.wav",
       highlight: true
     },
@@ -29,7 +29,7 @@
       key: "factorgse-small",
       label: "FactorGSE (Small)",
       tag: "Ours · compact",
-      meta: "186.7-ms input context · DNSMOS 3.63 · Macro ASR error 25.75% · SIM 0.729",
+      meta: "186.7-ms input context · DNSMOS 3.63 · Avg. WER/CER 25.75% · SIM 0.73",
       file: "factorgse-small-186p7ms.wav",
       highlight: true
     }
@@ -38,37 +38,37 @@
   const factorizationComparison = [
     {
       key: "time-ar-delayed-grid",
-      label: "All-codebook time-AR (delayed)†",
+      label: "All-codebook time-AR (delayed)",
       tag: "Scheduling control",
-      meta: "DNSMOS 3.50 · Macro ASR error 48.80% · SIM 0.588",
+      meta: "DNSMOS 3.50 · Avg. WER/CER 48.80% · SIM 0.59",
       file: "time-ar-delayed-grid.wav"
     },
     {
       key: "time-ar-parallel",
       label: "All-codebook time-AR (aligned)",
       tag: "Aligned control",
-      meta: "DNSMOS 3.48 · Macro ASR error 48.40% · SIM 0.504",
+      meta: "DNSMOS 3.48 · Avg. WER/CER 48.40% · SIM 0.50",
       file: "time-ar-parallel.wav"
     },
     {
       key: "time-nar-parallel",
       label: "Fully NAR",
       tag: "Parallel codebooks",
-      meta: "DNSMOS 3.58 · Macro ASR error 26.60% · SIM 0.677",
+      meta: "DNSMOS 3.58 · Avg. WER/CER 26.60% · SIM 0.68",
       file: "time-nar-parallel.wav"
     },
     {
       key: "time-nar-depth-ar",
       label: "Time-NAR + depth-AR",
       tag: "Depth-AR",
-      meta: "DNSMOS 3.57 · Macro ASR error 26.05% · SIM 0.696",
+      meta: "DNSMOS 3.57 · Avg. WER/CER 26.05% · SIM 0.70",
       file: "time-nar-depth-ar.wav"
     },
     {
       key: "factorgse-residual-gru",
       label: "FactorGSE (+ residual GRU)",
       tag: "Full model",
-      meta: "DNSMOS 3.62 · Macro ASR error 25.45% · SIM 0.708",
+      meta: "DNSMOS 3.62 · Avg. WER/CER 25.45% · SIM 0.71",
       sharedFile: "factorgse-186p7ms.wav",
       highlight: true
     }
@@ -79,35 +79,35 @@
       key: "nla-0",
       label: "26.67-ms input context",
       tag: "Sweep · N_LA = 0",
-      meta: "DNSMOS 3.54 · Macro ASR error 29.85%",
+      meta: "DNSMOS 3.54 · Avg. WER/CER 29.85%",
       file: "26p7ms.wav"
     },
     {
       key: "nla-2",
       label: "80-ms input context",
       tag: "Sweep · N_LA = 2",
-      meta: "DNSMOS 3.58 · Macro ASR error 28.00%",
+      meta: "DNSMOS 3.58 · Avg. WER/CER 28.00%",
       file: "80ms.wav"
     },
     {
       key: "nla-5",
       label: "160-ms input context",
       tag: "Sweep · N_LA = 5",
-      meta: "DNSMOS 3.61 · Macro ASR error 26.85%",
+      meta: "DNSMOS 3.61 · Avg. WER/CER 26.85%",
       file: "160ms.wav"
     },
     {
       key: "nla-8",
       label: "240-ms input context",
       tag: "Sweep · N_LA = 8",
-      meta: "DNSMOS 3.62 · Macro ASR error 23.30%",
+      meta: "DNSMOS 3.62 · Avg. WER/CER 23.30%",
       file: "240ms.wav"
     },
     {
       key: "nla-6-primary",
       label: "186.7-ms input context",
       tag: "Primary · separate run",
-      meta: "DNSMOS 3.62 · Macro ASR error 25.45% · SIM 0.708",
+      meta: "DNSMOS 3.62 · Avg. WER/CER 25.45% · SIM 0.71",
       sharedFile: "factorgse-186p7ms.wav",
       highlight: true
     }

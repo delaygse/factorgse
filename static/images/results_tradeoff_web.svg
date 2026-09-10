@@ -1,232 +1,335 @@
 <?xml version='1.0' encoding='utf-8'?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="700" viewBox="0 0 1180 700" role="img" aria-labelledby="chart-title chart-desc" preserveAspectRatio="xMidYMid meet">
-  <title id="chart-title">FactorGSE objective results and context trade-offs</title>
-  <desc id="chart-desc">Panel A compares DNSMOS with 100 minus bilingual Macro ASR error for offline and streaming systems. Panel B shows four connected FactorGSE context-sweep observations for DNSMOS and Macro ASR error. The 186.7 millisecond primary result is a separate record and is marked by stars. DelayGSE is an inherited record.</desc>
-  <metadata>{"connected_context_sweep":[{"context_ms":26.67,"dnsmos":3.54,"macro_asr_error":29.85},{"context_ms":80.0,"dnsmos":3.58,"macro_asr_error":28.0},{"context_ms":160.0,"dnsmos":3.61,"macro_asr_error":26.85},{"context_ms":240.0,"dnsmos":3.62,"macro_asr_error":23.3}],"evaluation":"URGENT 2025 nonblind_test, 400 utterances (300 English, 100 Chinese)","primary_separate_record":{"context_ms":186.7,"dnsmos":3.62,"macro_asr_error":25.45},"source":["edge_gse_paper/main.tex","edge_gse_paper/figures/plot_dns_avgwer_tradeoff.py"],"systems":[{"category":"offline","dnsmos":3.85,"inherited":false,"macro_asr_error":33.25,"name":"UniSE"},{"category":"offline","dnsmos":3.77,"inherited":true,"macro_asr_error":16.95,"name":"DelayGSE"},{"category":"offline","dnsmos":3.37,"inherited":false,"macro_asr_error":33.2,"name":"Bridge"},{"category":"streaming","dnsmos":3.24,"inherited":false,"macro_asr_error":43.6,"name":"Stream.FM"},{"category":"streaming","dnsmos":3.23,"inherited":false,"macro_asr_error":33.9,"name":"FastEnhancer-L"},{"category":"streaming","dnsmos":3.32,"inherited":false,"macro_asr_error":28.4,"name":"DeepFilterNet3"}]}</metadata>
-  <style>
-      text { font-family: Inter, Arial, Helvetica, sans-serif; }
-      .canvas { fill: #FFFFFF; }
-      .card { fill: #FFFFFF; stroke: #DCE4EF; stroke-width: 1.5; }
-      .page-title { fill: #172033; font-size: 27px; font-weight: 750; letter-spacing: -0.35px; }
-      .page-subtitle { fill: #61708A; font-size: 13.5px; font-weight: 500; }
-      .panel-tag { fill: #EAF1FF; stroke: #C8D8FF; stroke-width: 1; }
-      .panel-letter { fill: #1D4ED8; font-size: 14px; font-weight: 800; }
-      .panel-title { fill: #172033; font-size: 17px; font-weight: 750; letter-spacing: -0.15px; }
-      .panel-subtitle { fill: #61708A; font-size: 11.5px; font-weight: 500; }
-      .grid-line { stroke: #E7EDF5; stroke-width: 1; }
-      .vertical-grid { stroke: #E7EDF5; stroke-width: 1; stroke-dasharray: 3 5; }
-      .axis-line { stroke: #9AA7BA; stroke-width: 1.15; }
-      .axis-title { fill: #445168; font-size: 11.5px; font-weight: 650; }
-      .tick-label { fill: #61708A; font-size: 10.5px; font-variant-numeric: tabular-nums; }
-      .method-label { font-size: 11.2px; font-weight: 750; }
-      .value-label { fill: #61708A; font-size: 9.5px; font-weight: 500; font-variant-numeric: tabular-nums; }
-      .legend-label { fill: #61708A; font-size: 10.5px; font-weight: 550; }
-      .legend-label-strong { fill: #172033; font-size: 10.5px; font-weight: 750; }
-      .metric-label { font-size: 11px; font-weight: 750; }
-      .point-value { font-size: 9.5px; font-weight: 700; font-variant-numeric: tabular-nums; paint-order: stroke; stroke: white; stroke-width: 3px; stroke-linejoin: round; }
-      .dns-line { fill: none; stroke: #2563EB; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
-      .error-line { fill: none; stroke: #D97706; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 8 6; }
-      .primary-guide { stroke: #9CB4E9; stroke-width: 1.25; stroke-dasharray: 4 5; }
-      .primary-pill { fill: #1D4ED8; }
-      .primary-pill-text { fill: white; font-size: 10px; font-weight: 750; font-variant-numeric: tabular-nums; }
-      .primary-tick { stroke: #1D4ED8; stroke-width: 1.8; }
-      .primary-tick-label { fill: #1D4ED8; font-size: 10px; font-weight: 750; font-variant-numeric: tabular-nums; }
-      .footer-note { fill: #61708A; font-size: 11px; font-weight: 500; }
-      .footer-note-strong { fill: #172033; font-size: 11px; font-weight: 700; }
-    </style>
-  <rect x="0" y="0" width="1180" height="700" class="canvas" />
-  <text x="28" y="40" class="page-title" text-anchor="start">Objective results and context trade-offs</text>
-  <text x="28" y="67" class="page-subtitle" text-anchor="start">URGENT 2025 · 400 bilingual utterances (300 English / 100 Chinese) · aggregate point estimates</text>
-  <g id="panel-a" role="group" aria-label="Panel A, system comparison">
-    <rect x="28" y="94" width="544" height="528" rx="18" class="card" />
-    <rect x="50" y="111" width="30" height="30" rx="9" class="panel-tag" />
-    <text x="65" y="132" class="panel-letter" text-anchor="middle">A</text>
-    <text x="92" y="129" class="panel-title" text-anchor="start">System-level trade-off</text>
-    <text x="92" y="153" class="panel-subtitle" text-anchor="start">DNSMOS vs macro recognition score · upper right is better</text>
-    <line x1="92" y1="198" x2="92" y2="526" class="grid-line" />
-    <line x1="92" y1="526" x2="92" y2="531" class="axis-line" />
-    <text x="92" y="547" class="tick-label" text-anchor="middle">55</text>
-    <line x1="168" y1="198" x2="168" y2="526" class="grid-line" />
-    <line x1="168" y1="526" x2="168" y2="531" class="axis-line" />
-    <text x="168" y="547" class="tick-label" text-anchor="middle">60</text>
-    <line x1="244" y1="198" x2="244" y2="526" class="grid-line" />
-    <line x1="244" y1="526" x2="244" y2="531" class="axis-line" />
-    <text x="244" y="547" class="tick-label" text-anchor="middle">65</text>
-    <line x1="320" y1="198" x2="320" y2="526" class="grid-line" />
-    <line x1="320" y1="526" x2="320" y2="531" class="axis-line" />
-    <text x="320" y="547" class="tick-label" text-anchor="middle">70</text>
-    <line x1="396" y1="198" x2="396" y2="526" class="grid-line" />
-    <line x1="396" y1="526" x2="396" y2="531" class="axis-line" />
-    <text x="396" y="547" class="tick-label" text-anchor="middle">75</text>
-    <line x1="472" y1="198" x2="472" y2="526" class="grid-line" />
-    <line x1="472" y1="526" x2="472" y2="531" class="axis-line" />
-    <text x="472" y="547" class="tick-label" text-anchor="middle">80</text>
-    <line x1="548" y1="198" x2="548" y2="526" class="grid-line" />
-    <line x1="548" y1="526" x2="548" y2="531" class="axis-line" />
-    <text x="548" y="547" class="tick-label" text-anchor="middle">85</text>
-    <line x1="92" y1="485" x2="548" y2="485" class="grid-line" />
-    <line x1="87" y1="485" x2="92" y2="485" class="axis-line" />
-    <text x="82" y="489" class="tick-label" text-anchor="end">3.2</text>
-    <line x1="92" y1="403" x2="548" y2="403" class="grid-line" />
-    <line x1="87" y1="403" x2="92" y2="403" class="axis-line" />
-    <text x="82" y="407" class="tick-label" text-anchor="end">3.4</text>
-    <line x1="92" y1="321" x2="548" y2="321" class="grid-line" />
-    <line x1="87" y1="321" x2="92" y2="321" class="axis-line" />
-    <text x="82" y="325" class="tick-label" text-anchor="end">3.6</text>
-    <line x1="92" y1="239" x2="548" y2="239" class="grid-line" />
-    <line x1="87" y1="239" x2="92" y2="239" class="axis-line" />
-    <text x="82" y="243" class="tick-label" text-anchor="end">3.8</text>
-    <line x1="92" y1="198" x2="92" y2="526" class="axis-line" />
-    <line x1="92" y1="526" x2="548" y2="526" class="axis-line" />
-    <text x="320" y="572" class="axis-title" text-anchor="middle">Macro recognition score (%)  →</text>
-    <text x="49" y="362" class="axis-title" text-anchor="middle" transform="rotate(-90 49 362)">DNSMOS  →</text>
-    <g class="mark" role="img" aria-label="UniSE: DNSMOS 3.85; Macro ASR error 33.25 percent; Macro recognition score 66.75 percent">
-      <circle cx="270.6" cy="218.5" r="5.0" fill="#FFFFFF" stroke="#7A879C" stroke-width="2.4" />
-    </g>
-    <text x="282.6" y="210.5" class="method-label" text-anchor="start" fill="#172033">UniSE</text>
-    <text x="282.6" y="225.5" class="value-label" text-anchor="start">3.85 · 33.25% error</text>
-    <g class="mark" role="img" aria-label="DelayGSE, inherited record: DNSMOS 3.77; Macro ASR error 16.95 percent; Macro recognition score 83.05 percent">
-      <circle cx="518.36" cy="251.3" r="5.0" fill="#FFFFFF" stroke="#7A879C" stroke-width="2.4" />
-    </g>
-    <text x="508.36" y="232.3" class="method-label" text-anchor="end" fill="#172033">DelayGSE†</text>
-    <text x="508.36" y="247.3" class="value-label" text-anchor="end">3.77 · 16.95% error</text>
-    <g class="mark" role="img" aria-label="Bridge: DNSMOS 3.37; Macro ASR error 33.20 percent; Macro recognition score 66.80 percent">
-      <circle cx="271.36" cy="415.3" r="5.0" fill="#FFFFFF" stroke="#7A879C" stroke-width="2.4" />
-    </g>
-    <text x="260.36" y="393.3" class="method-label" text-anchor="end" fill="#172033">Bridge</text>
-    <text x="260.36" y="408.3" class="value-label" text-anchor="end">3.37 · 33.20% error</text>
-    <g class="mark" role="img" aria-label="Stream.FM: DNSMOS 3.24; Macro ASR error 43.60 percent; Macro recognition score 56.40 percent">
-      <rect x="108.28" y="463.6" width="10" height="10" rx="1.4" fill="#FFFFFF" stroke="#D97706" stroke-width="2.4" />
-    </g>
-    <text x="125.28" y="451.6" class="method-label" text-anchor="start" fill="#172033">Stream.FM</text>
-    <text x="125.28" y="466.6" class="value-label" text-anchor="start">3.24 · 43.60% error</text>
-    <g class="mark" role="img" aria-label="FastEnhancer-L: DNSMOS 3.23; Macro ASR error 33.90 percent; Macro recognition score 66.10 percent">
-      <rect x="255.72" y="467.7" width="10" height="10" rx="1.4" fill="#FFFFFF" stroke="#D97706" stroke-width="2.4" />
-    </g>
-    <text x="260.72" y="497.7" class="method-label" text-anchor="middle" fill="#172033">FastEnhancer-L</text>
-    <text x="260.72" y="512.7" class="value-label" text-anchor="middle">3.23 · 33.90% error</text>
-    <g class="mark" role="img" aria-label="DeepFilterNet3: DNSMOS 3.32; Macro ASR error 28.40 percent; Macro recognition score 71.60 percent">
-      <rect x="339.32" y="430.8" width="10" height="10" rx="1.4" fill="#FFFFFF" stroke="#D97706" stroke-width="2.4" />
-    </g>
-    <text x="356.32" y="428.8" class="method-label" text-anchor="start" fill="#172033">DeepFilterNet3</text>
-    <text x="356.32" y="443.8" class="value-label" text-anchor="start">3.32 · 28.40% error</text>
-    <circle cx="389.16" cy="312.8" r="11.9" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2" aria-hidden="true" />
-    <g class="primary-mark" role="img" aria-label="FactorGSE primary, separate record: input context 186.7 milliseconds; DNSMOS 3.62; Macro ASR error 25.45 percent; Macro recognition score 74.55 percent">
-      <polygon points="389.16,302.54 391.8,309.17 398.92,309.63 393.42,314.19 395.19,321.1 389.16,317.28 383.13,321.1 384.9,314.19 379.4,309.63 386.52,309.17" fill="#2563EB" stroke="#2563EB" stroke-width="2.4" />
-    </g>
-    <text x="404.16" y="297.8" class="method-label" text-anchor="start" fill="#1D4ED8">FactorGSE primary</text>
-    <text x="404.16" y="312.8" class="value-label" text-anchor="start">3.62 · 25.45% error · 186.7 ms</text>
-    <g class="mark">
-      <circle cx="92" cy="596" r="4" fill="#FFFFFF" stroke="#7A879C" stroke-width="2.4" />
-    </g>
-    <text x="103" y="600" class="legend-label" text-anchor="start">Offline</text>
-    <g class="mark">
-      <rect x="170" y="592" width="8" height="8" rx="1.4" fill="#FFFFFF" stroke="#D97706" stroke-width="2.4" />
-    </g>
-    <text x="185" y="600" class="legend-label" text-anchor="start">Streaming reference</text>
-    <g class="mark">
-      <polygon points="337,589.79 338.6,593.8 342.91,594.08 339.58,596.84 340.65,601.02 337,598.71 333.35,601.02 334.42,596.84 331.09,594.08 335.4,593.8" fill="#2563EB" stroke="#2563EB" stroke-width="2.4" />
-    </g>
-    <text x="349" y="600" class="legend-label" text-anchor="start">FactorGSE primary</text>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:ns2="http://creativecommons.org/ns#" xmlns:ns4="http://www.w3.org/1999/xlink" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" width="1180" height="600" viewBox="0 0 849.6 432" version="1.1" role="img" aria-labelledby="chart-title chart-desc">
+ <title id="chart-title">DNSMOS–recognition trade-off on URGENT 2025</title>
+ <metadata>
+  <rdf:RDF>
+   <ns2:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+    <dc:title>DNSMOS–recognition trade-off on URGENT 2025</dc:title>
+    <dc:description>Single-panel adaptation of the paper's Fig. 2. Recognition score is 100 minus Avg. WER/CER (%), not token accuracy. The blue curve connects four separately trained context configurations; the star is the separate 186.7-ms primary run.</dc:description>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <ns2:Agent>
+      <dc:title>FactorGSE</dc:title>
+     </ns2:Agent>
+    </dc:creator>
+   </ns2:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 432  L 849.6 432  L 849.6 0  L 0 0  z " style="fill: #ffffff" />
   </g>
-  <g id="panel-b" role="group" aria-label="Panel B, context sweep">
-    <rect x="588" y="94" width="564" height="528" rx="18" class="card" />
-    <rect x="610" y="111" width="30" height="30" rx="9" class="panel-tag" />
-    <text x="625" y="132" class="panel-letter" text-anchor="middle">B</text>
-    <text x="652" y="129" class="panel-title" text-anchor="start">Context sweep and primary point</text>
-    <text x="652" y="153" class="panel-subtitle" text-anchor="start">Four connected observations · star = independent primary record</text>
-    <line x1="996.32" y1="172" x2="996.32" y2="527" class="primary-guide" aria-label="186.7 millisecond primary-record guide" />
-    <rect x="952.3225531914893" y="166" width="88" height="22" rx="11" class="primary-pill" />
-    <text x="996.32" y="181" class="primary-pill-text" text-anchor="middle">186.7 ms</text>
-    <rect x="650.0" y="211" width="474.0" height="135" rx="10" fill="#EAF1FF" fill-opacity="0.38" />
-    <line x1="650" y1="323.5" x2="1124" y2="323.5" class="grid-line" />
-    <text x="640" y="327.5" class="tick-label" text-anchor="end">3.54</text>
-    <line x1="650" y1="278.5" x2="1124" y2="278.5" class="grid-line" />
-    <text x="640" y="282.5" class="tick-label" text-anchor="end">3.58</text>
-    <line x1="650" y1="233.5" x2="1124" y2="233.5" class="grid-line" />
-    <text x="640" y="237.5" class="tick-label" text-anchor="end">3.62</text>
-    <line x1="673.54" y1="211" x2="673.54" y2="346" class="vertical-grid" />
-    <line x1="781.11" y1="211" x2="781.11" y2="346" class="vertical-grid" />
-    <line x1="942.47" y1="211" x2="942.47" y2="346" class="vertical-grid" />
-    <line x1="1103.83" y1="211" x2="1103.83" y2="346" class="vertical-grid" />
-    <line x1="650" y1="211" x2="650" y2="346" class="axis-line" />
-    <line x1="650" y1="346" x2="1124" y2="346" class="axis-line" />
-    <rect x="650" y="184" width="176" height="23" rx="7" fill="#EAF1FF" />
-    <text x="661" y="201" class="metric-label" text-anchor="start" fill="#2563EB">DNSMOS ↑</text>
-    <polyline points="673.54,323.5 781.11,278.5 942.47,244.75 1103.83,233.5" class="dns-line" role="img" aria-label="Connected context sweep for DNSMOS ↑" />
-    <g class="mark" role="img" aria-label="Context sweep: 26.67 milliseconds, DNSMOS 3.54">
-      <circle cx="673.54" cy="323.5" r="5.0" fill="#2563EB" stroke="#2563EB" stroke-width="2.4" />
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 76.464 362.88  L 824.112 362.88  L 824.112 56.16  L 76.464 56.16  z " style="fill: #ffffff" />
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <path d="M 76.464 362.88  L 76.464 56.16  " clip-path="url(#p89b23a0e10)" style="fill: none; stroke: #d8dde3; stroke-width: 0.75; stroke-linecap: square" />
+     </g>
+     <g id="line2d_2">
+      <defs>
+       <path id="mc180ffb765" d="M 0 0  L 0 5  " style="stroke: #20252b" />
+      </defs>
+      <g>
+       <use ns4:href="#mc180ffb765" x="76.464" y="362.88" style="fill: #20252b; stroke: #20252b" />
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 13px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #20252b" x="76.464" y="385.344355" transform="rotate(-0 76.464 385.344355)">55</text>
+     </g>
     </g>
-    <g class="mark" role="img" aria-label="Context sweep: 80 milliseconds, DNSMOS 3.58">
-      <circle cx="781.11" cy="278.5" r="5.0" fill="#2563EB" stroke="#2563EB" stroke-width="2.4" />
+    <g id="xtick_2">
+     <g id="line2d_3">
+      <path d="M 201.072 362.88  L 201.072 56.16  " clip-path="url(#p89b23a0e10)" style="fill: none; stroke: #d8dde3; stroke-width: 0.75; stroke-linecap: square" />
+     </g>
+     <g id="line2d_4">
+      <g>
+       <use ns4:href="#mc180ffb765" x="201.072" y="362.88" style="fill: #20252b; stroke: #20252b" />
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 13px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #20252b" x="201.072" y="385.344355" transform="rotate(-0 201.072 385.344355)">60</text>
+     </g>
     </g>
-    <g class="mark" role="img" aria-label="Context sweep: 160 milliseconds, DNSMOS 3.61">
-      <circle cx="942.47" cy="244.75" r="5.0" fill="#2563EB" stroke="#2563EB" stroke-width="2.4" />
+    <g id="xtick_3">
+     <g id="line2d_5">
+      <path d="M 325.68 362.88  L 325.68 56.16  " clip-path="url(#p89b23a0e10)" style="fill: none; stroke: #d8dde3; stroke-width: 0.75; stroke-linecap: square" />
+     </g>
+     <g id="line2d_6">
+      <g>
+       <use ns4:href="#mc180ffb765" x="325.68" y="362.88" style="fill: #20252b; stroke: #20252b" />
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 13px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #20252b" x="325.68" y="385.344355" transform="rotate(-0 325.68 385.344355)">65</text>
+     </g>
     </g>
-    <g class="mark" role="img" aria-label="Context sweep: 240 milliseconds, DNSMOS 3.62">
-      <circle cx="1103.83" cy="233.5" r="5.0" fill="#2563EB" stroke="#2563EB" stroke-width="2.4" />
+    <g id="xtick_4">
+     <g id="line2d_7">
+      <path d="M 450.288 362.88  L 450.288 56.16  " clip-path="url(#p89b23a0e10)" style="fill: none; stroke: #d8dde3; stroke-width: 0.75; stroke-linecap: square" />
+     </g>
+     <g id="line2d_8">
+      <g>
+       <use ns4:href="#mc180ffb765" x="450.288" y="362.88" style="fill: #20252b; stroke: #20252b" />
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 13px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #20252b" x="450.288" y="385.344355" transform="rotate(-0 450.288 385.344355)">70</text>
+     </g>
     </g>
-    <circle cx="996.32" cy="233.5" r="10.9" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2" aria-hidden="true" />
-    <g class="primary-mark" role="img" aria-label="Primary separate record: context 186.7 milliseconds; DNSMOS 3.62">
-      <polygon points="996.32,224.59 998.61,230.35 1004.8,230.75 1000.03,234.7 1001.56,240.71 996.32,237.39 991.09,240.71 992.62,234.7 987.85,230.75 994.03,230.35" fill="#2563EB" stroke="#2563EB" stroke-width="2.4" />
+    <g id="xtick_5">
+     <g id="line2d_9">
+      <path d="M 574.896 362.88  L 574.896 56.16  " clip-path="url(#p89b23a0e10)" style="fill: none; stroke: #d8dde3; stroke-width: 0.75; stroke-linecap: square" />
+     </g>
+     <g id="line2d_10">
+      <g>
+       <use ns4:href="#mc180ffb765" x="574.896" y="362.88" style="fill: #20252b; stroke: #20252b" />
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 13px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #20252b" x="574.896" y="385.344355" transform="rotate(-0 574.896 385.344355)">75</text>
+     </g>
     </g>
-    <text x="673.54" y="312.5" class="point-value" text-anchor="middle" fill="#2563EB">3.54</text>
-    <text x="781.11" y="267.5" class="point-value" text-anchor="middle" fill="#2563EB">3.58</text>
-    <text x="937.47" y="263.75" class="point-value" text-anchor="end" fill="#2563EB">3.61</text>
-    <text x="1103.83" y="222.5" class="point-value" text-anchor="middle" fill="#2563EB">3.62</text>
-    <rect x="650.0" y="404" width="474.0" height="123" rx="10" fill="#FFF4E3" fill-opacity="0.38" />
-    <line x1="650" y1="499.67" x2="1124" y2="499.67" class="grid-line" />
-    <text x="640" y="503.67" class="tick-label" text-anchor="end">24.00</text>
-    <line x1="650" y1="458.67" x2="1124" y2="458.67" class="grid-line" />
-    <text x="640" y="462.67" class="tick-label" text-anchor="end">27.00</text>
-    <line x1="650" y1="417.67" x2="1124" y2="417.67" class="grid-line" />
-    <text x="640" y="421.67" class="tick-label" text-anchor="end">30.00</text>
-    <line x1="673.54" y1="404" x2="673.54" y2="527" class="vertical-grid" />
-    <line x1="781.11" y1="404" x2="781.11" y2="527" class="vertical-grid" />
-    <line x1="942.47" y1="404" x2="942.47" y2="527" class="vertical-grid" />
-    <line x1="1103.83" y1="404" x2="1103.83" y2="527" class="vertical-grid" />
-    <line x1="650" y1="404" x2="650" y2="527" class="axis-line" />
-    <line x1="650" y1="527" x2="1124" y2="527" class="axis-line" />
-    <rect x="650" y="377" width="176" height="23" rx="7" fill="#FFF4E3" />
-    <text x="661" y="394" class="metric-label" text-anchor="start" fill="#D97706">Macro ASR error (%) ↓</text>
-    <polyline points="673.54,419.72 781.11,445 942.47,460.72 1103.83,509.23" class="error-line" role="img" aria-label="Connected context sweep for Macro ASR error (%) ↓" />
-    <g class="mark" role="img" aria-label="Context sweep: 26.67 milliseconds, Macro ASR error (%) 29.85">
-      <rect x="668.54" y="414.72" width="10" height="10" rx="1.4" fill="#FFFFFF" stroke="#D97706" stroke-width="2.4" />
+    <g id="xtick_6">
+     <g id="line2d_11">
+      <path d="M 699.504 362.88  L 699.504 56.16  " clip-path="url(#p89b23a0e10)" style="fill: none; stroke: #d8dde3; stroke-width: 0.75; stroke-linecap: square" />
+     </g>
+     <g id="line2d_12">
+      <g>
+       <use ns4:href="#mc180ffb765" x="699.504" y="362.88" style="fill: #20252b; stroke: #20252b" />
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 13px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #20252b" x="699.504" y="385.344355" transform="rotate(-0 699.504 385.344355)">80</text>
+     </g>
     </g>
-    <g class="mark" role="img" aria-label="Context sweep: 80 milliseconds, Macro ASR error (%) 28.00">
-      <rect x="776.11" y="440" width="10" height="10" rx="1.4" fill="#FFFFFF" stroke="#D97706" stroke-width="2.4" />
+    <g id="xtick_7">
+     <g id="line2d_13">
+      <path d="M 824.112 362.88  L 824.112 56.16  " clip-path="url(#p89b23a0e10)" style="fill: none; stroke: #d8dde3; stroke-width: 0.75; stroke-linecap: square" />
+     </g>
+     <g id="line2d_14">
+      <g>
+       <use ns4:href="#mc180ffb765" x="824.112" y="362.88" style="fill: #20252b; stroke: #20252b" />
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 13px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #20252b" x="824.112" y="385.344355" transform="rotate(-0 824.112 385.344355)">85</text>
+     </g>
     </g>
-    <g class="mark" role="img" aria-label="Context sweep: 160 milliseconds, Macro ASR error (%) 26.85">
-      <rect x="937.47" y="455.72" width="10" height="10" rx="1.4" fill="#FFFFFF" stroke="#D97706" stroke-width="2.4" />
+    <g id="text_8">
+     <text style="font-size: 14.5px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #20252b" x="450.288" y="413.636592" transform="rotate(-0 450.288 413.636592)">Recognition score (%)  (higher is better)</text>
     </g>
-    <g class="mark" role="img" aria-label="Context sweep: 240 milliseconds, Macro ASR error (%) 23.30">
-      <rect x="1098.83" y="504.23" width="10" height="10" rx="1.4" fill="#FFFFFF" stroke="#D97706" stroke-width="2.4" />
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_15">
+      <path d="M 76.464 324.54  L 824.112 324.54  " clip-path="url(#p89b23a0e10)" style="fill: none; stroke: #d8dde3; stroke-width: 0.75; stroke-linecap: square" />
+     </g>
+     <g id="line2d_16">
+      <defs>
+       <path id="m5a1c50a9a4" d="M 0 0  L -5 0  " style="stroke: #20252b" />
+      </defs>
+      <g>
+       <use ns4:href="#m5a1c50a9a4" x="76.464" y="324.54" style="fill: #20252b; stroke: #20252b" />
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 13px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #20252b" x="63.464" y="329.272178" transform="rotate(-0 63.464 329.272178)">3.2</text>
+     </g>
     </g>
-    <circle cx="996.32" cy="479.85" r="10.9" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="2" aria-hidden="true" />
-    <g class="primary-mark" role="img" aria-label="Primary separate record: context 186.7 milliseconds; Macro ASR error (%) 25.45">
-      <polygon points="996.32,470.94 998.61,476.7 1004.8,477.1 1000.03,481.05 1001.56,487.06 996.32,483.74 991.09,487.06 992.62,481.05 987.85,477.1 994.03,476.7" fill="#D97706" stroke="#D97706" stroke-width="2.4" />
+    <g id="ytick_2">
+     <g id="line2d_17">
+      <path d="M 76.464 247.86  L 824.112 247.86  " clip-path="url(#p89b23a0e10)" style="fill: none; stroke: #d8dde3; stroke-width: 0.75; stroke-linecap: square" />
+     </g>
+     <g id="line2d_18">
+      <g>
+       <use ns4:href="#m5a1c50a9a4" x="76.464" y="247.86" style="fill: #20252b; stroke: #20252b" />
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 13px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #20252b" x="63.464" y="252.592178" transform="rotate(-0 63.464 252.592178)">3.4</text>
+     </g>
     </g>
-    <text x="673.54" y="408.72" class="point-value" text-anchor="middle" fill="#D97706">29.85</text>
-    <text x="781.11" y="434" class="point-value" text-anchor="middle" fill="#D97706">28.00</text>
-    <text x="937.47" y="479.72" class="point-value" text-anchor="end" fill="#D97706">26.85</text>
-    <text x="1103.83" y="498.23" class="point-value" text-anchor="middle" fill="#D97706">23.30</text>
-    <line x1="673.54" y1="527" x2="673.54" y2="532" class="axis-line" />
-    <text x="673.54" y="549" class="tick-label" text-anchor="middle">26.7</text>
-    <line x1="781.11" y1="527" x2="781.11" y2="532" class="axis-line" />
-    <text x="781.11" y="549" class="tick-label" text-anchor="middle">80</text>
-    <line x1="942.47" y1="527" x2="942.47" y2="532" class="axis-line" />
-    <text x="942.47" y="549" class="tick-label" text-anchor="middle">160</text>
-    <line x1="1103.83" y1="527" x2="1103.83" y2="532" class="axis-line" />
-    <text x="1103.83" y="549" class="tick-label" text-anchor="middle">240</text>
-    <line x1="996.32" y1="527" x2="996.32" y2="534" class="primary-tick" />
-    <text x="996.32" y="551" class="primary-tick-label" text-anchor="middle">186.7</text>
-    <text x="887" y="574" class="axis-title" text-anchor="middle">Configured input context (ms)</text>
-    <g class="mark">
-      <polygon points="650,589.79 651.6,593.8 655.91,594.08 652.58,596.84 653.65,601.02 650,598.71 646.35,601.02 647.42,596.84 644.09,594.08 648.4,593.8" fill="#2563EB" stroke="#2563EB" stroke-width="2.4" />
+    <g id="ytick_3">
+     <g id="line2d_19">
+      <path d="M 76.464 171.18  L 824.112 171.18  " clip-path="url(#p89b23a0e10)" style="fill: none; stroke: #d8dde3; stroke-width: 0.75; stroke-linecap: square" />
+     </g>
+     <g id="line2d_20">
+      <g>
+       <use ns4:href="#m5a1c50a9a4" x="76.464" y="171.18" style="fill: #20252b; stroke: #20252b" />
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 13px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #20252b" x="63.464" y="175.912178" transform="rotate(-0 63.464 175.912178)">3.6</text>
+     </g>
     </g>
-    <text x="663" y="600" class="legend-label-strong" text-anchor="start">Primary (separate run):</text>
-    <text x="802" y="600" class="legend-label" text-anchor="start">3.62 DNSMOS · 25.45% error</text>
+    <g id="ytick_4">
+     <g id="line2d_21">
+      <path d="M 76.464 94.5  L 824.112 94.5  " clip-path="url(#p89b23a0e10)" style="fill: none; stroke: #d8dde3; stroke-width: 0.75; stroke-linecap: square" />
+     </g>
+     <g id="line2d_22">
+      <g>
+       <use ns4:href="#m5a1c50a9a4" x="76.464" y="94.5" style="fill: #20252b; stroke: #20252b" />
+      </g>
+     </g>
+     <g id="text_12">
+      <text style="font-size: 13px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #20252b" x="63.464" y="99.232178" transform="rotate(-0 63.464 99.232178)">3.8</text>
+     </g>
+    </g>
+    <g id="text_13">
+     <text style="font-size: 14.5px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #20252b" x="22.342203" y="209.52" transform="rotate(-90 22.342203 209.52)">DNSMOS  (higher is better)</text>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 76.464 362.88  L 76.464 56.16  " style="fill: none; stroke: #20252b; stroke-width: 1.1; stroke-linejoin: miter; stroke-linecap: square" />
+   </g>
+   <g id="patch_4">
+    <path d="M 76.464 362.88  L 824.112 362.88  " style="fill: none; stroke: #20252b; stroke-width: 1.1; stroke-linejoin: miter; stroke-linecap: square" />
+   </g>
+   <g id="baseline-0">
+    <defs>
+     <path id="m20513dea28" d="M 0 4.25  C 1.127113 4.25 2.208214 3.802193 3.005204 3.005204  C 3.802193 2.208214 4.25 1.127113 4.25 0  C 4.25 -1.127113 3.802193 -2.208214 3.005204 -3.005204  C 2.208214 -3.802193 1.127113 -4.25 0 -4.25  C -1.127113 -4.25 -2.208214 -3.802193 -3.005204 -3.005204  C -3.802193 -2.208214 -4.25 -1.127113 -4.25 0  C -4.25 1.127113 -3.802193 2.208214 -3.005204 3.005204  C -2.208214 3.802193 -1.127113 4.25 0 4.25  z " style="stroke: #66707a; stroke-width: 1.8" />
+    </defs>
+    <g clip-path="url(#p89b23a0e10)">
+     <use ns4:href="#m20513dea28" x="775.51488" y="106.002" style="fill: #ffffff; stroke: #66707a; stroke-width: 1.8" />
+    </g>
+   </g>
+   <g id="baseline-1">
+    <g clip-path="url(#p89b23a0e10)">
+     <use ns4:href="#m20513dea28" x="370.53888" y="259.362" style="fill: #ffffff; stroke: #66707a; stroke-width: 1.8" />
+    </g>
+   </g>
+   <g id="baseline-2">
+    <g clip-path="url(#p89b23a0e10)">
+     <use ns4:href="#m20513dea28" x="369.2928" y="75.33" style="fill: #ffffff; stroke: #66707a; stroke-width: 1.8" />
+    </g>
+   </g>
+   <g id="baseline-3">
+    <defs>
+     <path id="m047d1d5451" d="M -4.25 4.25  L 4.25 4.25  L 4.25 -4.25  L -4.25 -4.25  z " style="stroke: #c56a14; stroke-width: 1.8; stroke-linejoin: miter" />
+    </defs>
+    <g clip-path="url(#p89b23a0e10)">
+     <use ns4:href="#m047d1d5451" x="490.16256" y="278.532" style="fill: #ffffff; stroke: #c56a14; stroke-width: 1.8; stroke-linejoin: miter" />
+    </g>
+   </g>
+   <g id="baseline-4">
+    <g clip-path="url(#p89b23a0e10)">
+     <use ns4:href="#m047d1d5451" x="353.09376" y="313.038" style="fill: #ffffff; stroke: #c56a14; stroke-width: 1.8; stroke-linejoin: miter" />
+    </g>
+   </g>
+   <g id="baseline-5">
+    <g clip-path="url(#p89b23a0e10)">
+     <use ns4:href="#m047d1d5451" x="111.35424" y="309.204" style="fill: #ffffff; stroke: #c56a14; stroke-width: 1.8; stroke-linejoin: miter" />
+    </g>
+   </g>
+   <g id="context-sweep-four-runs">
+    <path d="M 454.02624 194.184  L 500.1312 178.848  L 528.79104 167.346  L 617.26272 163.512  " clip-path="url(#p89b23a0e10)" style="fill: none; stroke: #245c94; stroke-width: 1.9; stroke-linecap: square" />
+    <defs>
+     <path id="m2aa54f6d0e" d="M 0 4.25  C 1.127113 4.25 2.208214 3.802193 3.005204 3.005204  C 3.802193 2.208214 4.25 1.127113 4.25 0  C 4.25 -1.127113 3.802193 -2.208214 3.005204 -3.005204  C 2.208214 -3.802193 1.127113 -4.25 0 -4.25  C -1.127113 -4.25 -2.208214 -3.802193 -3.005204 -3.005204  C -3.802193 -2.208214 -4.25 -1.127113 -4.25 0  C -4.25 1.127113 -3.802193 2.208214 -3.005204 3.005204  C -2.208214 3.802193 -1.127113 4.25 0 4.25  z " style="stroke: #245c94" />
+    </defs>
+    <g clip-path="url(#p89b23a0e10)">
+     <use ns4:href="#m2aa54f6d0e" x="454.02624" y="194.184" style="fill: #245c94; stroke: #245c94" />
+     <use ns4:href="#m2aa54f6d0e" x="500.1312" y="178.848" style="fill: #245c94; stroke: #245c94" />
+     <use ns4:href="#m2aa54f6d0e" x="528.79104" y="167.346" style="fill: #245c94; stroke: #245c94" />
+     <use ns4:href="#m2aa54f6d0e" x="617.26272" y="163.512" style="fill: #245c94; stroke: #245c94" />
+    </g>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 14.5px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #245c94" x="447.79584" y="219.023441" transform="rotate(-0 447.79584 219.023441)">26.7</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 14.5px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #245c94" x="500.1312" y="219.023441" transform="rotate(-0 500.1312 219.023441)">80</text>
+   </g>
+   <g id="patch_5">
+    <path d="M 518.664662 145.090761  Q 522.070819 152.576639 525.476975 160.062517  " style="fill: none; stroke: #aeb6bf; stroke-width: 0.8; stroke-linecap: round" />
+   </g>
+   <g id="text_16">
+    <text style="font-size: 14.5px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #245c94" x="511.34592" y="132.758441" transform="rotate(-0 511.34592 132.758441)">160</text>
+   </g>
+   <g id="patch_6">
+    <path d="M 625.219307 145.151087  Q 622.830971 150.662499 620.442635 156.17391  " style="fill: none; stroke: #aeb6bf; stroke-width: 0.8; stroke-linecap: round" />
+   </g>
+   <g id="text_17">
+    <text style="font-size: 14.5px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #245c94" x="632.21568" y="132.758441" transform="rotate(-0 632.21568 132.758441)">240</text>
+   </g>
+   <g id="patch_7">
+    <path d="M 563.68128 145.816133  Q 563.68128 150.164495 563.68128 154.512856  " style="fill: none; stroke: #aeb6bf; stroke-width: 0.8; stroke-linecap: round" />
+   </g>
+   <g id="text_18">
+    <text style="font-weight: 700; font-size: 14.5px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #245c94" x="563.68128" y="132.758441" transform="rotate(-0 563.68128 132.758441)">186.7</text>
+   </g>
+   <g id="line2d_23">
+    <defs>
+     <path id="m1e48002133" d="M 0 8  C 2.121625 8 4.156639 7.15707 5.656854 5.656854  C 7.15707 4.156639 8 2.121625 8 0  C 8 -2.121625 7.15707 -4.156639 5.656854 -5.656854  C 4.156639 -7.15707 2.121625 -8 0 -8  C -2.121625 -8 -4.156639 -7.15707 -5.656854 -5.656854  C -7.15707 -4.156639 -8 -2.121625 -8 0  C -8 2.121625 -7.15707 4.156639 -5.656854 5.656854  C -4.156639 7.15707 -2.121625 8 0 8  z " style="stroke: #ffffff" />
+    </defs>
+    <g clip-path="url(#p89b23a0e10)">
+     <use ns4:href="#m1e48002133" x="563.68128" y="163.512" style="fill: #ffffff; stroke: #ffffff" />
+    </g>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 13.5px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #20252b" x="764.51488" y="91.160672" transform="rotate(-0 764.51488 91.160672)">DelayGSE†</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 13.5px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #20252b" x="381.53888" y="262.855521" transform="rotate(-0 381.53888 262.855521)">Bridge</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 13.5px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #20252b" x="380.2928" y="78.823652" transform="rotate(-0 380.2928 78.823652)">UniSE</text>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 13.5px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #20252b" x="501.16256" y="282.025652" transform="rotate(-0 501.16256 282.025652)">DeepFilterNet3</text>
+   </g>
+   <g id="text_23">
+    <text style="font-size: 13.5px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #20252b" x="364.09376" y="316.531652" transform="rotate(-0 364.09376 316.531652)">FastEnhancer-L</text>
+   </g>
+   <g id="text_24">
+    <text style="font-size: 13.5px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #20252b" x="122.35424" y="312.697652" transform="rotate(-0 122.35424 312.697652)">Stream.FM</text>
+   </g>
+   <g id="primary-separate-run">
+    <defs>
+     <path id="m5f9cc21efc" d="M 0 -7  L -1.571598 -2.163119  L -6.657396 -2.163119  L -2.542899 0.826238  L -4.114497 5.663119  L -0 2.673762  L 4.114497 5.663119  L 2.542899 0.826238  L 6.657396 -2.163119  L 1.571598 -2.163119  z " style="stroke: #245c94; stroke-linejoin: bevel" />
+    </defs>
+    <g clip-path="url(#p89b23a0e10)">
+     <use ns4:href="#m5f9cc21efc" x="563.68128" y="163.512" style="fill: #245c94; stroke: #245c94; stroke-linejoin: bevel" />
+    </g>
+   </g>
   </g>
-  <text x="28" y="654" class="footer-note-strong" text-anchor="start">Macro recognition score = 100 − Macro ASR error; it is direction-aligned, not token accuracy.</text>
-  <text x="28" y="678" class="footer-note" text-anchor="start">Noisy input omitted. † DelayGSE is inherited; external training data and latency definitions are not harmonized.</text>
-</svg>
+  <g id="legend_1">
+   <g id="line2d_24">
+    <g>
+     <use ns4:href="#m20513dea28" x="262.332883" y="22.859609" style="fill: #ffffff; stroke: #66707a; stroke-width: 1.8" />
+    </g>
+   </g>
+   <g id="text_25">
+    <text style="font-size: 14.5px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #20252b" x="286.257883" y="27.934609" transform="rotate(-0 286.257883 27.934609)">Offline</text>
+   </g>
+   <g id="line2d_25">
+    <g>
+     <use ns4:href="#m047d1d5451" x="397.50007" y="22.859609" style="fill: #ffffff; stroke: #c56a14; stroke-width: 1.8; stroke-linejoin: miter" />
+    </g>
+   </g>
+   <g id="text_26">
+    <text style="font-size: 14.5px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #20252b" x="421.42507" y="27.934609" transform="rotate(-0 421.42507 27.934609)">Streaming</text>
+   </g>
+   <g id="line2d_26">
+    <path d="M 542.606555 22.859609  L 557.106555 22.859609  L 571.606555 22.859609  " style="fill: none; stroke: #245c94; stroke-width: 1.9; stroke-linecap: square" />
+    <g>
+     <use ns4:href="#m2aa54f6d0e" x="557.106555" y="22.859609" style="fill: #245c94; stroke: #245c94" />
+    </g>
+   </g>
+   <g id="text_27">
+    <text style="font-size: 14.5px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #20252b" x="581.031555" y="27.934609" transform="rotate(-0 581.031555 27.934609)">FactorGSE</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p89b23a0e10">
+   <rect x="76.464" y="56.16" width="747.648" height="306.72" />
+  </clipPath>
+ </defs>
+<desc id="chart-desc">DNSMOS versus recognition score for six baseline systems, four FactorGSE context-sweep models and one independent primary model. Both axes improve toward the upper right.</desc><metadata id="figure-data">{"connected_contexts_ms": [26.67, 80.0, 160.0, 240.0], "evaluation": "URGENT 2025 Non-blind test set: 400 utterances (300 English, 100 Chinese)", "metric": "Avg. WER/CER (%) = unweighted mean of English WER (%) and Chinese CER (%)", "points": [{"avg_wer_cer": 16.95, "category": "offline", "context_ms": null, "dnsmos": 3.77, "inherited": true, "label": "DelayGSE\u2020", "recognition_score": 83.05}, {"avg_wer_cer": 33.2, "category": "offline", "context_ms": null, "dnsmos": 3.37, "inherited": false, "label": "Bridge", "recognition_score": 66.8}, {"avg_wer_cer": 33.25, "category": "offline", "context_ms": null, "dnsmos": 3.85, "inherited": false, "label": "UniSE", "recognition_score": 66.75}, {"avg_wer_cer": 28.4, "category": "streaming", "context_ms": null, "dnsmos": 3.32, "inherited": false, "label": "DeepFilterNet3", "recognition_score": 71.6}, {"avg_wer_cer": 33.9, "category": "streaming", "context_ms": null, "dnsmos": 3.23, "inherited": false, "label": "FastEnhancer-L", "recognition_score": 66.1}, {"avg_wer_cer": 43.6, "category": "streaming", "context_ms": null, "dnsmos": 3.24, "inherited": false, "label": "Stream.FM", "recognition_score": 56.4}, {"avg_wer_cer": 29.85, "category": "context sweep", "context_ms": 26.67, "dnsmos": 3.54, "inherited": false, "label": "26.7", "recognition_score": 70.15}, {"avg_wer_cer": 28.0, "category": "context sweep", "context_ms": 80.0, "dnsmos": 3.58, "inherited": false, "label": "80", "recognition_score": 72.0}, {"avg_wer_cer": 26.85, "category": "context sweep", "context_ms": 160.0, "dnsmos": 3.61, "inherited": false, "label": "160", "recognition_score": 73.15}, {"avg_wer_cer": 23.3, "category": "context sweep", "context_ms": 240.0, "dnsmos": 3.62, "inherited": false, "label": "240", "recognition_score": 76.7}, {"avg_wer_cer": 25.45, "category": "primary separate run", "context_ms": 186.7, "dnsmos": 3.62, "inherited": false, "label": "186.7", "recognition_score": 74.55}], "source": ["edge_gse_paper/main.tex", "edge_gse_paper/figures/plot_dns_avgwer_tradeoff.py"], "x": "Recognition score (%) = 100 - Avg. WER/CER (%)", "y": "DNSMOS"}</metadata></svg>
