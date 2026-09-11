@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/index.css?v=20260910-refined-demo">
+  <link rel="stylesheet" href="static/css/index.css?v=20260911-cmgan">
   <title>FactorGSE: Selective Autoregression for Low-Latency Streaming Generative Speech Enhancement</title>
 </head>
 <body>
@@ -57,7 +57,7 @@
       <div class="content-shell narrow-shell">
         <div class="section-heading"><h2>Abstract</h2></div>
         <div class="abstract-copy">
-          <p>Autoregression need not be an all-or-nothing choice for codec-based streaming speech enhancement. Temporal feedback can propagate semantic errors, especially with limited look-ahead, whereas fully non-autoregressive (NAR) decoding omits explicit coarse-to-fine dependencies among residual vector quantization tokens. We introduce FactorGSE, which combines time-non-autoregressive (time-NAR) prediction of semantically distilled first-codebook tokens from bounded degraded speech without generated-token feedback, intra-frame depth-autoregressive (depth-AR) residual decoding, and residual-token recurrence for cross-frame acoustic context only in residual decoding. On 400 bilingual URGENT 2025 utterances, an aligned ablation shows 45.0% lower average WER/CER without temporal feedback, while a double-blind listening test favors depth-AR over fully NAR. FactorGSE outperforms all evaluated streaming baselines in objective speech quality, recognition-based intelligibility, and speaker similarity. An edge implementation runs in real time on a 40-TOPS-class NPU at a 186.7-ms input-context budget. Audio samples and a real-time demo: <a href="https://delaygse.github.io/factorgse/">https://delaygse.github.io/factorgse/</a>.</p>
+          <p>Autoregression need not be an all-or-nothing choice for codec-based streaming speech enhancement. Temporal feedback can propagate semantic errors, especially with limited look-ahead, whereas fully non-autoregressive (NAR) decoding omits explicit coarse-to-fine dependencies among residual vector quantization tokens. We introduce FactorGSE, which combines time-non-autoregressive (time-NAR) prediction of semantically distilled first-codebook tokens from bounded degraded speech without generated-token feedback, intra-frame depth-autoregressive (depth-AR) residual decoding, and residual-token recurrence for cross-frame acoustic context only in residual decoding. On 400 bilingual URGENT 2025 utterances, an aligned ablation shows 45.0% lower average WER/CER without temporal feedback, while a double-blind listening test favors depth-AR over fully NAR. FactorGSE outperforms all evaluated streaming baselines in DNSMOS, average WER/CER, and speaker similarity. The compact variant runs in real time on MediaTek MT8678 with 206.01-ms first-packet latency. Audio samples and a real-time demo: <a href="https://delaygse.github.io/factorgse/">https://delaygse.github.io/factorgse/</a>.</p>
         </div>
       </div>
     </section>
@@ -84,10 +84,41 @@
         </div>
         <figure class="results-figure">
           <div class="results-chart-scroll" tabindex="0" aria-label="Scrollable results chart">
-            <img src="static/images/results_tradeoff_web.svg?v=20260910-single-fig2" width="1180" height="600" loading="lazy" decoding="async" alt="Single-panel DNSMOS–recognition trade-off from paper Figure 2: six baseline systems, four connected FactorGSE input-context configurations, and a star for the separate 186.7-ms primary run; upper right is better">
+            <img src="static/images/results_tradeoff_web.svg?v=20260911-cmgan" width="1180" height="600" loading="lazy" decoding="async" alt="Single-panel DNSMOS–recognition trade-off from paper Figure 2: seven baseline systems including offline CMGAN, four connected FactorGSE input-context configurations, and a star for the separate 186.7-ms primary run; upper right is better">
           </div>
           <figcaption><strong>Figure 2.</strong> DNSMOS–recognition trade-off on URGENT 2025 (upper right is better), adapted from the paper for the web. Recognition score is 100 − Avg. WER/CER (%), not token accuracy; Avg. WER/CER is the unweighted mean of English WER and Chinese CER. Blue labels denote input context in milliseconds. Connected points show four separately trained 300,000-step configurations; the star is the separate 186.7-ms primary run. Noisy input is omitted; † denotes inherited quality scores.</figcaption>
         </figure>
+        <div class="benchmark-results">
+          <div class="benchmark-scroll" role="region" tabindex="0" aria-labelledby="benchmark-caption" aria-describedby="benchmark-notes">
+            <table class="benchmark-table">
+              <caption id="benchmark-caption">Enhancement results on URGENT 2025</caption>
+              <thead>
+                <tr><th scope="col">Method</th><th scope="col">DNSMOS ↑</th><th scope="col">Avg. WER/CER<br>(%) ↓</th><th scope="col">SIM ↑</th><th scope="col">Params<br>(M)</th><th scope="col">MACs<br>(G/s)</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Clean</th><td>3.67</td><td>4.55</td><td>1.00</td><td>—</td><td>—</td></tr>
+                <tr><th scope="row">Clean codec reconstruction</th><td>3.67</td><td>4.90</td><td>0.90</td><td>—</td><td>—</td></tr>
+                <tr><th scope="row">Noisy input</th><td>2.74</td><td>15.55</td><td>0.70</td><td>—</td><td>—</td></tr>
+              </tbody>
+              <tbody>
+                <tr class="benchmark-group"><th colspan="6" scope="rowgroup">Offline enhancement</th></tr>
+                <tr><th scope="row">UniSE</th><td>3.85</td><td>33.25</td><td>0.66</td><td>253.98</td><td>42.78</td></tr>
+                <tr><th scope="row">DelayGSE†</th><td>3.77</td><td>16.95</td><td>0.63</td><td>1286.32</td><td>259.05</td></tr>
+                <tr><th scope="row">Bridge</th><td>3.37</td><td>33.20</td><td>0.59</td><td>2.16</td><td>182.71</td></tr>
+                <tr><th scope="row">CMGAN</th><td>3.22</td><td>34.90</td><td>0.69</td><td>1.83</td><td>34.61</td></tr>
+              </tbody>
+              <tbody>
+                <tr class="benchmark-group"><th colspan="6" scope="rowgroup">Streaming enhancement</th></tr>
+                <tr><th scope="row">Stream.FM</th><td>3.24</td><td>43.60</td><td>0.66</td><td>52.51</td><td>705.22</td></tr>
+                <tr><th scope="row">FastEnhancer-L</th><td>3.23</td><td>33.90</td><td>0.66</td><td>1.14</td><td>32.38</td></tr>
+                <tr><th scope="row">DeepFilterNet3</th><td>3.32</td><td>28.40</td><td>0.70</td><td>2.14</td><td>0.33</td></tr>
+                <tr class="benchmark-ours"><th scope="row">FactorGSE</th><td><span class="second-best">3.62</span></td><td><strong>25.45</strong></td><td><span class="second-best">0.71</span></td><td>578.45</td><td>68.89</td></tr>
+                <tr class="benchmark-ours"><th scope="row">FactorGSE (Small)</th><td><strong>3.63</strong></td><td><span class="second-best">25.75</span></td><td><strong>0.73</strong></td><td>255.29</td><td>32.65</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p id="benchmark-notes" class="benchmark-notes">Source: paper Table 1; fixed-checkpoint scores on 400 utterances (300 English, 100 Chinese). <strong>Bold</strong> and <span class="second-best">underline</span> mark the best and second-best streaming scores. † denotes inherited quality scores. Both FactorGSE configurations use 186.7-ms input context; external systems retain their native configurations. MACs are per audio second, profiled on 10-s, 24-kHz inputs at batch size one; FactorGSE includes codec synthesis.</p>
+        </div>
       </div>
     </section>
 
@@ -134,7 +165,7 @@
         <section class="experiment-group" aria-labelledby="main-comparison-heading">
           <div class="experiment-heading">
             <div><h3 id="main-comparison-heading">Comparison with available enhancement systems</h3></div>
-            <p>Clean speech and clean codec reconstruction provide references. FactorGSE and FactorGSE (Small) both use 186.7-ms input context; external systems retain their own configurations. † marks inherited DelayGSE quality scores.</p>
+            <p>Clean speech and clean codec reconstruction provide references. CMGAN uses its released offline checkpoint. FactorGSE and FactorGSE (Small) both use 186.7-ms input context; external systems retain their own configurations. † marks inherited DelayGSE quality scores.</p>
           </div>
           <div id="main-comparison-table" class="audio-comparison" aria-live="polite"></div>
         </section>
@@ -165,6 +196,6 @@
       <p>Page structure adapted from the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noopener">Academic Project Page Template</a>.</p>
     </div>
   </footer>
-  <script src="static/js/factorgse-page.js?v=20260910-metric-names" defer></script>
+  <script src="static/js/factorgse-page.js?v=20260911-cmgan" defer></script>
 </body>
 </html>

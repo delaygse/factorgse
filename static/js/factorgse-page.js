@@ -14,6 +14,13 @@
     { key: "unise", label: "UniSE", tag: "Offline", file: "unise.wav" },
     { key: "delaygse", label: "DelayGSE†", tag: "Inherited", file: "delaygse.wav" },
     { key: "bridge", label: "Bridge (retrained)", tag: "Offline", file: "bridge.wav" },
+    {
+      key: "cmgan",
+      label: "CMGAN",
+      tag: "Offline",
+      meta: "DNSMOS 3.22 · Avg. WER/CER 34.90% · SIM 0.69",
+      file: "cmgan.wav"
+    },
     { key: "streamfm", label: "Stream.FM", tag: "Streaming", file: "streamfm.wav" },
     { key: "fastenhancer-l", label: "FastEnhancer-L", tag: "Streaming", file: "fastenhancer-l.wav" },
     { key: "deepfilternet3", label: "DeepFilterNet3", tag: "Streaming", file: "deepfilternet3.wav" },

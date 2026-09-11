@@ -6,8 +6,8 @@ Chart contract
 Question: how do DNSMOS and bilingual recognition compare across the paper's
 systems and separately trained input-context configurations?
 Family: relationship / labelled scatter with one four-point context path.
-Grain: 11 fixed-checkpoint aggregate observations from URGENT 2025 (400
-utterances: 300 English, 100 Chinese). All 11 points are intentionally labelled.
+Grain: 12 fixed-checkpoint aggregate observations from URGENT 2025 (400
+utterances: 300 English, 100 Chinese). All 12 points are intentionally labelled.
 The four sweep models are connected; the separate 186.7-ms primary run is not.
 Axes: x = 100 - Avg. WER/CER (%), y = DNSMOS; same limits as the paper's Fig. 2.
 Surface: static SVG in the existing academic GitHub Pages results section,
@@ -62,6 +62,7 @@ BASELINES = (
     Point("DelayGSE†", 16.95, 3.77, "offline", inherited=True),
     Point("Bridge", 33.20, 3.37, "offline"),
     Point("UniSE", 33.25, 3.85, "offline"),
+    Point("CMGAN", 34.90, 3.22, "offline"),
     Point("DeepFilterNet3", 28.40, 3.32, "streaming"),
     Point("FastEnhancer-L", 33.90, 3.23, "streaming"),
     Point("Stream.FM", 43.60, 3.24, "streaming"),
@@ -81,7 +82,7 @@ COLORS = {
 
 
 def validate_source() -> None:
-    assert len(POINTS) == 11
+    assert len(POINTS) == 12
     assert PRIMARY.context_ms not in {p.context_ms for p in SWEEP}
     assert PRIMARY.recognition_score == 74.55
     source = PAPER_ROOT / "figures/plot_dns_avgwer_tradeoff.py"
@@ -132,9 +133,13 @@ def build_figure():
                         markeredgewidth=1.8, linestyle="none", zorder=3)
         mark.set_gid(f"baseline-{i}")
         offset = (-11, 12) if p.inherited else (11, 0)
+        align = "right" if p.inherited else "left"
+        vertical = "bottom" if p.inherited else "center"
+        if p.label == "CMGAN":
+            offset, align, vertical = (0, -12), "center", "top"
         ax.annotate(p.label, (p.recognition_score, p.dnsmos), xytext=offset,
-                    textcoords="offset points", ha="right" if p.inherited else "left",
-                    va="bottom" if p.inherited else "center", fontsize=13.5, zorder=5)
+                    textcoords="offset points", ha=align,
+                    va=vertical, fontsize=13.5, zorder=5)
 
     line, = ax.plot([p.recognition_score for p in SWEEP], [p.dnsmos for p in SWEEP],
                     color=COLORS["blue"], linewidth=1.9, marker="o", markersize=8.5,
@@ -198,7 +203,7 @@ def main() -> None:
     # Matplotlib's vector viewBox is in points; width/height retain the same ratio.
     root.find(f"{{{SVG_NS}}}title").set("id", "chart-title")
     desc = ET.SubElement(root, f"{{{SVG_NS}}}desc", {"id": "chart-desc"})
-    desc.text = "DNSMOS versus recognition score for six baseline systems, four FactorGSE context-sweep models and one independent primary model. Both axes improve toward the upper right."
+    desc.text = "DNSMOS versus recognition score for seven baseline systems, including offline CMGAN, four FactorGSE context-sweep models and one independent primary model. Both axes improve toward the upper right."
     metadata = ET.SubElement(root, f"{{{SVG_NS}}}metadata", {"id": "figure-data"})
     metadata.text = json.dumps({
         "source": ["edge_gse_paper/main.tex", "edge_gse_paper/figures/plot_dns_avgwer_tradeoff.py"],
@@ -213,7 +218,7 @@ def main() -> None:
         args.preview.parent.mkdir(parents=True, exist_ok=True)
         fig.savefig(args.preview, dpi=DPI)
     plt.close(fig)
-    print(f"Wrote {output}: one panel, 11 source-verified points, {WIDTH} x {HEIGHT}.")
+    print(f"Wrote {output}: one panel, {len(POINTS)} source-verified points, {WIDTH} x {HEIGHT}.")
 
 
 if __name__ == "__main__":

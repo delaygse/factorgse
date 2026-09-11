@@ -211,6 +211,11 @@
     </g>
    </g>
    <g id="baseline-3">
+    <g clip-path="url(#p89b23a0e10)">
+     <use ns4:href="#m20513dea28" x="328.17216" y="316.872" style="fill: #ffffff; stroke: #66707a; stroke-width: 1.8" />
+    </g>
+   </g>
+   <g id="baseline-4">
     <defs>
      <path id="m047d1d5451" d="M -4.25 4.25  L 4.25 4.25  L 4.25 -4.25  L -4.25 -4.25  z " style="stroke: #c56a14; stroke-width: 1.8; stroke-linejoin: miter" />
     </defs>
@@ -218,12 +223,12 @@
      <use ns4:href="#m047d1d5451" x="490.16256" y="278.532" style="fill: #ffffff; stroke: #c56a14; stroke-width: 1.8; stroke-linejoin: miter" />
     </g>
    </g>
-   <g id="baseline-4">
+   <g id="baseline-5">
     <g clip-path="url(#p89b23a0e10)">
      <use ns4:href="#m047d1d5451" x="353.09376" y="313.038" style="fill: #ffffff; stroke: #c56a14; stroke-width: 1.8; stroke-linejoin: miter" />
     </g>
    </g>
-   <g id="baseline-5">
+   <g id="baseline-6">
     <g clip-path="url(#p89b23a0e10)">
      <use ns4:href="#m047d1d5451" x="111.35424" y="309.204" style="fill: #ffffff; stroke: #c56a14; stroke-width: 1.8; stroke-linejoin: miter" />
     </g>
@@ -282,12 +287,15 @@
     <text style="font-size: 13.5px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #20252b" x="380.2928" y="78.823652" transform="rotate(-0 380.2928 78.823652)">UniSE</text>
    </g>
    <g id="text_22">
-    <text style="font-size: 13.5px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #20252b" x="501.16256" y="282.025652" transform="rotate(-0 501.16256 282.025652)">DeepFilterNet3</text>
+    <text style="font-size: 13.5px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #20252b" x="328.17216" y="338.700369" transform="rotate(-0 328.17216 338.700369)">CMGAN</text>
    </g>
    <g id="text_23">
-    <text style="font-size: 13.5px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #20252b" x="364.09376" y="316.531652" transform="rotate(-0 364.09376 316.531652)">FastEnhancer-L</text>
+    <text style="font-size: 13.5px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #20252b" x="501.16256" y="282.025652" transform="rotate(-0 501.16256 282.025652)">DeepFilterNet3</text>
    </g>
    <g id="text_24">
+    <text style="font-size: 13.5px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #20252b" x="364.09376" y="316.531652" transform="rotate(-0 364.09376 316.531652)">FastEnhancer-L</text>
+   </g>
+   <g id="text_25">
     <text style="font-size: 13.5px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #20252b" x="122.35424" y="312.697652" transform="rotate(-0 122.35424 312.697652)">Stream.FM</text>
    </g>
    <g id="primary-separate-run">
@@ -305,7 +313,7 @@
      <use ns4:href="#m20513dea28" x="262.332883" y="22.859609" style="fill: #ffffff; stroke: #66707a; stroke-width: 1.8" />
     </g>
    </g>
-   <g id="text_25">
+   <g id="text_26">
     <text style="font-size: 14.5px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #20252b" x="286.257883" y="27.934609" transform="rotate(-0 286.257883 27.934609)">Offline</text>
    </g>
    <g id="line2d_25">
@@ -313,7 +321,7 @@
      <use ns4:href="#m047d1d5451" x="397.50007" y="22.859609" style="fill: #ffffff; stroke: #c56a14; stroke-width: 1.8; stroke-linejoin: miter" />
     </g>
    </g>
-   <g id="text_26">
+   <g id="text_27">
     <text style="font-size: 14.5px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #20252b" x="421.42507" y="27.934609" transform="rotate(-0 421.42507 27.934609)">Streaming</text>
    </g>
    <g id="line2d_26">
@@ -322,7 +330,7 @@
      <use ns4:href="#m2aa54f6d0e" x="557.106555" y="22.859609" style="fill: #245c94; stroke: #245c94" />
     </g>
    </g>
-   <g id="text_27">
+   <g id="text_28">
     <text style="font-size: 14.5px; font-family: 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #20252b" x="581.031555" y="27.934609" transform="rotate(-0 581.031555 27.934609)">FactorGSE</text>
    </g>
   </g>
@@ -332,4 +340,4 @@
    <rect x="76.464" y="56.16" width="747.648" height="306.72" />
   </clipPath>
  </defs>
-<desc id="chart-desc">DNSMOS versus recognition score for six baseline systems, four FactorGSE context-sweep models and one independent primary model. Both axes improve toward the upper right.</desc><metadata id="figure-data">{"connected_contexts_ms": [26.67, 80.0, 160.0, 240.0], "evaluation": "URGENT 2025 Non-blind test set: 400 utterances (300 English, 100 Chinese)", "metric": "Avg. WER/CER (%) = unweighted mean of English WER (%) and Chinese CER (%)", "points": [{"avg_wer_cer": 16.95, "category": "offline", "context_ms": null, "dnsmos": 3.77, "inherited": true, "label": "DelayGSE\u2020", "recognition_score": 83.05}, {"avg_wer_cer": 33.2, "category": "offline", "context_ms": null, "dnsmos": 3.37, "inherited": false, "label": "Bridge", "recognition_score": 66.8}, {"avg_wer_cer": 33.25, "category": "offline", "context_ms": null, "dnsmos": 3.85, "inherited": false, "label": "UniSE", "recognition_score": 66.75}, {"avg_wer_cer": 28.4, "category": "streaming", "context_ms": null, "dnsmos": 3.32, "inherited": false, "label": "DeepFilterNet3", "recognition_score": 71.6}, {"avg_wer_cer": 33.9, "category": "streaming", "context_ms": null, "dnsmos": 3.23, "inherited": false, "label": "FastEnhancer-L", "recognition_score": 66.1}, {"avg_wer_cer": 43.6, "category": "streaming", "context_ms": null, "dnsmos": 3.24, "inherited": false, "label": "Stream.FM", "recognition_score": 56.4}, {"avg_wer_cer": 29.85, "category": "context sweep", "context_ms": 26.67, "dnsmos": 3.54, "inherited": false, "label": "26.7", "recognition_score": 70.15}, {"avg_wer_cer": 28.0, "category": "context sweep", "context_ms": 80.0, "dnsmos": 3.58, "inherited": false, "label": "80", "recognition_score": 72.0}, {"avg_wer_cer": 26.85, "category": "context sweep", "context_ms": 160.0, "dnsmos": 3.61, "inherited": false, "label": "160", "recognition_score": 73.15}, {"avg_wer_cer": 23.3, "category": "context sweep", "context_ms": 240.0, "dnsmos": 3.62, "inherited": false, "label": "240", "recognition_score": 76.7}, {"avg_wer_cer": 25.45, "category": "primary separate run", "context_ms": 186.7, "dnsmos": 3.62, "inherited": false, "label": "186.7", "recognition_score": 74.55}], "source": ["edge_gse_paper/main.tex", "edge_gse_paper/figures/plot_dns_avgwer_tradeoff.py"], "x": "Recognition score (%) = 100 - Avg. WER/CER (%)", "y": "DNSMOS"}</metadata></svg>
+<desc id="chart-desc">DNSMOS versus recognition score for seven baseline systems, including offline CMGAN, four FactorGSE context-sweep models and one independent primary model. Both axes improve toward the upper right.</desc><metadata id="figure-data">{"connected_contexts_ms": [26.67, 80.0, 160.0, 240.0], "evaluation": "URGENT 2025 Non-blind test set: 400 utterances (300 English, 100 Chinese)", "metric": "Avg. WER/CER (%) = unweighted mean of English WER (%) and Chinese CER (%)", "points": [{"avg_wer_cer": 16.95, "category": "offline", "context_ms": null, "dnsmos": 3.77, "inherited": true, "label": "DelayGSE\u2020", "recognition_score": 83.05}, {"avg_wer_cer": 33.2, "category": "offline", "context_ms": null, "dnsmos": 3.37, "inherited": false, "label": "Bridge", "recognition_score": 66.8}, {"avg_wer_cer": 33.25, "category": "offline", "context_ms": null, "dnsmos": 3.85, "inherited": false, "label": "UniSE", "recognition_score": 66.75}, {"avg_wer_cer": 34.9, "category": "offline", "context_ms": null, "dnsmos": 3.22, "inherited": false, "label": "CMGAN", "recognition_score": 65.1}, {"avg_wer_cer": 28.4, "category": "streaming", "context_ms": null, "dnsmos": 3.32, "inherited": false, "label": "DeepFilterNet3", "recognition_score": 71.6}, {"avg_wer_cer": 33.9, "category": "streaming", "context_ms": null, "dnsmos": 3.23, "inherited": false, "label": "FastEnhancer-L", "recognition_score": 66.1}, {"avg_wer_cer": 43.6, "category": "streaming", "context_ms": null, "dnsmos": 3.24, "inherited": false, "label": "Stream.FM", "recognition_score": 56.4}, {"avg_wer_cer": 29.85, "category": "context sweep", "context_ms": 26.67, "dnsmos": 3.54, "inherited": false, "label": "26.7", "recognition_score": 70.15}, {"avg_wer_cer": 28.0, "category": "context sweep", "context_ms": 80.0, "dnsmos": 3.58, "inherited": false, "label": "80", "recognition_score": 72.0}, {"avg_wer_cer": 26.85, "category": "context sweep", "context_ms": 160.0, "dnsmos": 3.61, "inherited": false, "label": "160", "recognition_score": 73.15}, {"avg_wer_cer": 23.3, "category": "context sweep", "context_ms": 240.0, "dnsmos": 3.62, "inherited": false, "label": "240", "recognition_score": 76.7}, {"avg_wer_cer": 25.45, "category": "primary separate run", "context_ms": 186.7, "dnsmos": 3.62, "inherited": false, "label": "186.7", "recognition_score": 74.55}], "source": ["edge_gse_paper/main.tex", "edge_gse_paper/figures/plot_dns_avgwer_tradeoff.py"], "x": "Recognition score (%) = 100 - Avg. WER/CER (%)", "y": "DNSMOS"}</metadata></svg>

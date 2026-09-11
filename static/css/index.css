@@ -266,6 +266,77 @@ sup {
   text-align: justify;
 }
 
+.benchmark-results {
+  max-width: 900px;
+  margin: 38px auto 0;
+}
+
+.benchmark-scroll {
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+}
+
+.benchmark-scroll:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.35);
+  outline-offset: 3px;
+}
+
+.benchmark-table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+  background: var(--paper);
+  font-size: 0.88rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.benchmark-table caption {
+  padding: 0 0 18px;
+  text-align: left;
+  color: var(--navy);
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+table.benchmark-table th,
+table.benchmark-table td {
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--line);
+  text-align: right;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+table.benchmark-table th:first-child {
+  text-align: left;
+}
+
+.benchmark-table th[scope="row"] {
+  font-weight: 500;
+}
+
+.benchmark-group th {
+  background: #e9eef5;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.benchmark-ours {
+  background: #edf4ff;
+}
+
+.second-best {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.benchmark-notes {
+  margin: 14px 0 0;
+  color: #4b5563;
+  font-size: 0.84rem;
+  line-height: 1.65;
+}
+
 .section-dark {
   color: white;
   background:

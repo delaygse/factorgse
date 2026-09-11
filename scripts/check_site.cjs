@@ -124,7 +124,7 @@ async function main() {
   const [enhanced, original] = switches.children;
   const [first, second] = videos;
   const status = containers['demo-status'];
-  assert.equal(audio.length, 42); assert.equal(images.length, 42); assert.equal(videos.length, 2);
+  assert.equal(audio.length, 44); assert.equal(images.length, 44); assert.equal(videos.length, 2);
   assert.equal(switches.children.length, 2); assert.equal(switches.hidden, false);
   assert(!html.includes('Open video:'));
   assert(!/<a[^>]+href="static\/videos\//.test(html), 'Direct video links removed');
@@ -245,6 +245,6 @@ async function main() {
   second.playable(); await flush(); assert(!second.paused);
   assert.equal(timers.size, 0);
   for (const video of videos) assert.equal(video.listeners.canplay?.size ?? 0, 0, 'No stale readiness listeners');
-  console.log(`Passed: ${checked.size} local resources, 42 audio players and spectrograms, segmented video controls, lazy preload, slow buffering, timestamp catch-up, cancellation, rapid toggles, timeout/retry, media errors, replay, and exclusive audible playback.`);
+  console.log(`Passed: ${checked.size} local resources, 44 audio players and spectrograms, segmented video controls, lazy preload, slow buffering, timestamp catch-up, cancellation, rapid toggles, timeout/retry, media errors, replay, and exclusive audible playback.`);
 }
 main().catch(error => { console.error(error); process.exitCode = 1; });

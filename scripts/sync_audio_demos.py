@@ -29,6 +29,7 @@ BASELINE_FILES = {
     "unise.wav": "urgent_{lang}_unise.wav",
     "delaygse.wav": "urgent_{lang}_delaygse.wav",
     "bridge.wav": "urgent_{lang}_bridge.wav",
+    "cmgan.wav": "urgent_{lang}_cmgan.wav",
     "streamfm.wav": "urgent_{lang}_streamfm.wav",
     "fastenhancer-l.wav": "urgent_{lang}_fastenhancer_l.wav",
     "deepfilternet3.wav": "urgent_{lang}_deepfilternet3.wav",
